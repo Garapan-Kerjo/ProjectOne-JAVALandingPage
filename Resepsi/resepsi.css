@@ -327,7 +327,11 @@ a {
   transition:background var(--transition-fast), color var(--transition-fast);
 }
 .sub-nav-item:hover{ background:var(--bg-page); color:var(--text-main); }
-.sub-nav-item.active{ color:var(--accent); font-weight:700; }
+.sub-nav-item.active{ 
+  color:var(--accent); 
+  font-weight:700; 
+  background-color: var(--bg-page);
+}
 .sub-nav-icon{
   min-width:22px;
   min-height:22px;
