@@ -281,14 +281,14 @@ body {
   margin: 0 0 1em;
 }
 
-/* ---------- footer navigasi bawah ---------- */
+/* ---------- footer navigasi atas ---------- */
 .content-footer-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 32px;
+  margin-bottom: 32px;
   padding: 14px 0;
-  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
   font-size: 0.9rem;
 }
 

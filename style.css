@@ -426,73 +426,37 @@ section .header {
 }
 
 footer {
-  position: relative;
-  display: grid;
-  grid-template-columns: 400px repeat(3, 1fr);
-  gap: 2rem;
-}
-
-footer .column .logo {
-  max-width: 100px;
-  margin-bottom: 2rem;
-}
-
-footer .column p {
-  color: var(--text-secondary);
-  margin-bottom: 2rem;
-}
-
-footer .column p span {
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-
-footer .column .socials {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-footer .column .socials a {
-  color: var(--text-secondary);
-  border: 1px solid var(--border);
-  padding: 5px 10px;
-  font-size: 1.25rem;
-  border-radius: 100%;
-  transition: all 0.3s ease;
-}
-
-footer .column .socials a:hover {
-  color: var(--surface);
-  background-color: var(--secondary);
-  border-color: var(--secondary);
-}
-
-footer .column h4 {
-  color: var(--text);
-  margin-bottom: 2rem;
-  font-size: 1.2rem;
-  font-weight: 500;
-}
-
-footer .column > a {
-  display: block;
-  color: var(--text-secondary);
-  margin-bottom: 1rem;
-  transition: all 0.3s ease;
-}
-
-footer .column > a:hover {
-  color: var(--secondary);
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 0;
+  background: transparent;
+  border: none;
 }
 
 .copyright {
   max-width: 1200px;
   margin: auto;
-  padding: 1rem;
+  padding: 1.5rem 0 1rem;
   color: var(--text-secondary);
-  font-size: 0.8rem;
+  font-size: 0.84rem;
   text-align: center;
+  border-top: 1px solid var(--border);
+}
+
+footer {
+  position: relative;
+}
+
+footer::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -12px;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(196, 155, 60, 0), rgba(196, 155, 60, 0.65), rgba(196, 155, 60, 0));
 }
 
 @media (width < 900px) {
@@ -511,8 +475,8 @@ footer .column > a:hover {
   .pricing {
     grid-template-columns: repeat(2, 1fr);
   }
-  footer {
-    grid-template-columns: 1fr 200px;
+  .footer-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -931,8 +895,23 @@ body.dark-mode .panel-text {
   align-items: start;
   gap: clamp(20px, 4vw, 48px);
   width: 100%;
-  padding: 24px 40px;
-  font-family: var(--font-serif);
+  padding: 32px 40px;
+  font-family: inherit;
+  background: rgba(255, 253, 248, 0.6);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  box-shadow: 0 18px 40px rgba(16, 24, 40, 0.07);
+  position: relative;
+  overflow: hidden;
+}
+
+.cover-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at top left, rgba(200, 155, 60, 0.16), transparent 22%),
+    radial-gradient(circle at bottom right, rgba(180, 90, 60, 0.12), transparent 18%);
+  pointer-events: none;
 }
 
 /* ---------- kolom kiri ---------- */
@@ -945,37 +924,38 @@ body.dark-mode .panel-text {
 
 .logo-box {
   width: 190px;
-  height: 190px;
+  min-height: 190px;
   border: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   font-weight: 700;
-  font-size: 0.95rem;
-  line-height: 1.4;
-  color: var(--text-main);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 24px;
+  box-shadow: 0 18px 35px rgba(16, 24, 40, 0.06);
 }
 
 .course-info {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
 }
 
 .course-title {
   margin: 0;
   font-weight: 700;
-  font-style: italic;
   font-size: 1rem;
-  color: var(--text-main);
+  color: var(--text);
 }
 
 .course-sub {
   margin: 0;
-  font-style: italic;
   font-size: 0.95rem;
-  color: var(--text-main);
+  color: var(--text-secondary);
 }
 
 /* ---------- kolom kanan ---------- */
@@ -983,30 +963,47 @@ body.dark-mode .panel-text {
   display: flex;
   flex-direction: column;
   gap: 32px;
-  margin-left: 300px;
+  margin-left: 0;
   width: 100%;
 }
 
 .section-label {
-  margin: 0 0 4px;
+  margin: 0 0 8px;
   font-weight: 700;
-  font-style: italic;
-  font-size: 1rem;
-  color: var(--text-main);
+  font-size: 0.98rem;
+  color: var(--secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
 }
 
 .lecturer-name {
   margin: 0;
-  font-style: italic;
-  font-size: 0.95rem;
-  color: var(--text-main);
+  font-size: 0.98rem;
+  color: var(--text);
 }
 
 .member-list {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 12px;
   margin-top: 10px;
+}
+
+.member {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0.85rem 1rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid var(--border);
+}
+
+.member-name,
+.member-nim {
+  color: var(--text);
 }
 
 .member {
