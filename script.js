@@ -2,26 +2,39 @@ document.addEventListener("DOMContentLoaded", function () {
   // Theme Toggle
   const themeToggle = document.getElementById("theme-toggle");
   const body = document.body;
-  const themeIcon = themeToggle.querySelector("i");
+  const root = document.documentElement;
+  const themeIcon = themeToggle ? themeToggle.querySelector("i") : null;
 
-  // Check for saved theme in localStorage
-  const currentTheme = localStorage.getItem("theme");
-  if (currentTheme === "dark") {
-    body.classList.add("dark-mode");
-    themeIcon.classList.replace("ri-sun-line", "ri-moon-line");
-  }
-  // Remove the preload class after the page is loaded
-  document.documentElement.classList.remove("dark-mode-preload");
+  const applyTheme = (theme) => {
+    const isDark = theme === "dark";
+    root.setAttribute("data-theme", theme);
+    body.classList.toggle("dark-mode", isDark);
+    body.classList.toggle("light-mode", !isDark);
 
-  themeToggle.addEventListener("click", () => {
-    body.classList.toggle("dark-mode");
-    if (body.classList.contains("dark-mode")) {
-      localStorage.setItem("theme", "dark");
-      themeIcon.classList.replace("ri-sun-line", "ri-moon-line");
-    } else {
-      localStorage.setItem("theme", "light");
-      themeIcon.classList.replace("ri-moon-line", "ri-sun-line");
+    if (themeToggle) {
+      themeToggle.classList.toggle("active", isDark);
+      themeToggle.setAttribute("aria-pressed", String(isDark));
     }
+
+    if (themeIcon) {
+      themeIcon.className = isDark
+        ? "ri-moon-line theme-switch__icon"
+        : "ri-sun-line theme-switch__icon";
+    }
+  };
+
+  const savedTheme = localStorage.getItem("theme");
+  const preferredTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
+  const initialTheme = savedTheme || preferredTheme;
+
+  applyTheme(initialTheme);
+
+  themeToggle?.addEventListener("click", () => {
+    const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    applyTheme(nextTheme);
+    localStorage.setItem("theme", nextTheme);
   });
 
   // Popup
@@ -41,45 +54,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   closePopupBtn.addEventListener("click", hidePopup);
   exploreBtn.addEventListener("click", hidePopup);
-
-  // Sticky Navbar on Scroll
-  const nav = document.querySelector("nav");
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 50) {
-      // Ganti 50 dengan jarak scroll yang Anda inginkan
-      nav.classList.add("nav-scrolled");
-    } else {
-      nav.classList.remove("nav-scrolled");
-    }
-  });
-
-  // Scrollspy - Highlight nav link on scroll
-  const sections = document.querySelectorAll("header[id], section[id], footer[id]");
-  const navLinks = document.querySelectorAll(".nav-links .link");
-
-  const observerOptions = {
-    rootMargin: "-80px 0px -50% 0px", // Navbar height offset and trigger point
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const id = entry.target.getAttribute("id");
-        navLinks.forEach((link) => {
-          link.classList.remove("active");
-          // Find the anchor tag inside the list item
-          const anchor = link.querySelector("a");
-          if (anchor && anchor.getAttribute("href") === `#${id}`) {
-            link.classList.add("active");
-          }
-        });
-      }
-    });
-  }, observerOptions);
-
-  sections.forEach((section) => {
-    observer.observe(section);
-  });
 });
 
 // Accordion Logic
@@ -102,10 +76,8 @@ function setupAccordion(containerId, data) {
       <span class="panel-number">${i + 1}</span>
       <div class="panel-content">
         <h3 class="panel-title">${data.title}</h3>
-        <p class="panel-text">${data.description || loremText}</p>
-        <a href="detail.html?id=${data.id}" class="panel-link">
-          Telusuri Lebih Lanjut <i class="ri-arrow-right-line"></i>
-        </a>
+        <p class="panel-text">${loremText}</p>
+        <a class="panel-link" href="Artikel/detail.html?id=${i + 1}">Telusuri Lebih Lanjut <i class="ri-arrow-right-line"></i></a>
       </div>
     `;
 
@@ -132,18 +104,22 @@ function setupAccordion(containerId, data) {
 
 // Initialize both accordions
 const periodisasiData = [
-  { id: 1, title: "Judul konten pertama", description: "Deskripsi singkat untuk konten pertama." },
-  { id: 2, title: "Judul konten kedua", description: "Deskripsi singkat untuk konten kedua." },
-  { id: 3, title: "Judul konten ketiga", description: "Deskripsi singkat untuk konten ketiga." },
-  { id: 4, title: "Judul konten keempat", description: "Deskripsi singkat untuk konten keempat." },
-  { id: 5, title: "Judul konten kelima", description: "Deskripsi singkat untuk konten kelima." },
-  { id: 6, title: "Judul konten keenam", description: "Deskripsi singkat untuk konten keenam." },
-  { id: 7, title: "Judul konten ketujuh", description: "Deskripsi singkat untuk konten ketujuh." },
+  { title: "Judul konten pertama" },
+  { title: "Judul konten kedua" },
+  { title: "Judul konten ketiga" },
+  { title: "Judul konten keempat" },
+  { title: "Judul konten kelima" },
+  { title: "Judul konten keenam" },
+  { title: "Judul konten ketujuh" },
 ];
 const resepsiData = [
-  { id: 1, title: "Judul konten A", description: "Deskripsi singkat untuk konten A." },
-  { id: 2, title: "Judul konten B", description: "Deskripsi singkat untuk konten B." },
-  { id: 3, title: "Judul konten C", description: "Deskripsi singkat untuk konten C." },
+  { title: "Judul konten A" },
+  { title: "Judul konten B" },
+  { title: "Judul konten C" },
+  { title: "Judul konten D" },
+  { title: "Judul konten E" },
+  { title: "Judul konten F" },
+  { title: "Judul konten G" },
 ];
 
 setupAccordion("accordionPeriodisasi", periodisasiData);

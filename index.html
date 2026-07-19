@@ -10,33 +10,30 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
     />
     <link rel="icon" type="image/x-icon" href="Assets/logo-web.png" />
-    <title>Pasar Web</title>
-    <script>
-      // Apply theme instantly to prevent FOUC (Flash of Unstyled Content)
-      const savedTheme = localStorage.getItem("theme") || "light";
-      if (savedTheme === "dark") {
-        document.documentElement.classList.add("dark-mode-preload");
-      }
-    </script>
+    <title>Nama Tubes XXX</title>
   </head>
   <body>
     <nav>
-      <div class="nav-content">
-        <div class="nav-logo">
-          <a href="#">
-            <img src="Assets/logo-web.png" />
-          </a>
-        </div>
-        <ul class="nav-links">
-          <li class="link"><a href="#mainContent">Beranda</a></li>
-          <li class="link"><a href="#namaTubes">Menu Utama</a></li>
-          <li id="link2" class="link"><a href="#periodisasi">Periodisasi</a></li>
-          <li id="link3" class="link"><a href="#resepsi">Resepsi</a></li>
-        </ul>
-        <div class="nav-actions">
-          <button class="btn" id="theme-toggle"><i class="ri-sun-line"></i></button>
-          <a class="btn" href="#kontak">Kontak</a>
-        </div>
+      <div class="nav-logo">
+        <a href="#">
+          <div class="logo-name"><span>Nama</span>Tubes</div>
+        </a>
+      </div>
+      <ul class="nav-links">
+        <li class="link"><a href="#">Beranda</a></li>
+        <li id="link1" class="link"><a href="#namaTubes">Menu Utama</a></li>
+        <li id="link2" class="link"><a href="#periodisasi">Periodisasi</a></li>
+        <li id="link3" class="link"><a href="#resepsi">Resepsi</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn theme-switch" id="theme-toggle" type="button" aria-label="Switch tema" aria-pressed="false">
+          <span class="theme-switch__track">
+            <span class="theme-switch__thumb">
+              <i class="ri-sun-line theme-switch__icon"></i>
+            </span>
+          </span>
+        </button>
+        <a class="btn" href="#kontak">Tentang Kami</a>
       </div>
     </nav>
     <header class="container" id="mainContent">
@@ -46,8 +43,9 @@
         <h4>MULAI PERJALANAN MU DISINI!</h4>
         <h1>Hai! Kami <span>KELOMPOK XXX</span> Mempersembahkan Artikel ABCDFGE</h1>
         <p>
-          Overview singkat terkait website atau kontennya lorem ipsum dolor sit amet consectetur,
-          adipisicing elit. Laudantium, ducimus eligendi accusamus veritatis corporis rem vitae
+          Overview singkat terkait website atau kontennya lorem ipsum 
+          dolor sit amet consectetur, adipisicing elit. Laudantium, 
+          ducimus eligendi accusamus veritatis corporis rem vitae
         </p>
         <a class="btn" href="#kontak">Mulai Dengan Kami</a>
       </div>
@@ -64,21 +62,32 @@
         <div class="card">
           <span><i class="ri-global-line"></i></span>
           <h4>Periodisasi</h4>
-          <p>Penjelasan apa itu periodisasi lorem ipsum dolor sit amet</p>
-          <a href="#periodisasi">Telusuri Lebih Lanjut <i class="ri-arrow-right-line"></i></a>
+          <p>
+            Penjelasan apa itu periodisasi lorem ipsum dolor sit amet
+          </p>
+          <a
+            href="#periodisasi"
+            >Telusuri Lebih Lanjut <i class="ri-arrow-right-line"></i
+          ></a>
         </div>
         <div class="card">
           <span><i class="ri-macbook-line"></i></span>
           <h4>Resepsi</h4>
-          <p>Penjelasan apa itu resepsi lorem ipsum dolor sit amet</p>
-          <a href="#resepsi">Telusuri Lebih Lanjut <i class="ri-arrow-right-line"></i></a>
+          </h4>
+          <p>
+          Penjelasan apa itu resepsi lorem ipsum dolor sit amet
+          </p>
+          <a
+            href="#resepsi"
+            >Telusuri Lebih Lanjut <i class="ri-arrow-right-line"></i
+          ></a>
         </div>
       </div>
     </section>
     <section class="container" id="periodisasi">
       <h2 class="header">PERIODISASI</h2>
       <p class="sub-header">
-        Overview singkat periodisasi itu apa lorem ipsum sit amet dolor ameterasu <br />
+       Overview singkat periodisasi itu apa lorem ipsum sit amet dolor ameterasu <br />
       </p>
       <div class="accordion" id="accordionPeriodisasi"></div>
     </section>
@@ -127,62 +136,13 @@
         <img src="Assets/logo-web.png" alt="Logo" class="popup-logo" />
         <h2>Selamat Datang di <span>Tubes XXX</span>!</h2>
         <p>
-          Overview singkat terkait website atau kontennya lorem ipsum dolor sit amet consectetur,
-          adipisicing elit. Laudantium, ducimus eligendi accusamus veritatis corporis rem vitae
+          Overview singkat terkait website atau kontennya lorem ipsum 
+          dolor sit amet consectetur, adipisicing elit. Laudantium, 
+          ducimus eligendi accusamus veritatis corporis rem vitae
         </p>
         <button class="btn" id="explore-btn">Jelajahi Sekarang</button>
       </div>
     </div>
-    <script src="script.js"></script>
-  </body>
-</html>
-        </div>
-      </div>
-    </div>
-
-    <!-- Detail View (Hidden by default) -->
-    <div id="detail-view" class="hidden">
-      <div class="page-wrapper">
-        <!-- Header kiri -->
-        <div class="header-left">
-          <span class="brand">Nama / Logo</span>
-        </div>
-
-        <!-- Header kanan -->
-        <div class="header-right">
-          <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">☰</button>
-          <div class="search-bar">
-            <input type="text" placeholder="Telusuri..." />
-            <span class="search-icon">🔍</span>
-          </div>
-          <span class="logo-text">Logo</span>
-        </div>
-
-        <!-- Sidebar -->
-        <aside class="sidebar" id="sidebar">
-          <p class="sidebar-label">Periodisasi</p>
-          <nav class="nav-list" id="navList"></nav>
-          <div class="sidebar-footer">
-            <a href="#" class="footer-link">Resepsi →</a>
-            <a href="#" class="footer-link" id="back-to-main">← Main Page</a>
-          </div>
-        </aside>
-
-        <!-- Konten utama -->
-        <main class="main-content">
-          <h1 class="content-title" id="contentTitle">Memuat konten...</h1>
-          <div class="image-placeholder" id="imagePlaceholder">
-            <span>Gambar Konten</span>
-          </div>
-          <div class="content-text" id="contentText"></div>
-          <div class="content-footer-nav">
-            <a href="#" class="nav-prev" id="navPrev">← Sebelumnya</a>
-            <a href="#" class="nav-next" id="navNext">Selanjutnya →</a>
-          </div>
-        </main>
-      </div>
-    </div>
-
     <script src="script.js"></script>
   </body>
 </html>
