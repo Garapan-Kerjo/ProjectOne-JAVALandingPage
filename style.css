@@ -618,25 +618,6 @@ body.dark-mode .popup-close:hover {
   color: #fff;
 }
 
-/* Dark Mode Cover Page */
-body.dark-mode .cover-page {
-  --text-main: #ccc;
-  --text-sub: #9e9e9e;
-  --avatar-bg: #4a4a4a;
-}
-
-body.dark-mode .logo-box {
-  border-color: #ccc;
-}
-
-body.dark-mode .member-nim {
-  color: var(--text-sub);
-}
-
-body.dark-mode .avatar {
-  background-color: var(--avatar-bg);
-}
-
 /* Accordion Styles */
 :root {
   --border-color: #e0e0e0;
@@ -799,6 +780,7 @@ body.dark-mode .panel-text {
   --text-main: #1a1a1a;
   --text-sub: #555555;
   --avatar-bg: #111111;
+  --font-serif: "Georgia", "Times New Roman", serif;
 }
 
 /* section ini akan otomatis mengisi penuh lebar parent-nya (mis. #kontak) */
@@ -809,6 +791,7 @@ body.dark-mode .panel-text {
   gap: clamp(24px, 6vw, 80px);
   width: 100%;
   padding: 40px;
+  font-family: var(--font-serif);
 }
 
 /* ---------- kolom kiri ---------- */
@@ -934,6 +917,7 @@ body.dark-mode .panel-text {
 
 .member-nim {
   margin: 2px 0 0;
+  font-family: Arial, sans-serif;
   font-size: 0.72rem;
   color: var(--text-sub);
   white-space: nowrap;
