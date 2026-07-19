@@ -125,7 +125,7 @@ function showKonten(index){
 
   pageTitle.textContent = "Narasi Sejarah/Kota dalam Prosa Jawa Timur";
   breadcrumbCurrent.textContent = item.label;
-  breadcrumb.innerHTML = `Periodisasi / <span id="breadcrumbCurrent">${item.label}</span>`;
+  breadcrumb.innerHTML = `Resepsi / <span id="breadcrumbCurrent">${item.label}</span>`;
   contentCardTitle.textContent = item.label;
   renderKontenParagraphs(item);
 
