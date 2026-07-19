@@ -665,15 +665,39 @@ body.dark-mode .pricing .card button:hover {
   border-color: var(--secondary);
 }
 
-body.dark-mode footer .column h4,
-body.dark-mode footer .column > a,
-body.dark-mode footer .column p,
-body.dark-mode footer .column .socials a {
-  color: var(--text-secondary);
+body.dark-mode footer .cover-page {
+  background: rgba(42, 34, 29, 0.82);
+  border-color: rgba(79, 60, 47, 0.7);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
 }
 
-body.dark-mode footer .column .socials a {
-  border-color: var(--border);
+body.dark-mode .logo-box,
+body.dark-mode .member,
+body.dark-mode .section {
+  background: transparent;
+  border-color: rgba(109, 86, 69, 0.45);
+}
+
+body.dark-mode .logo-box {
+  color: var(--text);
+}
+
+body.dark-mode .course-title,
+body.dark-mode .course-sub,
+body.dark-mode .section-label,
+body.dark-mode .lecturer-name,
+body.dark-mode .member-name,
+body.dark-mode .member-nim {
+  color: var(--text);
+}
+
+body.dark-mode .section-label {
+  color: var(--accent);
+}
+
+body.dark-mode .member-name,
+body.dark-mode .member-nim {
+  color: var(--text-secondary);
 }
 
 body.dark-mode .copyright {

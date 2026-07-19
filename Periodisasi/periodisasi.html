@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nama Tubes | Periodisasi</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" />
+<link rel="stylesheet" href="periodisasi.css">
+</head>
+<body>
+
+<div class="app-shell" id="appShell">
+
+  <!-- ===== TOP NAVBAR ===== -->
+  <header class="topnav">
+    <div class="topnav-left">
+      <button class="hamburger-btn" id="hamburgerBtn" aria-label="Buka/tutup sidebar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      <a href="#" class="brand" id="brandLink">
+        <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 19.5V5a2 2 0 0 1 2-2h11a1 1 0 0 1 1 1v14"></path>
+          <path d="M6.5 21.5H19a1 1 0 0 0 1-1v-2H7a2 2 0 0 0-2 2 2 2 0 0 0 2 2Z"></path>
+        </svg>
+        <span class="brand-text">Nama <strong>Tubes</strong></span>
+      </a>
+    </div>
+
+    <div class="topnav-right">
+      <div class="search-bar">
+        <input type="text" placeholder="Telusuri...">
+        <button class="search-btn" aria-label="Cari">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+      </div>
+
+      <button class="btn theme-switch" id="theme-toggle" type="button" aria-label="Switch tema" aria-pressed="false">
+        <span class="theme-switch__track">
+          <span class="theme-switch__thumb">
+            <i class="ri-sun-line theme-switch__icon"></i>
+          </span>
+        </span>
+      </button>
+
+      <div class="avatar-placeholder"></div>
+    </div>
+  </header>
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="sidebar" id="sidebar">
+    <nav class="nav-list">
+
+      <div class="nav-group">
+        <button class="nav-item nav-parent" id="navPeriodisasi">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5V5a2 2 0 0 1 2-2h11a1 1 0 0 1 1 1v14"></path>
+              <path d="M6.5 21.5H19a1 1 0 0 0 1-1v-2H7a2 2 0 0 0-2 2 2 2 0 0 0 2 2Z"></path>
+            </svg>
+          </span>
+          <span class="nav-label">Periodisasi</span>
+          <svg class="nav-chevron" id="periodisasiChevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+
+        <div class="nav-submenu" id="periodisasiSubmenu">
+          <!-- Konten 1-7 diisi otomatis lewat JS -->
+        </div>
+      </div>
+
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="..\Resepsi\resepsi.html" class="nav-item" id="navResepsi">
+        <span class="nav-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+        </span>
+        <span class="nav-label">Resepsi</span>
+      </a>
+
+      <a href="../index.html" class="nav-item" id="navMainPage">
+        <span class="nav-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 11.5 12 4l9 7.5"></path>
+            <path d="M5 10v10a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V10"></path>
+          </svg>
+        </span>
+        <span class="nav-label">Main Page</span>
+      </a>
+    </div>
+  </aside>
+
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="main-content" id="mainContent">
+
+    <div class="page-header">
+      <h1 class="page-title" id="pageTitle">Narasi Sejarah/Kota dalam Prosa Jawa Timur</h1>
+      <p class="breadcrumb" id="breadcrumb">Periodisasi / <span id="breadcrumbCurrent">Konten 1</span></p>
+    </div>
+
+    <section class="content-card">
+      <div class="content-card-header">
+        <div class="content-card-heading">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5V5a2 2 0 0 1 2-2h11a1 1 0 0 1 1 1v14"></path>
+            <path d="M6.5 21.5H19a1 1 0 0 0 1-1v-2H7a2 2 0 0 0-2 2 2 2 0 0 0 2 2Z"></path>
+          </svg>
+          <span id="contentCardTitle">Konten 1</span>
+        </div>
+      </div>
+
+      <div class="content-card-body" id="contentCardBody">
+        <div class="image-placeholder">
+          <span>Gambar Konten</span>
+        </div>
+        <div class="content-text" id="contentText">
+          <!-- diisi otomatis lewat JS -->
+        </div>
+      </div>
+
+      <div class="pagination-bar" id="paginationBar">
+        <button class="page-btn" id="prevBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+          Sebelumnya
+        </button>
+
+        <div class="page-dots" id="pageDots"></div>
+
+        <button class="page-btn" id="nextBtn">
+          Berikutnya
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+</div>
+
+<script src="periodisasi.js"></script>
+</body>
+</html>
