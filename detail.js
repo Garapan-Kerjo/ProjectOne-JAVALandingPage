@@ -125,9 +125,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // --- EVENT LISTENERS ---
 
-  // Mode Gelap
-  toggleSwitch.addEventListener("change", () => {
-    document.body.classList.toggle("dark-mode");
+  // Theme Toggle Logic
+  const themeToggle = document.getElementById("theme-toggle");
+  const root = document.documentElement;
+  const themeIcon = themeToggle ? themeToggle.querySelector("i") : null;
+
+  const applyTheme = (theme) => {
+    const isDark = theme === "dark";
+    root.setAttribute("data-theme", theme);
+
+    if (themeToggle) {
+      themeToggle.classList.toggle("active", isDark);
+      themeToggle.setAttribute("aria-pressed", String(isDark));
+    }
+
+    if (themeIcon) {
+      themeIcon.className = isDark
+        ? "ri-moon-line theme-switch__icon"
+        : "ri-sun-line theme-switch__icon";
+    }
+  };
+
+  const savedTheme = localStorage.getItem("theme");
+  const preferredTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  const initialTheme = savedTheme || preferredTheme;
+
+  applyTheme(initialTheme);
+
+  themeToggle?.addEventListener("click", () => {
+    const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    applyTheme(nextTheme);
+    localStorage.setItem("theme", nextTheme);
   });
 
   // Hamburger Menu (Mobile)

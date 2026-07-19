@@ -54,6 +54,45 @@ document.addEventListener("DOMContentLoaded", function () {
 
   closePopupBtn.addEventListener("click", hidePopup);
   exploreBtn.addEventListener("click", hidePopup);
+
+  // Sticky Navbar & Scrollspy
+  const nav = document.querySelector("nav");
+  const sections = document.querySelectorAll("header[id], section[id], footer[id]");
+  const navLinks = document.querySelectorAll(".nav-links .link");
+
+  window.addEventListener("scroll", () => {
+    // Sticky effect
+    if (window.scrollY > 50) {
+      nav.classList.add("nav-scrolled");
+    } else {
+      nav.classList.remove("nav-scrolled");
+    }
+
+    // Scrollspy
+    let current = "";
+    sections.forEach((section) => {
+      const sectionTop = section.offsetTop;
+      if (pageYOffset >= sectionTop - 90) {
+        current = section.getAttribute("id");
+      }
+    });
+
+    navLinks.forEach((link) => {
+      link.classList.remove("active");
+      const anchor = link.querySelector("a");
+      if (anchor && anchor.getAttribute("href") === `#${current}`) {
+        link.classList.add("active");
+      }
+    });
+    // Special case for top of the page
+    if (window.scrollY < 400) {
+      navLinks.forEach((link) => link.classList.remove("active"));
+      const homeLink = document.querySelector('.nav-links a[href="#mainContent"]');
+      if (homeLink) {
+        homeLink.parentElement.classList.add("active");
+      }
+    }
+  });
 });
 
 // Accordion Logic
@@ -77,7 +116,7 @@ function setupAccordion(containerId, data) {
       <div class="panel-content">
         <h3 class="panel-title">${data.title}</h3>
         <p class="panel-text">${loremText}</p>
-        <a class="panel-link" href="Artikel/detail.html?id=${i + 1}">Telusuri Lebih Lanjut <i class="ri-arrow-right-line"></i></a>
+        <a class="panel-link" href="detail.html?id=${i + 1}">Telusuri Lebih Lanjut <i class="ri-arrow-right-line"></i></a>
       </div>
     `;
 

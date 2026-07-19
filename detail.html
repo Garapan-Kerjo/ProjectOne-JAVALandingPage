@@ -3,13 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+    />
     <title>Detail Konten</title>
     <link rel="stylesheet" href="detail.css" />
     <script>
-      // Apply theme instantly to prevent FOUC (Flash of Unstyled Content)
-      const savedTheme = localStorage.getItem("theme") || "light";
-      if (savedTheme === "dark") {
-        document.documentElement.classList.add("dark-mode-preload");
+      // Terapkan tema secara instan untuk mencegah FOUC (Flash of Unstyled Content)
+      const savedTheme = localStorage.getItem("theme");
+      const preferredTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      if (savedTheme === "dark" || (!savedTheme && preferredTheme === "dark")) {
+        document.documentElement.setAttribute("data-theme", "dark");
       }
     </script>
   </head>
@@ -25,14 +30,17 @@
         <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">☰</button>
 
         <div class="search-bar">
-          <input type="text" id="searchInput" placeholder="Telusuri..." />
-          <button class="search-icon" id="searchBtn" aria-label="Search">🔍</button>
+          <input type="text" placeholder="Telusuri..." />
+          <span class="search-icon">🔍</span>
         </div>
 
-        <label class="toggle-switch">
-          <input type="checkbox" id="toggleSwitch" />
-          <span class="toggle-slider"></span>
-        </label>
+        <button class="btn theme-switch" id="theme-toggle" type="button" aria-label="Switch tema" aria-pressed="false">
+            <span class="theme-switch__track">
+              <span class="theme-switch__thumb">
+                <i class="ri-sun-line theme-switch__icon"></i>
+              </span>
+            </span>
+          </button>
 
         <span class="logo-text">Logo</span>
       </div>

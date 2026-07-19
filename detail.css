@@ -1,18 +1,31 @@
 :root {
-  --border-color: #e0e0e0;
-  --text-main: #1a1a1a;
-  --text-sub: #555555;
-  --bg: #ffffff;
+  --background: #F8F5EF;
+  --surface: #FFFDF8;
+  --primary: #5A3E2B;
+  --secondary: #B45A3C;
+  --accent: #C89B3C;
+  --text: #2F2A25;
+  --text-secondary: #6F665E;
+  --border: #DDD0BB;
+  --success: #647A3D;
+  --error: #B43B3B;
+
   --sidebar-w: 220px;
   --font-sans: "Helvetica Neue", Arial, sans-serif;
   --font-serif: "Georgia", "Times New Roman", serif;
 }
 
-body.dark-mode {
-  --border-color: #3a3a3a;
-  --text-main: #e0e0e0;
-  --text-sub: #888888;
-  --bg: #121212;
+html[data-theme="dark"] {
+  --background: #171311;
+  --surface: #231C18;
+  --primary: #D4AF37;
+  --secondary: #C56A45;
+  --accent: #E0C067;
+  --text: #F5F1E8;
+  --text-secondary: #C7B9A3;
+  --border: #43352C;
+  --success: #8AA05B;
+  --error: #D06A6A;
 }
 
 * {
@@ -20,8 +33,7 @@ body.dark-mode {
 }
 body {
   margin: 0;
-  background-color: var(--bg);
-  transition: background-color 0.3s ease;
+  background-color: var(--background);
 }
 
 .page-wrapper {
@@ -32,11 +44,10 @@ body {
   max-width: 1400px;
   min-height: 100vh;
   margin: 0 auto;
-  border: 1px solid var(--border-color);
-  background: var(--bg);
+  border: 1px solid var(--border);
+  background: var(--surface);
   font-family: var(--font-sans);
-  color: var(--text-main);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  color: var(--text);
 }
 
 /* ---------- header kiri ---------- */
@@ -46,8 +57,8 @@ body {
   display: flex;
   align-items: center;
   padding: 16px 20px;
-  border-right: 1px solid var(--border-color);
-  border-bottom: 1px solid var(--border-color);
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
 .brand {
@@ -64,7 +75,7 @@ body {
   align-items: center;
   gap: 16px;
   padding: 14px 24px;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border);
 }
 
 .hamburger {
@@ -73,7 +84,7 @@ body {
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
-  color: var(--text-main);
+  color: var(--text);
   padding: 4px;
   flex-shrink: 0;
 }
@@ -87,17 +98,17 @@ body {
 .search-bar input {
   width: 100%;
   padding: 9px 40px 9px 16px;
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--border);
   border-radius: 999px;
   font-size: 0.9rem;
   font-family: var(--font-sans);
   outline: none;
-  background-color: var(--bg);
-  color: var(--text-main);
+  background-color: var(--background);
+  color: var(--text);
 }
 
 .search-bar input:focus {
-  border-color: var(--text-main);
+  border-color: var(--text);
 }
 
 .search-icon {
@@ -109,47 +120,45 @@ body {
   pointer-events: none;
 }
 
-.toggle-switch {
-  position: relative;
-  display: inline-block;
-  width: 42px;
-  height: 22px;
-  flex-shrink: 0;
-}
-
-.toggle-switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.toggle-slider {
-  position: absolute;
-  inset: 0;
-  background: #ccc;
+.theme-switch {
+  padding: 0;
+  width: 64px;
+  height: 36px;
+  background: transparent;
   border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  overflow: hidden;
   cursor: pointer;
-  transition: 0.3s;
 }
 
-.toggle-slider::before {
-  content: "";
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  left: 3px;
-  top: 3px;
-  background: #fff;
+.theme-switch__track {
+  width: 100%;
+  height: 100%;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(90deg, var(--accent), var(--secondary));
+  border-radius: 999px;
+}
+
+.theme-switch__thumb {
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
   border-radius: 50%;
-  transition: 0.3s;
+  background-color: var(--surface);
+  color: var(--primary);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
-.toggle-switch input:checked + .toggle-slider {
-  background: #555;
-}
-
-.toggle-switch input:checked + .toggle-slider::before {
-  transform: translateX(20px);
+.theme-switch.active .theme-switch__thumb {
+  transform: translateX(28px);
+  background-color: var(--surface);
+  color: var(--accent);
 }
 
 .logo-text {
@@ -163,7 +172,7 @@ body {
 .sidebar {
   grid-column: 1;
   grid-row: 2;
-  border-right: 1px solid var(--border-color);
+  border-right: 1px solid var(--border);
   padding: 24px 20px;
   display: flex;
   flex-direction: column;
@@ -185,7 +194,7 @@ body {
 
 .nav-item {
   text-decoration: none;
-  color: var(--text-main);
+  color: var(--text);
   font-size: 0.92rem;
   position: relative;
   padding-left: 0;
@@ -210,7 +219,7 @@ body {
 .sidebar-footer {
   margin-top: auto;
   padding-top: 24px;
-  border-top: 1px solid var(--border-color);
+  border-top: 1px solid var(--border);
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -218,7 +227,7 @@ body {
 
 .footer-link {
   text-decoration: none;
-  color: var(--text-main);
+  color: var(--text);
   font-size: 0.9rem;
 }
 
@@ -241,20 +250,20 @@ body {
   font-size: 1.5rem;
   font-weight: 700;
   font-family: var(--font-sans);
-  color: var(--text-main);
+  color: var(--text);
 }
 
 .image-placeholder {
   width: 100%;
   max-width: 420px;
   height: 180px;
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 28px;
   font-size: 0.9rem;
-  color: var(--text-sub);
+  color: var(--text-secondary);
   background-size: cover;
   background-position: center;
 }
@@ -264,7 +273,7 @@ body {
   font-style: italic;
   font-size: 1rem;
   line-height: 1.7;
-  color: var(--text-main);
+  color: var(--text);
   max-width: 720px;
 }
 
@@ -279,14 +288,14 @@ body {
   align-items: center;
   margin-top: 32px;
   padding: 14px 0;
-  border-top: 1px solid var(--border-color);
+  border-top: 1px solid var(--border);
   font-size: 0.9rem;
 }
 
 .nav-prev,
 .nav-next {
   text-decoration: none;
-  color: var(--text-main);
+  color: var(--text);
   transition: opacity 0.2s ease;
 }
 
@@ -322,10 +331,10 @@ body {
     left: 0;
     top: 0;
     height: 100%;
-    background-color: var(--bg);
+    background-color: var(--surface);
     z-index: 100;
     transform: translateX(-100%);
-    border-right: 1px solid var(--border-color);
+    border-right: 1px solid var(--border);
   }
   .sidebar.open {
     transform: translateX(0);
