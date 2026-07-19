@@ -62,6 +62,13 @@ function setupAccordion(containerId, data) {
   const loremText =
     "Lorem ipsum sit amet dolor, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam.";
   const accordion = document.getElementById(containerId);
+  let linkHref = "Artikel/detail.html"; // Default link
+  if (containerId.includes("Periodisasi")) {
+    linkHref = "Periodisasi/periodisasi.html";
+  } else if (containerId.includes("Resepsi")) {
+    linkHref = "Resepsi/resepsi.html";
+  }
+
   if (!accordion) return;
 
   panelsData.forEach((data, i) => {
@@ -77,7 +84,7 @@ function setupAccordion(containerId, data) {
       <div class="panel-content">
         <h3 class="panel-title">${data.title}</h3>
         <p class="panel-text">${loremText}</p>
-        <a class="panel-link" href="Artikel/detail.html?id=${i + 1}">Telusuri Lebih Lanjut <i class="ri-arrow-right-line"></i></a>
+        <a class="panel-link" href="${linkHref}?id=${i + 1}">Telusuri Lebih Lanjut <i class="ri-arrow-right-line"></i></a>
       </div>
     `;
 
