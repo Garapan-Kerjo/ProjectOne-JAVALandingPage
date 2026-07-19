@@ -546,6 +546,10 @@ footer::after {
   margin-bottom: 1rem;
 }
 
+.popup-content h2 span {
+  color: var(--secondary);
+}
+
 .popup-content p {
   color: var(--text-secondary);
   margin-bottom: 2rem;
