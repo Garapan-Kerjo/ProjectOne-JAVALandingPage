@@ -842,8 +842,8 @@ body.dark-mode .panel-text {
   display: flex;
   flex-direction: column;
   gap: 32px;
-  margin-left: 500px;
-
+  margin-left: 300px;
+  width: 100%;
 }
 
 .section-label {
