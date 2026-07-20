@@ -97,6 +97,7 @@ body {
   background-color: var(--background);
   color: var(--text);
   transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
 }
 
 nav {
@@ -484,42 +485,6 @@ footer::after {
   background: linear-gradient(90deg, rgba(196, 155, 60, 0), rgba(196, 155, 60, 0.65), rgba(196, 155, 60, 0));
 }
 
-@media (width < 900px) {
-  .nav-links {
-    display: none;
-  }
-  header {
-    grid-template-columns: repeat(1, 1fr);
-  }
-  header .image {
-    grid-area: 1/1/2/2;
-  }
-  .features {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .pricing {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .footer-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (width < 600px) {
-  header .image::before {
-    display: none;
-  }
-  .features {
-    grid-template-columns: repeat(1, 1fr);
-  }
-  .pricing {
-    grid-template-columns: repeat(1, 1fr);
-  }
-  footer {
-    grid-template-columns: 1fr 150px;
-  }
-}
-
 /* Popup Styles */
 .popup-container {
   position: fixed;
@@ -873,37 +838,6 @@ body.dark-mode .popup-close:hover {
   outline-offset: -2px;
 }
 
-@media (max-width: 720px) {
-  .accordion {
-    flex-direction: column;
-    height: auto;
-    max-height: 640px;
-  }
-  .panel {
-    width: 100%;
-    height: 56px;
-    border-right: none;
-    border-bottom: 1px solid var(--border-color);
-    transition: height 0.5s var(--ease), background-color 0.3s var(--ease);
-  }
-  .panel.active {
-    height: 320px;
-  }
-  .panel-number {
-    top: 28px;
-    left: 24px;
-    transform: translate(0, -50%);
-  }
-  .panel.active .panel-number {
-    top: 24px;
-    left: 24px;
-    transform: none;
-  }
-  .panel-content {
-    top: 64px;
-  }
-}
-
 /* Dark Mode Accordion */
 body.dark-mode .accordion {
   background: var(--surface);
@@ -1109,142 +1043,481 @@ body.dark-mode .panel-text {
   white-space: nowrap;
 }
 
-/* di layar sempit, dua kolom tumpuk ke bawah */
-@media (max-width: 640px) {
-  .cover-page {
-    grid-template-columns: 1fr;
-  }
+/* =========================================================
+   RESPONSIVE SYSTEM
+   ========================================================= */
+
+/* ==========================
+   <= 1400px (Large Desktop)
+   ========================== */
+@media screen and (max-width:1400px){
+
+.container{
+    max-width:1100px;
+    padding:4.5rem 2rem;
 }
 
-/* ===== RESPONSIVE FINE-TUNE UNTUK INDEX ===== */
-@media (max-width: 480px) {
-  .container {
-    padding: 2rem 1rem;
-  }
-  header .content h1 {
-    font-size: 2rem;
-    line-height: 2.8rem;
-  }
-  header .content h4 {
-    font-size: 0.85rem;
-  }
-  .nav-logo .logo-name {
-    font-size: 1.2rem;
-  }
-  .btn {
-    font-size: 0.85rem;
-    padding: 0.5rem 0.8rem;
-  }
-  .features .card {
-    padding: 0.8rem;
-  }
-  .features .card h4 {
-    font-size: 1rem;
-  }
-  .features .card p {
-    font-size: 0.9rem;
-  }
-  .popup-content {
-    padding: 2rem 1.2rem;
-    max-width: 95%;
-  }
-  .popup-content h2 {
-    font-size: 1.3rem;
-  }
-  .popup-content p {
-    font-size: 0.9rem;
-  }
-  .popup-logo {
-    max-width: 60px;
-  }
-  .accordion {
-    max-height: none; /* biarkan berkembang sesuai konten */
-    height: auto;      /* tidak dibatasi tinggi */
-  }
-  .panel {
-    height: auto;      /* setiap panel menyesuaikan */
-    min-height: 56px;
-  }
-  .panel.active {
-    height: auto;      /* panel aktif menyesuaikan konten */
-  }
-  .panel-content {
-    position: static;  /* lepas dari absolute agar tinggi otomatis */
-    opacity: 1;
-    pointer-events: auto;
-    padding: 0.5rem 0;
-    top: auto;
-    left: auto;
-    right: auto;
-    bottom: auto;
-  }
-  .panel-number {
-    position: static;
-    transform: none;
-    font-size: 1.2rem;
-    margin-right: 0.5rem;
-  }
-  .panel.active .panel-number {
-    font-size: 1.2rem;
-    top: auto;
-    left: auto;
-    transform: none;
-  }
-  .panel-title {
-    font-size: 1rem;
-    white-space: normal; /* boleh wrap */
-  }
-  .panel-text {
-    font-size: 0.85rem;
-  }
-  .panel-link {
-    font-size: 0.85rem;
-  }
-  .cover-page {
-    padding: 20px 16px;
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-  .logo-box {
-    width: 100%;
-    min-height: 120px;
-    font-size: 0.9rem;
-  }
-  .member {
-    padding: 0.6rem 0.8rem;
-  }
-  .member-name {
-    font-size: 0.85rem;
-  }
-  .member-nim {
-    font-size: 0.65rem;
-  }
-  .avatar {
-    width: 36px;
-    height: 36px;
-  }
+header .content h1{
+    font-size:clamp(2.8rem,4vw,3.5rem);
+    line-height:1.25;
 }
 
-@media (max-width: 380px) {
-  header .content h1 {
-    font-size: 1.6rem;
-    line-height: 2.2rem;
-  }
-  .features {
-    gap: 0.8rem;
-  }
-  .nav-actions {
-    gap: 0.5rem;
-  }
-  .theme-switch {
-    width: 48px;
-    height: 28px;
-  }
-  .theme-switch__thumb {
-    width: 20px;
-    height: 20px;
-  }
-  .theme-switch.active .theme-switch__thumb {
-    transform: translateX(20px);
-  }
+header .image img{
+    max-width:380px;
+}
+
+.cover-page{
+    gap:32px;
+}
+
+}
+
+/* ==========================
+   <= 1200px (Laptop)
+   ========================== */
+
+@media screen and (max-width:1200px){
+
+.container{
+    max-width:1000px;
+    padding:4rem 2rem;
+}
+
+nav{
+    padding:1rem 2rem;
+}
+
+.nav-links{
+    gap:2rem;
+}
+
+header{
+    gap:3rem;
+}
+
+header .content h1{
+    font-size:2.7rem;
+}
+
+header .content p{
+    font-size:1rem;
+    line-height:1.8;
+}
+
+header .image img{
+    max-width:340px;
+}
+
+.features{
+    gap:1.5rem;
+}
+
+.pricing{
+    gap:1.5rem;
+}
+
+.cover-page{
+    grid-template-columns:190px 1fr;
+}
+
+.logo-box{
+    width:170px;
+    min-height:170px;
+}
+
+}
+
+/* ==========================
+   <= 992px (Tablet Landscape)
+   ========================== */
+
+@media screen and (max-width:992px){
+
+.container{
+    padding:4rem 1.8rem;
+}
+
+nav{
+    gap:1rem;
+}
+
+.nav-logo{
+    margin-right:0;
+}
+
+.nav-links{
+    display:none;
+}
+
+header{
+    grid-template-columns:1fr;
+    text-align:center;
+    gap:3rem;
+}
+
+header .image{
+    order:-1;
+}
+
+header .image img{
+    max-width:320px;
+}
+
+header .content h4{
+    font-size:1rem;
+}
+
+header .content h1{
+    font-size:2.5rem;
+    line-height:1.3;
+}
+
+header .content p{
+    max-width:700px;
+    margin:auto auto 2rem;
+}
+
+.features{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.pricing{
+    grid-template-columns:1fr;
+}
+
+.accordion{
+    height:320px;
+}
+
+.cover-page{
+    grid-template-columns:1fr;
+    text-align:center;
+}
+
+.cover-left{
+    align-items:center;
+}
+
+.member{
+    justify-content:flex-start;
+}
+
+}
+
+/* ==========================
+   <= 768px (Tablet Portrait)
+   ========================== */
+
+@media screen and (max-width:768px){
+
+.container{
+    padding:3.5rem 1.4rem;
+}
+
+section.container{
+    min-height:auto;
+}
+
+nav{
+    padding:1rem;
+}
+
+.nav-links{
+    gap:.5rem;
+}
+
+.link a{
+    padding:.45rem .8rem;
+    font-size:.95rem;
+}
+
+.btn{
+    font-size:.95rem;
+}
+
+header{
+    padding-top:1rem;
+}
+
+header .content h1{
+    font-size:2.2rem;
+}
+
+header .content p{
+    font-size:.95rem;
+}
+
+header .image img{
+    max-width:280px;
+}
+
+.header{
+    font-size:2rem;
+}
+
+.sub-header{
+    font-size:.95rem;
+    line-height:1.8;
+}
+
+.features{
+    grid-template-columns:1fr;
+}
+
+.features .card{
+    padding:1.5rem;
+}
+
+.features .card h4{
+    font-size:1.15rem;
+}
+
+.pricing{
+    margin-top:2rem;
+}
+
+.pricing .card{
+    padding:2rem;
+}
+
+.popup-content{
+    padding:2rem 1.5rem;
+}
+
+.popup-content h2{
+    font-size:1.5rem;
+}
+
+.cover-page{
+    padding:24px;
+}
+
+.logo-box{
+    width:150px;
+    min-height:150px;
+}
+
+.member{
+    padding:.8rem;
+}
+
+.accordion{
+    flex-direction:column;
+    height:auto;
+    max-height:none;
+}
+
+.panel{
+    width:100%;
+    height:60px;
+}
+
+.panel.active{
+    width:100%;
+    height:260px;
+}
+
+.panel-content{
+    top:64px;
+}
+
+}
+
+/* ==========================
+   <= 576px (Large Mobile)
+   ========================== */
+
+@media screen and (max-width:576px){
+
+.nav-actions{
+    gap:1rem;
+}
+
+.nav-actions a {
+  width: 120px;
+  font-size: 0.8rem;
+  padding: 0.5rem 0.25rem;
+}
+
+.nav-actions .theme-switch {
+  width: 64px;
+  height: 36px;
+}
+
+.container{
+    padding:3rem 1rem;
+}
+
+header .content h4{
+    font-size:.9rem;
+}
+
+header .content h1{
+    font-size:1.9rem;
+}
+
+header .content p{
+    font-size:.92rem;
+    line-height:1.8;
+}
+
+header .image img{
+    max-width:240px;
+}
+
+.btn{
+    width:100%;
+}
+
+.features .card{
+    border-radius:14px;
+}
+
+.features .card span{
+    font-size:1.5rem;
+}
+
+.features .card h4{
+    font-size:1.05rem;
+}
+
+.pricing .card{
+    padding:1.8rem 1.5rem;
+}
+
+.pricing .card h3{
+    font-size:1.7rem;
+}
+
+.panel-text {
+  font-size: 0.8rem
+}
+
+.popup-content{
+    border-radius:18px;
+}
+
+.cover-page{
+    border-radius:18px;
+}
+
+.member{
+    gap:12px;
+}
+
+.member-name{
+    font-size:.9rem;
+}
+
+.member-nim{
+    font-size:.72rem;
+}
+
+footer::after{
+    width:80px;
+}
+
+}
+
+/* ==========================
+   <= 420px (Small Mobile)
+   ========================== */
+
+@media screen and (max-width:420px){
+
+.container{
+    padding:2.5rem .9rem;
+}
+
+nav{
+    padding:.8rem;
+}
+
+.nav-logo .logo-name{
+    font-size:20px;
+}
+
+.link a{
+    font-size:.88rem;
+}
+
+header .content h1{
+    font-size:1.65rem;
+}
+
+header .content p{
+    font-size:.9rem;
+}
+
+header .image img{
+    max-width:200px;
+}
+
+.header{
+    font-size:1.7rem;
+}
+
+.sub-header{
+    font-size:.88rem;
+}
+
+.popup-content{
+    padding:1.5rem 1rem;
+}
+
+.popup-content h2{
+    font-size:1.3rem;
+}
+
+.cover-page{
+    padding:20px;
+}
+
+.logo-box{
+    width:130px;
+    min-height:130px;
+}
+
+.member{
+    padding:.7rem;
+}
+
+.avatar{
+    width:40px;
+    height:40px;
+}
+
+.member-name{
+    font-size:.85rem;
+}
+
+.member-nim{
+    font-size:.68rem;
+}
+
+}
+
+/* ==========================
+   TOUCH DEVICE
+   ========================== */
+
+@media (hover:none){
+
+.cursor{
+    display:none;
+}
+
+*{
+    cursor:auto !important;
+}
+
+body{
+    overflow-x:hidden;
+}
+
+img{
+    max-width:100%;
+    height:auto;
+}
+
 }

@@ -236,4 +236,6 @@ sidebarBackdrop.addEventListener('click', () => {
 /* ================== INIT ================== */
 periodisasiSubmenu.classList.add('open');
 navPeriodisasi.classList.add('open');
-showKonten(1);
+const params = new URLSearchParams(window.location.search);
+const selectedId = parseInt(params.get("id")) || 1;
+showKonten(selectedId);

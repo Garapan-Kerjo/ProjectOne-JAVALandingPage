@@ -90,6 +90,7 @@ body{
   font-family:'Poppins', sans-serif;
   color:var(--text-main);
   transition:background var(--transition-medium), color var(--transition-medium);
+  overflow-x:hidden;
 }
 
 .cursor {
@@ -196,7 +197,7 @@ a {
   background:none;
   padding:9px 16px;
   font-size:.88rem;
-  width:220px;
+  width:clamp(90px, 18vw, 220px);
   outline:none;
   color:var(--text-main);
   font-family:var(--font-sans);
@@ -690,5 +691,15 @@ a {
   }
   .page-btn {
     justify-content: center;
+  }
+}
+
+/* ===== TOUCH DEVICE ===== */
+@media (hover:none){
+  .cursor{
+    display:none;
+  }
+  *{
+    cursor:auto !important;
   }
 }
