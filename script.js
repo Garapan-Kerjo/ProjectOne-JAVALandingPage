@@ -109,24 +109,25 @@ function setupAccordion(containerId, data) {
   }
 }
 
-// Initialize both accordions
+// === DATA UNTUK ACCORDION DI INDEX ===
 const periodisasiData = [
-  { title: "Judul konten pertama" },
-  { title: "Judul konten kedua" },
-  { title: "Judul konten ketiga" },
-  { title: "Judul konten keempat" },
-  { title: "Judul konten kelima" },
-  { title: "Judul konten keenam" },
-  { title: "Judul konten ketujuh" },
+  { title: "Narasi Sejarah/Kota dalam Prosa Jawa Timur" },
+  { title: "Digitalisasi Puitika Sejarah/Kota dalam Khazanah Puisi Jawa Timur" },
+  { title: "Digitalisasi Sejarah Prosa Jawa Timur" },
+  { title: "Puitika Sejarah/Kota dalam Khazanah Puisi Jawa Timur" },
+  { title: "Penyusunan Sejarah Dramaturgi UNAIR" },
+  { title: "Ruang Sejarah/Kota dalam Naskah Drama Jawa Timur" },
+  { title: "Penyusunan Sejarah Komunitas Sastra di Jawa Timur" }
 ];
+
 const resepsiData = [
-  { title: "Judul konten A" },
-  { title: "Judul konten B" },
-  { title: "Judul konten C" },
-  { title: "Judul konten D" },
-  { title: "Judul konten E" },
-  { title: "Judul konten F" },
-  { title: "Judul konten G" },
+  { title: "Narasi Sejarah/Kota dalam Prosa Jawa Timur" },
+  { title: "Digitalisasi Puitika Sejarah/Kota dalam Khazanah Puisi Jawa Timur" },
+  { title: "Digitalisasi Sejarah Prosa Jawa Timur" },
+  { title: "Puitika Sejarah/Kota dalam Khazanah Puisi Jawa Timur" },
+  { title: "Inventarisasi dan Digitalisasi Karya-Karya Pramoedya Ananta Toer" },
+  { title: "Inventarisasi dan Digitalisasi Sastra Cina Peranakan" },
+  { title: "Penyusunan Sejarah Komunitas Sastra di Jawa Timur" }
 ];
 
 setupAccordion("accordionPeriodisasi", periodisasiData);

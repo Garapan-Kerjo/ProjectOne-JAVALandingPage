@@ -18,11 +18,15 @@ function buildParagraphs(seed, count){
   return out;
 }
 
-const kontenData = Array.from({ length: 7 }, (_, i) => ({
-  id: i + 1,
-  label: `Konten ${i + 1}`,
-  paragraphs: buildParagraphs(i, 8)
-}));
+const kontenData = [
+  { id: 1, label: "Narasi Sejarah/Kota dalam Prosa Jawa Timur", paragraphs: buildParagraphs(0, 8) },
+  { id: 2, label: "Digitalisasi Puitika Sejarah/Kota dalam Khazanah Puisi Jawa Timur", paragraphs: buildParagraphs(1, 8) },
+  { id: 3, label: "Digitalisasi Sejarah Prosa Jawa Timur", paragraphs: buildParagraphs(2, 8) },
+  { id: 4, label: "Puitika Sejarah/Kota dalam Khazanah Puisi Jawa Timur", paragraphs: buildParagraphs(3, 8) },
+  { id: 5, label: "Inventarisasi dan Digitalisasi Karya-Karya Pramoedya Ananta Toer", paragraphs: buildParagraphs(4, 8) },
+  { id: 6, label: "Inventarisasi dan Digitalisasi Sastra Cina Peranakan", paragraphs: buildParagraphs(5, 8) },
+  { id: 7, label: "Penyusunan Sejarah Komunitas Sastra di Jawa Timur", paragraphs: buildParagraphs(6, 8) }
+];
 
 const specialPages = {
   resepsi: {
@@ -123,7 +127,7 @@ function showKonten(index){
   activeSection = 'periodisasi';
   activeKontenIndex = index;
 
-  pageTitle.textContent = "Narasi Sejarah/Kota dalam Prosa Jawa Timur";
+  pageTitle.textContent = "RESEPSI XZYABCD";
   breadcrumbCurrent.textContent = item.label;
   breadcrumb.innerHTML = `Resepsi / <span id="breadcrumbCurrent">${item.label}</span>`;
   contentCardTitle.textContent = item.label;
