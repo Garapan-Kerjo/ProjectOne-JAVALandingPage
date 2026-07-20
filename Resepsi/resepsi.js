@@ -195,7 +195,8 @@ nextBtn.addEventListener('click', () => {
 });
 
 hamburgerBtn.addEventListener('click', () => {
-  appShell.classList.toggle('sidebar-collapsed');
+  const isCollapsed = appShell.classList.toggle('sidebar-collapsed');
+  hamburgerBtn.setAttribute('aria-expanded', String(!isCollapsed));
 });
 
 sidebarBackdrop.addEventListener('click', () => {

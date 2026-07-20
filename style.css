@@ -1095,3 +1095,136 @@ body.dark-mode .panel-text {
     grid-template-columns: 1fr;
   }
 }
+
+/* ===== RESPONSIVE FINE-TUNE UNTUK INDEX ===== */
+@media (max-width: 480px) {
+  .container {
+    padding: 2rem 1rem;
+  }
+  header .content h1 {
+    font-size: 2rem;
+    line-height: 2.8rem;
+  }
+  header .content h4 {
+    font-size: 0.85rem;
+  }
+  .nav-logo .logo-name {
+    font-size: 1.2rem;
+  }
+  .btn {
+    font-size: 0.85rem;
+    padding: 0.5rem 0.8rem;
+  }
+  .features .card {
+    padding: 0.8rem;
+  }
+  .features .card h4 {
+    font-size: 1rem;
+  }
+  .features .card p {
+    font-size: 0.9rem;
+  }
+  .popup-content {
+    padding: 2rem 1.2rem;
+    max-width: 95%;
+  }
+  .popup-content h2 {
+    font-size: 1.3rem;
+  }
+  .popup-content p {
+    font-size: 0.9rem;
+  }
+  .popup-logo {
+    max-width: 60px;
+  }
+  .accordion {
+    max-height: none; /* biarkan berkembang sesuai konten */
+    height: auto;      /* tidak dibatasi tinggi */
+  }
+  .panel {
+    height: auto;      /* setiap panel menyesuaikan */
+    min-height: 56px;
+  }
+  .panel.active {
+    height: auto;      /* panel aktif menyesuaikan konten */
+  }
+  .panel-content {
+    position: static;  /* lepas dari absolute agar tinggi otomatis */
+    opacity: 1;
+    pointer-events: auto;
+    padding: 0.5rem 0;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+  }
+  .panel-number {
+    position: static;
+    transform: none;
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+  }
+  .panel.active .panel-number {
+    font-size: 1.2rem;
+    top: auto;
+    left: auto;
+    transform: none;
+  }
+  .panel-title {
+    font-size: 1rem;
+    white-space: normal; /* boleh wrap */
+  }
+  .panel-text {
+    font-size: 0.85rem;
+  }
+  .panel-link {
+    font-size: 0.85rem;
+  }
+  .cover-page {
+    padding: 20px 16px;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .logo-box {
+    width: 100%;
+    min-height: 120px;
+    font-size: 0.9rem;
+  }
+  .member {
+    padding: 0.6rem 0.8rem;
+  }
+  .member-name {
+    font-size: 0.85rem;
+  }
+  .member-nim {
+    font-size: 0.65rem;
+  }
+  .avatar {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media (max-width: 380px) {
+  header .content h1 {
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+  }
+  .features {
+    gap: 0.8rem;
+  }
+  .nav-actions {
+    gap: 0.5rem;
+  }
+  .theme-switch {
+    width: 48px;
+    height: 28px;
+  }
+  .theme-switch__thumb {
+    width: 20px;
+    height: 20px;
+  }
+  .theme-switch.active .theme-switch__thumb {
+    transform: translateX(20px);
+  }
+}

@@ -195,7 +195,9 @@ nextBtn.addEventListener('click', () => {
 });
 
 hamburgerBtn.addEventListener('click', () => {
-  appShell.classList.toggle('sidebar-collapsed');
+  const isCollapsed = appShell.classList.toggle('sidebar-collapsed');
+  // Set aria-expanded: true jika sidebar terbuka (tidak collapsed), false jika tertutup (collapsed)
+  hamburgerBtn.setAttribute('aria-expanded', String(!isCollapsed));
 });
 
 sidebarBackdrop.addEventListener('click', () => {
