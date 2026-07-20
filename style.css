@@ -1133,6 +1133,14 @@ header .image img{
 
 @media screen and (max-width:992px){
 
+.blur {
+  display:none;
+}
+
+.blur-icon{
+  right: 50vh;
+}
+
 .container{
     padding:4rem 1.8rem;
 }
