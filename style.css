@@ -1425,6 +1425,10 @@ footer::after{
 
 @media screen and (max-width:420px){
 
+.nav-actions a {
+  display: none;
+}
+
 .container{
     padding:2.5rem .9rem;
 }
