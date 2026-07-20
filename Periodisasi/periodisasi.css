@@ -64,7 +64,25 @@ body.dark-mode{
   --accent-red:var(--error);
 }
 
-*{box-sizing:border-box;}
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary); /* atau rgba(0,0,0,0.3) */
+    border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+    transition: var(--transition-medium)
+}
+
+*{box-sizing:border-box;cursor:none;}
 
 body{
   margin:0;
@@ -72,6 +90,19 @@ body{
   font-family:'Poppins', sans-serif;
   color:var(--text-main);
   transition:background var(--transition-medium), color var(--transition-medium);
+}
+
+.cursor {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    background: url("../Assets/culture_icon.png") center center/contain no-repeat;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    z-index: 999999;
+    transform: translate(-50%, -50%);
+    transform: rotate(-35deg);
 }
 
 a { 
@@ -114,7 +145,6 @@ a {
   display:flex;
   align-items:center;
   justify-content:center;
-  cursor:pointer;
   color:var(--text-main);
   transition:background var(--transition-fast);
   margin-left: 2rem;
@@ -179,7 +209,6 @@ a {
   display:flex;
   align-items:center;
   justify-content:center;
-  cursor:pointer;
 }
 .search-btn svg{ width:16px; height:16px; }
 
@@ -194,7 +223,6 @@ a {
   justify-content: center;
   border: 1px solid var(--border);
   overflow: hidden;
-  cursor: pointer;
 }
 
 .theme-switch__track {
@@ -239,7 +267,6 @@ a {
   display:flex;
   align-items:center;
   justify-content:center;
-  cursor:pointer;
   color:var(--text-sub);
   transition:background var(--transition-fast), color var(--transition-fast);
 }
@@ -296,7 +323,6 @@ a {
   border:none;
   background:none;
   border-radius:var(--radius-md);
-  cursor:pointer;
   color:var(--text-sub);
   font-family:var(--font-sans);
   font-size:.92rem;
@@ -335,7 +361,6 @@ a {
   font-weight:500;
   color:var(--text-sub);
   border-radius:8px;
-  cursor:pointer;
   white-space:nowrap;
   transition:background var(--transition-fast), color var(--transition-fast);
 }
@@ -488,7 +513,6 @@ a {
   font-weight:600;
   font-size:.85rem;
   color:var(--text-main);
-  cursor:pointer;
   transition:border-color var(--transition-fast), color var(--transition-fast);
 }
 .page-btn:hover{ border-color:var(--accent-blue); color:var(--accent-blue); }
@@ -500,7 +524,6 @@ a {
   width:8px; height:8px;
   border-radius:50%;
   background:var(--border-color);
-  cursor:pointer;
   transition:background var(--transition-fast), transform var(--transition-fast);
 }
 .page-dot.active{ background:var(--accent-blue); transform:scale(1.3); }

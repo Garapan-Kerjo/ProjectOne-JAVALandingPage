@@ -1,3 +1,28 @@
+const cursor = document.querySelector(".cursor");
+
+let mouseX = 0;
+let mouseY = 0;
+
+let currentX = 0;
+let currentY = 0;
+
+document.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+});
+
+function animate() {
+    currentX += (mouseX - currentX) * 0.5;
+    currentY += (mouseY - currentY) * 0.5;
+
+    cursor.style.left = currentX + "px";
+    cursor.style.top = currentY + "px";
+
+    requestAnimationFrame(animate);
+}
+
+animate();
+
 /* ================== DATA ================== */
 const loremPool = [
   "Isi konten pertamanya apa lorem ipsum dolor sit amet consectetur, adipiscing elit. Laudantium, ducimus eligendi accusamus veritatis corporis rem vitae, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",

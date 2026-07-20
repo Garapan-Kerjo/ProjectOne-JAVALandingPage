@@ -40,6 +40,23 @@
   --error: #D06A6A;
 }
 
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary); /* atau rgba(0,0,0,0.3) */
+    border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -50,6 +67,20 @@ html {
   outline: none;
   box-sizing: border-box;
   border: none;
+  cursor: none;
+}
+
+.cursor {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    background: url("Assets/culture_icon.png") center center/contain no-repeat;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    z-index: 999999;
+    transform: translate(-50%, -50%);
+    transform: rotate(-35deg);
 }
 
 img {
@@ -140,10 +171,10 @@ nav {
   padding: 0.7rem 1rem;
   font-size: 1rem;
   font-weight: 600;
+  font-family: "Poppins", sans-serif;
   color: var(--surface);
   background-color: var(--accent);
   border-radius: 5px;
-  cursor: pointer;
   transition: all 0.3s ease;
   text-align: center;
 }
@@ -257,26 +288,20 @@ header .content p {
   color: var(--text-secondary);
 }
 
+.blur-icon {
+  position: absolute;
+  top: 150px;
+  right: 250px;
+  box-shadow: 0 0 1000px 50px var(--accent);
+  z-index: -100;
+}
+
 header .image {
   position: relative;
 }
 
-header .image::before {
-  content: "o";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%);
-  font-size: 38rem;
-  font-weight: 400;
-  line-height: 13.5rem;
-  color: var(--accent);
-  opacity: 0.2;
-  z-index: -100;
-}
-
 header .image img {
-  max-width: 600px;
+  max-width: 400px;
   margin: auto;
 }
 
@@ -563,7 +588,6 @@ footer::after {
   border: none;
   font-size: 2rem;
   color: var(--text-secondary);
-  cursor: pointer;
   transition: color 0.3s ease;
 }
 
@@ -759,7 +783,6 @@ body.dark-mode .popup-close:hover {
   flex-shrink: 0;
   border-right: 1px solid var(--border-color);
   background: var(--bg);
-  cursor: pointer;
   overflow: hidden;
   transition: width 0.5s var(--ease), background-color 0.3s var(--ease);
 }
@@ -771,7 +794,6 @@ body.dark-mode .popup-close:hover {
 }
 .panel.active {
   width: var(--panel-active-w);
-  cursor: default;
 }
 .panel.active:hover {
   background: var(--bg);
@@ -819,7 +841,6 @@ body.dark-mode .popup-close:hover {
   font-weight: 600;
   font-size: 1.15rem;
   color: var(--text-main);
-  white-space: nowrap;
 }
 
 .panel-text {
@@ -1051,7 +1072,6 @@ body.dark-mode .panel-text {
   background-size: cover;
   background-position: center;
   flex-shrink: 0;
-  cursor: pointer;
   overflow: hidden;
   display: block;
 }

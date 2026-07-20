@@ -1,3 +1,28 @@
+const cursor = document.querySelector(".cursor");
+
+let mouseX = 0;
+let mouseY = 0;
+
+let currentX = 0;
+let currentY = 0;
+
+document.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+});
+
+function animate() {
+    currentX += (mouseX - currentX) * 0.5;
+    currentY += (mouseY - currentY) * 0.5;
+
+    cursor.style.left = currentX + "px";
+    cursor.style.top = currentY + "px";
+
+    requestAnimationFrame(animate);
+}
+
+animate();
+
 document.addEventListener("DOMContentLoaded", function () {
   // Theme Toggle
   const themeToggle = document.getElementById("theme-toggle");
@@ -150,9 +175,7 @@ if (memberList) {
     row.className = "member";
 
     row.innerHTML = `
-      <label class="avatar" id="avatar-${i}">
-        <input type="file" accept="image/*" id="fileInput-${i}">
-      </label>
+      <image class="avatar" src="Assets/logo-web.png"></image>
       <div class="member-text">
         <p class="member-name">${data.name}</p>
         <p class="member-nim">${data.nim}</p>
