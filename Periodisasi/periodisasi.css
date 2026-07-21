@@ -690,7 +690,7 @@ a {
     padding: 12px;
   }
   .pagination-bar {
-    gap: 3rem;
+    justify-content: space-between;
     align-items: center;
   }
   .page-btn {
