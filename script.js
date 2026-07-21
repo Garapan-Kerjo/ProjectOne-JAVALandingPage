@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function setupAccordion(containerId, data) {
   const panelsData = data;
   const loremText =
-    "Lorem ipsum sit amet dolor, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam.";
+    "Lorem ipsum sit amet dolor, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore.";
   const accordion = document.getElementById(containerId);
   let linkHref = "Artikel/detail.html"; // Default link
   if (containerId.includes("Periodisasi")) {

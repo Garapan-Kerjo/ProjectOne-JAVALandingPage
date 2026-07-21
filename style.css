@@ -1336,7 +1336,7 @@ header .image img{
    ========================== */
 
 @media screen and (max-width:576px){
-
+  
 .nav-actions{
     gap:1rem;
 }
@@ -1432,6 +1432,21 @@ footer::after{
    ========================== */
 
 @media screen and (max-width:420px){
+
+.popup-content p {
+  font-size: 0.8rem;
+}
+
+.features .card p {
+  font-size: 0.8rem;
+}
+
+.panel-title {
+  font-size: 1rem;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
 
 .nav-actions a {
   display: none;
