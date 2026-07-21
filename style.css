@@ -1023,6 +1023,7 @@ body.dark-mode .panel-text {
 }
 
 .member-text {
+  text-align: left;
   min-width: 0;
 }
 
