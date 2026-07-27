@@ -43,14 +43,26 @@ function buildParagraphs(seed, count){
   return out;
 }
 
-const kontenData = [
-  { id: 1, label: "Narasi Sejarah/Kota dalam Prosa Jawa Timur", paragraphs: buildParagraphs(0, 8) },
-  { id: 2, label: "Digitalisasi Puitika Sejarah/Kota dalam Khazanah Puisi Jawa Timur", paragraphs: buildParagraphs(1, 8) },
-  { id: 3, label: "Digitalisasi Sejarah Prosa Jawa Timur", paragraphs: buildParagraphs(2, 8) },
-  { id: 4, label: "Puitika Sejarah/Kota dalam Khazanah Puisi Jawa Timur", paragraphs: buildParagraphs(3, 8) },
-  { id: 5, label: "Penyusunan Sejarah Dramaturgi UNAIR", paragraphs: buildParagraphs(4, 8) },
-  { id: 6, label: "Ruang Sejarah/Kota dalam Naskah Drama Jawa Timur", paragraphs: buildParagraphs(5, 8) },
-  { id: 7, label: "Penyusunan Sejarah Komunitas Sastra di Jawa Timur", paragraphs: buildParagraphs(6, 8) }
+const dramaData = [
+  { id: 1, label: "Sejarah dalam Naskah Drama Jawa Timur Melalui Metode Periodisasi", paragraphs: buildParagraphs(0, 8) },
+  { id: 2, label: "Sejarah Dramaturgi dalam Universitas Airlangga dengan Menerapkan Metode Periodisasi", paragraphs: buildParagraphs(1, 8) },
+  { id: 3, label: "Sejarah Dramaturgi UNAIR Melalui Metode Periodisasi", paragraphs: buildParagraphs(2, 8) }
+];
+
+const komunitasData = [
+  { id: 1, label: "Pemetaan Historis Komunitas Sastra Jawa Timur Melalui Pendekatan Periodisasi", paragraphs: buildParagraphs(0, 8) }
+];
+
+const prosaData = [
+  { id: 1, label: "Digitalisasi Sejarah Prosa Jawa Timur", paragraphs: buildParagraphs(0, 8) },
+  { id: 2, label: "Inventarisasi dan Digitalisasi Karya-karya Pramoedya Ananta Toer", paragraphs: buildParagraphs(1, 8) },
+  { id: 3, label: "Inventarisasi dan Digitalisasi Sastra Cina Peranakan", paragraphs: buildParagraphs(2, 8) },
+  { id: 4, label: "Representasi Kota dalam Prosa Jawa Timur Melalui Kajian Sejarah SastraBerdasarkan Periodisasi", paragraphs: buildParagraphs(2, 8) }
+];
+
+const puisiData = [
+  { id: 1, label: "Fragmen Kota dan Sejarah dalam Tubuh Sastra: Periodisasi Puisi di Jawa Timur (Tahun 2000-Sekarang)", paragraphs: buildParagraphs(0, 8) },
+  { id: 2, label: "Perkembangan Lanskap Kota dan Sejarah Jawa dalam Puisi (1970-Modern): Telaah Kronologis dan Karakteristik Estetika Zaman", paragraphs: buildParagraphs(1, 8) }
 ];
 
 const specialPages = {
@@ -78,10 +90,17 @@ const root = document.documentElement;
 const body = document.body;
 const themeIcon = themeToggle ? themeToggle.querySelector('i') : null;
 
-const navPeriodisasi = document.getElementById('navPeriodisasi');
-const periodisasiSubmenu = document.getElementById('periodisasiSubmenu');
+const navDrama = document.getElementById('navDrama');
+const navKomunitas = document.getElementById('navKomunitas');
+const navProsa = document.getElementById('navProsa');
+const navPuisi = document.getElementById('navPuisi');
+const dramaSubmenu = document.getElementById("dramaSubmenu");
+const komunitasSubmenu = document.getElementById("komunitasSubmenu");
+const prosaSubmenu = document.getElementById("prosaSubmenu");
+const puisiSubmenu = document.getElementById("puisiSubmenu");
 const navResepsi = document.getElementById('navResepsi');
 const navMainPage = document.getElementById('navMainPage');
+let currentData = dramaData;
 
 const pageTitle = document.getElementById('pageTitle');
 const breadcrumb = document.getElementById('breadcrumb');
@@ -115,38 +134,87 @@ themeToggle?.addEventListener('click', () => {
   localStorage.setItem('theme', nextTheme);
 });
 
-/* ================== BUILD SUBMENU ================== */
-kontenData.forEach(item => {
-  const subItem = document.createElement('div');
-  subItem.className = 'sub-nav-item';
-  subItem.dataset.index = item.id;
-  subItem.innerHTML = `
-    <span class="sub-nav-icon">${item.id}</span>
-    <span class="sub-nav-label">${item.label}</span>
-  `;
-  subItem.addEventListener('click', () => showKonten(item.id));
-  periodisasiSubmenu.appendChild(subItem);
-});
-
-kontenData.forEach(item => {
-  const dot = document.createElement('span');
-  dot.className = 'page-dot';
-  dot.dataset.index = item.id;
-  dot.addEventListener('click', () => showKonten(item.id));
-  pageDots.appendChild(dot);
-});
-
 /* ================== STATE ================== */
 let activeSection = 'periodisasi';
 let activeKontenIndex = 1;
+
+/* ================== INIT ================== */
+dramaSubmenu.classList.add('open');
+navDrama.classList.add('open');
+const params = new URLSearchParams(window.location.search);
+const selectedId = Number(params.get("id")) || 1;
+
+buildSubmenu(dramaData, dramaSubmenu);
+buildSubmenu(komunitasData, komunitasSubmenu);
+buildSubmenu(prosaData, prosaSubmenu);
+buildSubmenu(puisiData, puisiSubmenu);
+
+buildPagination(dramaData);
+
+showKonten(selectedId);
 
 /* ================== RENDER ================== */
 function renderKontenParagraphs(item){
   contentText.innerHTML = item.paragraphs.map(p => `<p>${p}</p>`).join('');
 }
 
+/* ================== BUILD SUBMENU ================== */
+function buildSubmenu(data, submenu){
+
+    submenu.innerHTML = "";
+
+    data.forEach(item => {
+
+        const subItem = document.createElement("div");
+
+        subItem.className = "sub-nav-item";
+
+        subItem.dataset.index = item.id;
+
+        subItem.innerHTML = `
+            <span class="sub-nav-icon">${item.id}</span>
+            <span class="sub-nav-label">${item.label}</span>
+        `;
+
+        subItem.addEventListener("click", () => {
+
+            currentData = data;
+            showKonten(item.id);
+
+        });
+
+        submenu.appendChild(subItem);
+
+    });
+
+}
+
+function buildPagination(data) {
+
+    pageDots.innerHTML = "";
+
+    data.forEach(item => {
+
+        const dot = document.createElement("span");
+
+        dot.className = "page-dot";
+        dot.dataset.index = item.id;
+
+        dot.addEventListener("click", () => {
+
+            currentData = data;
+            showKonten(item.id);
+
+        });
+
+        pageDots.appendChild(dot);
+
+    });
+
+}
+
 function showKonten(index){
-  const item = kontenData.find(k => k.id === index);
+  const item = currentData.find(k => k.id === index);
   if(!item) return;
 
   activeSection = 'periodisasi';
@@ -160,10 +228,7 @@ function showKonten(index){
 
   paginationBar.style.display = 'flex';
   prevBtn.disabled = index === 1;
-  nextBtn.disabled = index === kontenData.length;
-
-  periodisasiSubmenu.classList.add('open');
-  navPeriodisasi.classList.add('open');
+  nextBtn.disabled = index === currentData.length;
 
   updateActiveNav();
 }
@@ -185,28 +250,82 @@ function showSpecialPage(key){
 }
 
 function updateActiveNav(){
-  navPeriodisasi.classList.toggle('active', activeSection === 'periodisasi');
-  navResepsi.classList.toggle('active', activeSection === 'resepsi');
-  navMainPage.classList.toggle('active', activeSection === 'mainpage');
 
-  document.querySelectorAll('.sub-nav-item').forEach(el => {
-    el.classList.toggle('active', activeSection === 'periodisasi' && Number(el.dataset.index) === activeKontenIndex);
-  });
+    document.querySelectorAll(".nav-parent").forEach(nav=>{
+        nav.classList.remove("active");
+    });
 
-  document.querySelectorAll('.page-dot').forEach(el => {
-    el.classList.toggle('active', activeSection === 'periodisasi' && Number(el.dataset.index) === activeKontenIndex);
-  });
+    switch(currentData){
+
+        case dramaData:
+            navDrama.classList.add("active");
+            break;
+
+        case komunitasData:
+            navKomunitas.classList.add("active");
+            break;
+
+        case prosaData:
+            navProsa.classList.add("active");
+            break;
+
+        case puisiData:
+            navPuisi.classList.add("active");
+            break;
+
+    }
+
+    document.querySelectorAll(".sub-nav-item").forEach(item=>{
+
+        item.classList.toggle(
+            "active",
+            Number(item.dataset.index)===activeKontenIndex
+        );
+
+    });
+
+    document.querySelectorAll(".page-dot").forEach(dot=>{
+
+        dot.classList.toggle(
+            "active",
+            Number(dot.dataset.index)===activeKontenIndex
+        );
+
+    });
+
 }
 
 /* ================== EVENTS ================== */
-navPeriodisasi.addEventListener('click', () => {
-  const willOpen = !periodisasiSubmenu.classList.contains('open');
-  periodisasiSubmenu.classList.toggle('open', willOpen);
-  navPeriodisasi.classList.toggle('open', willOpen);
+navDrama.addEventListener("click",()=>{
+    openCategory(
+        dramaData,
+        dramaSubmenu,
+        navDrama
+    );
+});
 
-  if(activeSection !== 'periodisasi'){
-    showKonten(activeKontenIndex);
-  }
+navKomunitas.addEventListener("click",()=>{
+    openCategory(
+        komunitasData,
+        komunitasSubmenu,
+        navKomunitas
+    );
+});
+
+navProsa.addEventListener("click",()=>{
+    openCategory(
+        prosaData,
+        prosaSubmenu,
+        navProsa
+    );
+});
+
+navPuisi.addEventListener("click",()=>{
+    openCategory(
+        puisiData,
+        puisiSubmenu,
+        navPuisi
+    );
 });
 
 brandLink.addEventListener('click', (e) => {
@@ -220,7 +339,7 @@ prevBtn.addEventListener('click', () => {
 });
 
 nextBtn.addEventListener('click', () => {
-  if(activeKontenIndex < kontenData.length) showKonten(activeKontenIndex + 1);
+  if(activeKontenIndex < currentData.length) showKonten(activeKontenIndex + 1);
 });
 
 hamburgerBtn.addEventListener('click', () => {
@@ -233,9 +352,26 @@ sidebarBackdrop.addEventListener('click', () => {
   appShell.classList.remove('sidebar-collapsed');
 });
 
-/* ================== INIT ================== */
-periodisasiSubmenu.classList.add('open');
-navPeriodisasi.classList.add('open');
-const params = new URLSearchParams(window.location.search);
-const selectedId = parseInt(params.get("id")) || 1;
-showKonten(selectedId);
+function openCategory(data, submenu, nav) {
+
+    document.querySelectorAll(".nav-submenu").forEach(el => {
+        el.classList.remove("open");
+    });
+
+    document.querySelectorAll(".nav-parent").forEach(el => {
+        el.classList.remove("open");
+        el.classList.remove("active");
+    });
+
+    submenu.classList.add("open");
+    nav.classList.add("open");
+
+    currentData = data;
+    activeKontenIndex = 1;
+
+    buildSubmenu(data, submenu);
+    buildPagination(data);
+
+    showKonten(1);
+
+}
