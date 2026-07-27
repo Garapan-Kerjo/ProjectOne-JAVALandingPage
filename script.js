@@ -152,26 +152,29 @@ const periodisasiData = [
     items: [
       { title: "Penyusunan Sejarah Dramaturgi UNAIR" },
       { title: "Ruang Sejarah/Kota dalam Naskah Drama Jawa Timur" },
-    ],
-  },
-  {
-    category: "Prosa",
-    items: [
-      { title: "Narasi Sejarah/Kota dalam Prosa Jawa Timur" },
-      { title: "Digitalisasi Sejarah Prosa Jawa Timur" },
+      { title: "Sejarah Dramaturgi dalam Universitas Airlangga dengan Menerapkan Metode Periodisasi" },
     ],
   },
   {
     category: "Komunitas",
     items: [
-      { title: "Penyusunan Sejarah Komunitas Sastra di Jawa Timur" },
+      { title: "Pemetaan Historis Komunitas Sastra Jawa Timur Melalui Pendekatan Periodisasi" }
+    ],
+  },
+  {
+    category: "Prosa",
+    items: [
+      { title: "Digitalisasi Sejarah Prosa Jawa Timur" },
+      { title: "Inventarisasi dan Digitalisasi Karya-karya Pramoedya Ananta Toer" },
+      { title: "Inventarisasi dan Digitalisasi Sastra Cina Peranakan" },
+      { title: "Representasi Kota dalam Prosa Jawa Timur Melalui Kajian Sejarah SastraBerdasarkan Periodisasi" },
     ],
   },
   {
     category: "Puisi",
     items: [
-      { title: "Digitalisasi Puitika Sejarah/Kota dalam Khazanah Puisi Jawa Timur" },
-      { title: "Puitika Sejarah/Kota dalam Khazanah Puisi Jawa Timur" },
+      { title: "Digitalisasi Puitika Sejarah/Kota dalam Khazanah Puisi Jawa TimurFragmen Kota dan Sejarah dalam Tubuh Sastra: Periodisasi Puisi di Jawa Timur (Tahun 2000-Sekarang)" },
+      { title: "Perkembangan Lanskap Kota dan Sejarah Jawa dalam Puisi (1970-Modern): Telaah Kronologis dan Karakteristik Estetika Zaman" },
     ],
   },
 ];
@@ -180,23 +183,15 @@ const resepsiData = [
   {
     category: "Prosa",
     items: [
-      { title: "Narasi Sejarah/Kota dalam Prosa Jawa Timur" },
-      { title: "Digitalisasi Sejarah Prosa Jawa Timur" },
-      { title: "Inventarisasi dan Digitalisasi Karya-Karya Pramoedya Ananta Toer" },
+      { title: "Puitika Ruang dalam Khazanah Puisi Jawa Timur dengan Memanfaatkan Metode Resepsi" },
+      { title: "Digitalisasi Puitika Kota/Sejarah dalam Khazanah Puisi Jawa Timur dengan Memanfaatkan Metode Resepsi Pada Karya Aming Aminoedhin" },
     ],
   },
   {
     category: "Puisi",
     items: [
-      { title: "Digitalisasi Puitika Sejarah/Kota dalam Khazanah Puisi Jawa Timur" },
-      { title: "Puitika Sejarah/Kota dalam Khazanah Puisi Jawa Timur" },
-    ],
-  },
-  {
-    category: "Komunitas",
-    items: [
-      { title: "Penyusunan Sejarah Komunitas Sastra di Jawa Timur" },
-      { title: "Inventarisasi dan Digitalisasi Sastra Cina Peranakan" },
+      { title: "Potret Sosial Budaya dalam Prosa Jawa Timur: Metode Resepsi Sastra" },
+      { title: "Potret Dinamika Sejarah/Kota dalam Khazanah Prosa Jawa Timur" },
     ],
   },
 ];

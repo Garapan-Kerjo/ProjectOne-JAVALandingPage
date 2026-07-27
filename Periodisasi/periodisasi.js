@@ -57,7 +57,7 @@ const prosaData = [
   { id: 1, label: "Digitalisasi Sejarah Prosa Jawa Timur", paragraphs: buildParagraphs(0, 8) },
   { id: 2, label: "Inventarisasi dan Digitalisasi Karya-karya Pramoedya Ananta Toer", paragraphs: buildParagraphs(1, 8) },
   { id: 3, label: "Inventarisasi dan Digitalisasi Sastra Cina Peranakan", paragraphs: buildParagraphs(2, 8) },
-  { id: 4, label: "Representasi Kota dalam Prosa Jawa Timur Melalui Kajian Sejarah SastraBerdasarkan Periodisasi", paragraphs: buildParagraphs(2, 8) }
+  { id: 4, label: "Representasi Kota dalam Prosa Jawa Timur Melalui Kajian Sejarah Sastra Berdasarkan Periodisasi", paragraphs: buildParagraphs(2, 8) }
 ];
 
 const puisiData = [
