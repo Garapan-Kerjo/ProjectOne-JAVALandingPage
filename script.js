@@ -82,81 +82,127 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Accordion Logic
-function setupAccordion(containerId, data) {
-  const panelsData = data;
-  const loremText =
-    "Lorem ipsum sit amet dolor, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore.";
-  const accordion = document.getElementById(containerId);
-  let linkHref = "Artikel/detail.html"; // Default link
+// Grouped Accordion Logic (per kategori)
+function setupGroupedAccordion(containerId, groupedData) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  let linkHref = "Artikel/detail.html";
   if (containerId.includes("Periodisasi")) {
     linkHref = "Periodisasi/periodisasi.html";
   } else if (containerId.includes("Resepsi")) {
     linkHref = "Resepsi/resepsi.html";
   }
 
-  if (!accordion) return;
+  groupedData.forEach((group) => {
+    const categorySlug = group.category.toLowerCase().replace(/\s+/g, "-");
 
-  panelsData.forEach((data, i) => {
-    const panel = document.createElement("div");
-    panel.className = "panel" + (i === 0 ? " active" : "");
-    panel.dataset.index = i;
-    panel.setAttribute("role", "button");
-    panel.setAttribute("tabindex", "0");
-    panel.setAttribute("aria-expanded", i === 0 ? "true" : "false");
+    const card = document.createElement("div");
+    card.className = "accordion-card";
 
-    panel.innerHTML = `
-      <span class="panel-number">${i + 1}</span>
-      <div class="panel-content">
-        <h3 class="panel-title">${data.title}</h3>
-        <p class="panel-text">${loremText}</p>
-        <a class="panel-link" href="${linkHref}?id=${i + 1}">Telusuri Lebih Lanjut <i class="ri-arrow-right-line"></i></a>
-      </div>
-    `;
+    const accordion = document.createElement("div");
+    accordion.className = "accordion";
 
-    panel.addEventListener("click", () => activatePanel(i));
-    panel.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        activatePanel(i);
-      }
+    function activatePanel(index) {
+      const allPanels = accordion.querySelectorAll(".panel");
+      allPanels.forEach((p, i) => {
+        const isActive = i === index;
+        p.classList.toggle("active", isActive);
+        p.setAttribute("aria-expanded", isActive ? "true" : "false");
+      });
+    }
+
+    group.items.forEach((item, i) => {
+      const panel = document.createElement("div");
+      panel.className = "panel" + (i === 0 ? " active" : "");
+      panel.dataset.index = i;
+      panel.setAttribute("role", "button");
+      panel.setAttribute("tabindex", "0");
+      panel.setAttribute("aria-expanded", i === 0 ? "true" : "false");
+
+      panel.innerHTML = `
+        <span class="panel-number">${i + 1}</span>
+        <span class="panel-category">${group.category}</span>
+        <div class="panel-content">
+          <h3 class="panel-title">${item.title}</h3>
+          <a class="panel-link" href="${linkHref}?id=${categorySlug}-${i + 1}">Telusuri Lebih Lanjut <i class="ri-arrow-right-line"></i></a>
+        </div>
+      `;
+
+      panel.addEventListener("click", () => activatePanel(i));
+      panel.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          activatePanel(i);
+        }
+      });
+
+      accordion.appendChild(panel);
     });
 
-    accordion.appendChild(panel);
+    card.appendChild(accordion);
+    container.appendChild(card);
   });
-
-  function activatePanel(index) {
-    const allPanels = accordion.querySelectorAll(".panel");
-    allPanels.forEach((p, i) => {
-      const isActive = i === index;
-      p.classList.toggle("active", isActive);
-      p.setAttribute("aria-expanded", isActive ? "true" : "false");
-    });
-  }
 }
 
-// === DATA UNTUK ACCORDION DI INDEX ===
+// === DATA DIKELOMPOKKAN PER KATEGORI ===
 const periodisasiData = [
-  { title: "Narasi Sejarah/Kota dalam Prosa Jawa Timur" },
-  { title: "Digitalisasi Puitika Sejarah/Kota dalam Khazanah Puisi Jawa Timur" },
-  { title: "Digitalisasi Sejarah Prosa Jawa Timur" },
-  { title: "Puitika Sejarah/Kota dalam Khazanah Puisi Jawa Timur" },
-  { title: "Penyusunan Sejarah Dramaturgi UNAIR" },
-  { title: "Ruang Sejarah/Kota dalam Naskah Drama Jawa Timur" },
-  { title: "Penyusunan Sejarah Komunitas Sastra di Jawa Timur" }
+  {
+    category: "Drama",
+    items: [
+      { title: "Penyusunan Sejarah Dramaturgi UNAIR" },
+      { title: "Ruang Sejarah/Kota dalam Naskah Drama Jawa Timur" },
+    ],
+  },
+  {
+    category: "Prosa",
+    items: [
+      { title: "Narasi Sejarah/Kota dalam Prosa Jawa Timur" },
+      { title: "Digitalisasi Sejarah Prosa Jawa Timur" },
+    ],
+  },
+  {
+    category: "Komunitas",
+    items: [
+      { title: "Penyusunan Sejarah Komunitas Sastra di Jawa Timur" },
+    ],
+  },
+  {
+    category: "Puisi",
+    items: [
+      { title: "Digitalisasi Puitika Sejarah/Kota dalam Khazanah Puisi Jawa Timur" },
+      { title: "Puitika Sejarah/Kota dalam Khazanah Puisi Jawa Timur" },
+    ],
+  },
 ];
 
 const resepsiData = [
-  { title: "Narasi Sejarah/Kota dalam Prosa Jawa Timur" },
-  { title: "Digitalisasi Puitika Sejarah/Kota dalam Khazanah Puisi Jawa Timur" },
-  { title: "Digitalisasi Sejarah Prosa Jawa Timur" },
-  { title: "Puitika Sejarah/Kota dalam Khazanah Puisi Jawa Timur" },
-  { title: "Inventarisasi dan Digitalisasi Karya-Karya Pramoedya Ananta Toer" },
-  { title: "Inventarisasi dan Digitalisasi Sastra Cina Peranakan" },
-  { title: "Penyusunan Sejarah Komunitas Sastra di Jawa Timur" }
+  {
+    category: "Prosa",
+    items: [
+      { title: "Narasi Sejarah/Kota dalam Prosa Jawa Timur" },
+      { title: "Digitalisasi Sejarah Prosa Jawa Timur" },
+      { title: "Inventarisasi dan Digitalisasi Karya-Karya Pramoedya Ananta Toer" },
+    ],
+  },
+  {
+    category: "Puisi",
+    items: [
+      { title: "Digitalisasi Puitika Sejarah/Kota dalam Khazanah Puisi Jawa Timur" },
+      { title: "Puitika Sejarah/Kota dalam Khazanah Puisi Jawa Timur" },
+    ],
+  },
+  {
+    category: "Komunitas",
+    items: [
+      { title: "Penyusunan Sejarah Komunitas Sastra di Jawa Timur" },
+      { title: "Inventarisasi dan Digitalisasi Sastra Cina Peranakan" },
+    ],
+  },
 ];
 
-setupAccordion("accordionPeriodisasi", periodisasiData);
-setupAccordion("accordionResepsi", resepsiData);
+setupGroupedAccordion("accordionPeriodisasi", periodisasiData);
+setupGroupedAccordion("accordionResepsi", resepsiData);
 
 // Cover Page Logic
 const membersData = [

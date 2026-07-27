@@ -858,9 +858,84 @@ body.dark-mode .panel.active:hover {
 }
 
 body.dark-mode .panel-number,
+body.dark-mode .panel-category,
 body.dark-mode .panel-title,
 body.dark-mode .panel-text {
   color: var(--text-secondary);
+}
+
+/* ============ Grouped Accordion Cards (Periodisasi/Resepsi) ============ */
+.accordion-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  width: 100%;
+  margin: 0.25rem auto 0;
+}
+
+.accordion-card {
+  background: var(--bg);
+  border: 1px solid var(--border-color);
+  border-radius: 15px;
+  overflow: hidden;
+  transition: border-color 0.3s ease;
+}
+
+.accordion-card:hover {
+  border-color: var(--secondary);
+}
+
+.accordion-card .accordion {
+  height: 170px;
+  max-width: none;
+  width: 100%;
+  border: none;
+  margin: 0;
+}
+
+/* kolom collapsed tetap 44px, panel aktif otomatis mengisi sisa ruang */
+.accordion-card .panel {
+  flex: 0 0 44px;
+  width: auto;
+  transition: flex 0.5s var(--ease), background-color 0.3s var(--ease);
+}
+
+.accordion-card .panel.active {
+  flex: 1 1 44px;
+  width: auto;
+}
+
+.accordion-card .panel-content {
+  top: 56px;
+  left: 20px;
+  right: 20px;
+  bottom: 16px;
+}
+
+.accordion-card .panel-title {
+  font-size: 1.05rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+/* label kategori (mis. "Drama") di samping nomor, hanya muncul saat panel aktif */
+.panel-category {
+  position: absolute;
+  top: 26px;
+  left: 52px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  font-style: normal;
+  color: var(--text-sub);
+  opacity: 0;
+  white-space: nowrap;
+  transition: opacity 0.3s var(--ease) 0.15s;
+}
+
+.panel.active .panel-category {
+  opacity: 1;
 }
 
 /* Cover Page Styles */
@@ -1328,6 +1403,28 @@ header .image img{
 
 .panel-content{
     top:64px;
+}
+
+.accordion-grid {
+  grid-template-columns: 1fr;
+}
+
+.accordion-card .accordion {
+  height: auto;
+  flex-direction: column;
+}
+
+.accordion-card .panel {
+  flex: 0 0 44px;
+  width: 100%;
+}
+
+.accordion-card .panel.active {
+  flex: 0 0 200px;
+}
+
+.accordion-card .panel-content {
+  top: 60px;
 }
 
 }
