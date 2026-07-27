@@ -256,6 +256,42 @@ function showSpecialPage(key){
 }
 
 function updateActiveNav(){
+    // 1. Hapus kelas 'active' dari semua item navigasi utama
+    document.querySelectorAll(".nav-parent").forEach(nav => {
+        nav.classList.remove("active");
+    });
+
+    // 2. Tambahkan kelas 'active' ke navigasi utama yang sesuai dengan data saat ini
+    switch (currentData) {
+        case puisiData:
+            navPuisi.classList.add("active");
+            break;
+        case prosaData:
+            navProsa.classList.add("active");
+            break;
+    }
+
+    // 3. Atur status 'active' untuk sub-item navigasi (di dalam submenu)
+    document.querySelectorAll(".sub-nav-item").forEach(item => {
+        // Pastikan submenu dari item ini sedang terbuka
+        const parentSubmenu = item.closest('.nav-submenu');
+        if (parentSubmenu && parentSubmenu.classList.contains('open')) {
+            item.classList.toggle(
+                "active",
+                Number(item.dataset.index) === activeKontenIndex
+            );
+        } else {
+            item.classList.remove("active");
+        }
+    });
+
+    // 4. Atur status 'active' untuk titik-titik pagination
+    document.querySelectorAll(".page-dot").forEach(dot => {
+        dot.classList.toggle(
+            "active",
+            Number(dot.dataset.index) === activeKontenIndex
+        );
+    });
 }
 
    
