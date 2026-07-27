@@ -246,7 +246,7 @@ function showKonten(index){
   activeSection = 'periodisasi';
   activeKontenIndex = index;
 
-  pageTitle.textContent = "PERIODISASI XYZABCD";
+  pageTitle.textContent = "METODE PERIODISASI";
   // breadcrumbCurrent.textContent = item.label; // Ini sudah diatur di baris berikutnya
   breadcrumb.innerHTML = `Periodisasi / <span id="breadcrumbCurrent">${item.label}</span>`;
   contentCardTitle.textContent = item.label;

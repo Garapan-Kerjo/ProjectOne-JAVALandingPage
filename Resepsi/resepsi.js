@@ -226,7 +226,7 @@ function showKonten(index){
   activeSection = 'resepsi';
   activeKontenIndex = index;
 
-  pageTitle.textContent = "RESEPSI XYZABCD";
+  pageTitle.textContent = "METODE RESEPSI";
   // breadcrumbCurrent.textContent = item.label; // Ini sudah diatur di baris berikutnya
   breadcrumb.innerHTML = `Resepsi / <span id="breadcrumbCurrent">${item.label}</span>`;
   contentCardTitle.textContent = item.label;
