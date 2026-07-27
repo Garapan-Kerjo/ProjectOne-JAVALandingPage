@@ -139,19 +139,45 @@ let activeSection = 'periodisasi';
 let activeKontenIndex = 1;
 
 /* ================== INIT ================== */
-dramaSubmenu.classList.add('open');
-navDrama.classList.add('open');
 const params = new URLSearchParams(window.location.search);
+const selectedCategory = params.get("category");
 const selectedId = Number(params.get("id")) || 1;
+
+const categoryMap = {
+  "drama": { data: dramaData, nav: navDrama, submenu: dramaSubmenu },
+  "komunitas": { data: komunitasData, nav: navKomunitas, submenu: komunitasSubmenu },
+  "prosa": { data: prosaData, nav: navProsa, submenu: prosaSubmenu },
+  "puisi": { data: puisiData, nav: navPuisi, submenu: puisiSubmenu }
+};
 
 buildSubmenu(dramaData, dramaSubmenu);
 buildSubmenu(komunitasData, komunitasSubmenu);
 buildSubmenu(prosaData, prosaSubmenu);
 buildSubmenu(puisiData, puisiSubmenu);
 
-buildPagination(dramaData);
+function initializePage() {
+  // Tutup semua submenu terlebih dahulu
+  document.querySelectorAll(".nav-submenu").forEach(el => el.classList.remove("open"));
+  document.querySelectorAll(".nav-parent").forEach(el => el.classList.remove("open"));
 
-showKonten(selectedId);
+  let targetCategory = categoryMap[selectedCategory];
+
+  // Jika kategori dari URL tidak valid atau tidak ada, gunakan default (drama)
+  if (!targetCategory) {
+    targetCategory = categoryMap["drama"];
+  }
+
+  // Set data, buka nav & submenu yang sesuai
+  currentData = targetCategory.data;
+  targetCategory.nav.classList.add("open");
+  targetCategory.submenu.classList.add("open");
+
+  // Bangun pagination dan tampilkan konten
+  buildPagination(currentData);
+  showKonten(selectedId);
+}
+
+initializePage();
 
 /* ================== RENDER ================== */
 function renderKontenParagraphs(item){
@@ -221,7 +247,7 @@ function showKonten(index){
   activeKontenIndex = index;
 
   pageTitle.textContent = "PERIODISASI XYZABCD";
-  breadcrumbCurrent.textContent = item.label;
+  // breadcrumbCurrent.textContent = item.label; // Ini sudah diatur di baris berikutnya
   breadcrumb.innerHTML = `Periodisasi / <span id="breadcrumbCurrent">${item.label}</span>`;
   contentCardTitle.textContent = item.label;
   renderKontenParagraphs(item);

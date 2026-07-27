@@ -125,7 +125,7 @@ function setupGroupedAccordion(containerId, groupedData) {
         <span class="panel-category">${group.category}</span>
         <div class="panel-content">
           <h3 class="panel-title">${item.title}</h3>
-          <a class="panel-link" href="${linkHref}?id=${categorySlug}-${i + 1}">Telusuri Lebih Lanjut <i class="ri-arrow-right-line"></i></a>
+          <a class="panel-link" href="${linkHref}?category=${categorySlug}&id=${i + 1}">Telusuri Lebih Lanjut <i class="ri-arrow-right-line"></i></a>
         </div>
       `;
 

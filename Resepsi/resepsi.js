@@ -123,17 +123,41 @@ let activeSection = 'resepsi';
 let activeKontenIndex = 1;
 
 /* ================== INIT ================== */
-puisiSubmenu.classList.add('open');
-navPuisi.classList.add('open');
 const params = new URLSearchParams(window.location.search);
+const selectedCategory = params.get("category");
 const selectedId = Number(params.get("id")) || 1;
+
+const categoryMap = {
+  "puisi": { data: puisiData, nav: navPuisi, submenu: puisiSubmenu },
+  "prosa": { data: prosaData, nav: navProsa, submenu: prosaSubmenu }
+};
 
 buildSubmenu(prosaData, prosaSubmenu);
 buildSubmenu(puisiData, puisiSubmenu);
 
-buildPagination(puisiData);
+function initializePage() {
+  // Tutup semua submenu terlebih dahulu
+  document.querySelectorAll(".nav-submenu").forEach(el => el.classList.remove("open"));
+  document.querySelectorAll(".nav-parent").forEach(el => el.classList.remove("open"));
 
-showKonten(selectedId);
+  let targetCategory = categoryMap[selectedCategory];
+
+  // Jika kategori dari URL tidak valid atau tidak ada, gunakan default (puisi)
+  if (!targetCategory) {
+    targetCategory = categoryMap["puisi"];
+  }
+
+  // Set data, buka nav & submenu yang sesuai
+  currentData = targetCategory.data;
+  targetCategory.nav.classList.add("open");
+  targetCategory.submenu.classList.add("open");
+
+  // Bangun pagination dan tampilkan konten
+  buildPagination(currentData);
+  showKonten(selectedId);
+}
+
+initializePage();
 
 /* ================== RENDER ================== */
 function renderKontenParagraphs(item){
@@ -203,7 +227,7 @@ function showKonten(index){
   activeKontenIndex = index;
 
   pageTitle.textContent = "RESEPSI XYZABCD";
-  breadcrumbCurrent.textContent = item.label;
+  // breadcrumbCurrent.textContent = item.label; // Ini sudah diatur di baris berikutnya
   breadcrumb.innerHTML = `Resepsi / <span id="breadcrumbCurrent">${item.label}</span>`;
   contentCardTitle.textContent = item.label;
   renderKontenParagraphs(item);
@@ -232,104 +256,6 @@ function showSpecialPage(key){
 }
 
 function updateActiveNav(){
-
-    document.querySelectorAll(".nav-parent").forEach(nav=>{
-        nav.classList.remove("active");
-    });
-
-    switch(currentData){
-
-        case prosaData:
-            navProsa.classList.add("active");
-            break;
-
-        case puisiData:
-            navPuisi.classList.add("active");
-            break;
-
-    }
-
-    document.querySelectorAll(".sub-nav-item").forEach(item=>{
-
-        item.classList.toggle(
-            "active",
-            Number(item.dataset.index)===activeKontenIndex
-        );
-
-    });
-
-    document.querySelectorAll(".page-dot").forEach(dot=>{
-
-        dot.classList.toggle(
-            "active",
-            Number(dot.dataset.index)===activeKontenIndex
-        );
-
-    });
-
 }
 
-/* ================== EVENTS ================== */
-navProsa.addEventListener("click",()=>{
-    openCategory(
-        prosaData,
-        prosaSubmenu,
-        navProsa
-    );
-});
-
-navPuisi.addEventListener("click",()=>{
-    openCategory(
-        puisiData,
-        puisiSubmenu,
-        navPuisi
-    );
-});
-
-brandLink.addEventListener('click', (e) => {
-  e.preventDefault();
-  showSpecialPage('mainpage');
-  appShell.classList.remove('sidebar-collapsed');
-});
-
-prevBtn.addEventListener('click', () => {
-  if(activeKontenIndex > 1) showKonten(activeKontenIndex - 1);
-});
-
-nextBtn.addEventListener('click', () => {
-  if(activeKontenIndex < currentData.length) showKonten(activeKontenIndex + 1);
-});
-
-hamburgerBtn.addEventListener('click', () => {
-  const isCollapsed = appShell.classList.toggle('sidebar-collapsed');
-  // Set aria-expanded: true jika sidebar terbuka (tidak collapsed), false jika tertutup (collapsed)
-  hamburgerBtn.setAttribute('aria-expanded', String(!isCollapsed));
-});
-
-sidebarBackdrop.addEventListener('click', () => {
-  appShell.classList.remove('sidebar-collapsed');
-});
-
-function openCategory(data, submenu, nav) {
-
-    document.querySelectorAll(".nav-submenu").forEach(el => {
-        el.classList.remove("open");
-    });
-
-    document.querySelectorAll(".nav-parent").forEach(el => {
-        el.classList.remove("open");
-        el.classList.remove("active");
-    });
-
-    submenu.classList.add("open");
-    nav.classList.add("open");
-
-    currentData = data;
-    activeKontenIndex = 1;
-
-    buildSubmenu(data, submenu);
-    buildPagination(data);
-
-    showKonten(1);
-
-}
+   
