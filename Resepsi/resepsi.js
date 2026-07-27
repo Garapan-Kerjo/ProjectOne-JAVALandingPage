@@ -256,42 +256,104 @@ function showSpecialPage(key){
 }
 
 function updateActiveNav(){
-    // 1. Hapus kelas 'active' dari semua item navigasi utama
-    document.querySelectorAll(".nav-parent").forEach(nav => {
+
+    document.querySelectorAll(".nav-parent").forEach(nav=>{
         nav.classList.remove("active");
     });
 
-    // 2. Tambahkan kelas 'active' ke navigasi utama yang sesuai dengan data saat ini
-    switch (currentData) {
-        case puisiData:
-            navPuisi.classList.add("active");
-            break;
+    switch(currentData){
+
         case prosaData:
             navProsa.classList.add("active");
             break;
+
+        case puisiData:
+            navPuisi.classList.add("active");
+            break;
+
     }
 
-    // 3. Atur status 'active' untuk sub-item navigasi (di dalam submenu)
-    document.querySelectorAll(".sub-nav-item").forEach(item => {
-        // Pastikan submenu dari item ini sedang terbuka
-        const parentSubmenu = item.closest('.nav-submenu');
-        if (parentSubmenu && parentSubmenu.classList.contains('open')) {
-            item.classList.toggle(
-                "active",
-                Number(item.dataset.index) === activeKontenIndex
-            );
-        } else {
-            item.classList.remove("active");
-        }
+    document.querySelectorAll(".sub-nav-item").forEach(item=>{
+
+        item.classList.toggle(
+            "active",
+            Number(item.dataset.index)===activeKontenIndex
+        );
+
     });
 
-    // 4. Atur status 'active' untuk titik-titik pagination
-    document.querySelectorAll(".page-dot").forEach(dot => {
+    document.querySelectorAll(".page-dot").forEach(dot=>{
+
         dot.classList.toggle(
             "active",
-            Number(dot.dataset.index) === activeKontenIndex
+            Number(dot.dataset.index)===activeKontenIndex
         );
+
     });
+
 }
 
-   
+/* ================== EVENTS ================== */
+navProsa.addEventListener("click",()=>{
+    openCategory(
+        prosaData,
+        prosaSubmenu,
+        navProsa
+    );
+});
+
+navPuisi.addEventListener("click",()=>{
+    openCategory(
+        puisiData,
+        puisiSubmenu,
+        navPuisi
+    );
+});
+
+brandLink.addEventListener('click', (e) => {
+  e.preventDefault();
+  showSpecialPage('mainpage');
+  appShell.classList.remove('sidebar-collapsed');
+});
+
+prevBtn.addEventListener('click', () => {
+  if(activeKontenIndex > 1) showKonten(activeKontenIndex - 1);
+});
+
+nextBtn.addEventListener('click', () => {
+  if(activeKontenIndex < currentData.length) showKonten(activeKontenIndex + 1);
+});
+
+hamburgerBtn.addEventListener('click', () => {
+  const isCollapsed = appShell.classList.toggle('sidebar-collapsed');
+  // Set aria-expanded: true jika sidebar terbuka (tidak collapsed), false jika tertutup (collapsed)
+  hamburgerBtn.setAttribute('aria-expanded', String(!isCollapsed));
+});
+
+sidebarBackdrop.addEventListener('click', () => {
+  appShell.classList.remove('sidebar-collapsed');
+});
+
+function openCategory(data, submenu, nav) {
+
+    document.querySelectorAll(".nav-submenu").forEach(el => {
+        el.classList.remove("open");
+    });
+
+    document.querySelectorAll(".nav-parent").forEach(el => {
+        el.classList.remove("open");
+        el.classList.remove("active");
+    });
+
+    submenu.classList.add("open");
+    nav.classList.add("open");
+
+    currentData = data;
+    activeKontenIndex = 1;
+
+    buildSubmenu(data, submenu);
+    buildPagination(data);
+
+    showKonten(1);
+
+}
