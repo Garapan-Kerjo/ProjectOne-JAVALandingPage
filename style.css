@@ -775,10 +775,11 @@ body.dark-mode .popup-close:hover {
   transition: all 0.5s var(--ease);
 }
 .panel.active .panel-number {
-  top: 24px;
-  left: 24px;
+  position:absolute;
+  top: 18px;
+  left: 20px;
   transform: translate(0, 0);
-  font-size: 1.6rem;
+  font-size: 2.5rem;
 }
 
 .panel-content {
@@ -801,6 +802,9 @@ body.dark-mode .popup-close:hover {
 }
 
 .panel-title {
+  position: absolute;
+  top: -10px;
+  left: 32px;
   margin: 0 0 10px;
   font-style: italic;
   font-weight: 600;
