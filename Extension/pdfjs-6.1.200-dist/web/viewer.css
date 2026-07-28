@@ -13,6 +13,98 @@
  * limitations under the License.
  */
 
+:root{
+  --navbar-h:60px;
+  --sidebar-w:240px;
+  --sidebar-w-collapsed:76px;
+  --background:#F8F5EF;
+  --surface:#FFFDF8;
+  --primary:#5A3E2B;
+  --secondary:#B45A3C;
+  --accent:#C89B3C;
+  --text:#2F2A25;
+  --text-secondary:#6F665E;
+  --border:#DDD0BB;
+  --nav-background: rgba(255, 253, 248, 0.72);
+  --nav-border: rgba(221, 208, 187, 0.4);
+  --nav-shadow: 0 18px 35px rgba(16, 24, 40, 0.12);
+  --success:#647A3D;
+  --error:#B43B3B;
+  --bg-page:var(--background);
+  --bg-card:var(--surface);
+  --bg-sidebar:var(--surface);
+  --border-color:var(--border);
+  --text-main:var(--text);
+  --text-sub:var(--text-secondary);
+  --text-muted:var(--text-secondary);
+  --accent-blue:var(--secondary);
+  --accent-green:var(--success);
+  --accent-green-bg:rgba(100,122,61,0.12);
+  --accent-red:var(--error);
+  --font-sans:'Poppins', sans-serif;
+  --font-serif:'Georgia','Times New Roman',serif;
+  --radius-lg:16px;
+  --radius-md:10px;
+  --shadow-card:0 1px 2px rgba(16,24,40,.04), 0 1px 3px rgba(16,24,40,.06);
+  --transition-fast:.2s ease;
+  --transition-medium:.3s ease;
+}
+
+body.dark-mode{
+  --background:#171311;
+  --surface:#231C18;
+  --primary:#D4AF37;
+  --secondary:#C56A45;
+  --accent:#E0C067;
+  --text:#F5F1E8;
+  --text-secondary:#C7B9A3;
+  --border:#43352C;
+  --nav-background: rgba(35, 28, 24, 0.75);
+  --nav-border: rgba(67, 53, 44, 0.45);
+  --nav-shadow: 0 18px 35px rgba(0, 0, 0, 0.35);
+  --success:#8AA05B;
+  --error:#D06A6A;
+  --bg-page:var(--background);
+  --bg-card:var(--surface);
+  --bg-sidebar:var(--surface);
+  --border-color:var(--border);
+  --text-main:var(--text);
+  --text-sub:var(--text-secondary);
+  --text-muted:var(--text-secondary);
+  --accent-blue:var(--secondary);
+  --accent-green:var(--success);
+  --accent-green-bg:rgba(138,160,91,0.12);
+  --accent-red:var(--error);
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary); /* atau rgba(0,0,0,0.3) */
+    border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+    transition: var(--transition-medium)
+}
+
+.cursor {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    background: url("../../../Assets/culture_icon.png") center center/contain no-repeat;
+    pointer-events: none;
+    z-index: 9999999999999;
+    transform: translate(-50%, -50%) rotate(-35deg);
+}
+
 #toolbarContainer{
 
     display:none !important;
@@ -29,6 +121,14 @@
 
     display:none !important;
 
+}
+
+* {
+  cursor: none;
+}
+
+body {
+  background: var(--bg-page) !important;
 }
 
 .messageBar{
@@ -97,7 +197,6 @@
   }
 
   button{
-    cursor:pointer;
 
     &:focus-visible{
       outline:var(--focus-ring-outline);
@@ -214,11 +313,7 @@
   font:menu;
   font-size:15px;
 
-  cursor:default;
-
-  button{
-    cursor:pointer;
-  }
+  cursor:none;
 
   #editorUndoBarUndoButton{
     border-radius:4px;
@@ -471,7 +566,6 @@
       height:32px;
 
       &:hover{
-        cursor:pointer;
         filter:var(--hover-filter);
       }
 
@@ -657,7 +751,6 @@
     color:transparent;
     position:absolute;
     white-space:pre;
-    cursor:text;
     transform-origin:0% 0%;
     -webkit-user-select:text;
        -moz-user-select:text;
@@ -687,7 +780,6 @@
     -webkit-user-select:none;
        -moz-user-select:none;
             user-select:none;
-    cursor:default;
   }
 
   .highlight{
@@ -768,7 +860,7 @@
     position:absolute;
     inset:100% 0 0;
     z-index:0;
-    cursor:default;
+    cursor: nonedefault;
     -webkit-user-select:none;
        -moz-user-select:none;
             user-select:none;
@@ -956,7 +1048,7 @@
 
   .textAnnotation img{
     position:absolute;
-    cursor:pointer;
+    cursor: none;
     width:100%;
     height:100%;
     top:0;
@@ -1131,7 +1223,7 @@
       margin:0;
       padding:0;
       border:none;
-      cursor:pointer;
+      cursor: none;
       background-color:transparent;
       background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='rgba(0,0,0,0.55)'/%3E%3Cpath d='M40 32 L70 50 L40 68 Z' fill='white'/%3E%3C/svg%3E");
       background-position:center;
@@ -1161,7 +1253,7 @@
     border-radius:calc(2px * var(--total-scale-factor));
     outline:1.5px solid rgb(255 255 74);
     padding:calc(6px * var(--total-scale-factor));
-    cursor:pointer;
+    cursor: none;
     font:message-box;
     white-space:normal;
     word-wrap:break-word;
@@ -1207,7 +1299,7 @@
   }
 
   .popupTriggerArea{
-    cursor:pointer;
+    cursor: none;
 
     &:hover{
       backdrop-filter:var(--hcm-highlight-filter);
@@ -1453,7 +1545,7 @@
 }
 
 .xfaButton{
-  cursor:pointer;
+  cursor: none;
   width:100%;
   height:100%;
   border:none;
@@ -2117,7 +2209,7 @@
         align-self:stretch;
         background-color:var(--tab-bg);
         padding-inline:0;
-        cursor:default;
+        cursor: none;
 
         border-inline:0;
         border-block-width:1px;
@@ -2354,7 +2446,7 @@
             a{
               color:var(--open-link-fg);
               text-decoration:underline;
-              cursor:pointer;
+              cursor: none;
 
               &:hover{
                 color:var(--open-link-hover-fg);
@@ -2645,7 +2737,7 @@
         gap:8px;
         text-align:start;
         white-space:normal;
-        cursor:default;
+        cursor: none;
         overflow:hidden;
 
         > svg{
@@ -3002,7 +3094,7 @@
       border-radius:4px;
       border:var(--button-comment-border);
       background-color:var(--button-comment-bg);
-      cursor:pointer;
+      cursor: none;
 
       &::before{
         content:"";
@@ -3287,7 +3379,7 @@
       display:flex;
       align-items:center;
       gap:2px;
-      cursor:default;
+      cursor: none;
 
       > button{
         width:32px;
@@ -3399,7 +3491,7 @@
     0px - (var(--outline-width) + var(--resizer-size)) / 2 -
       var(--outline-around-width)
   );
-  --editorFreeText-editing-cursor:text;
+  --editorFreeText-editing-cursor: none;
   --editorInk-editing-cursor:url(images/cursor-editorInk.svg) 0 16, pointer;
   --editorHighlight-editing-cursor:url(images/cursor-editorTextHighlight.svg) 24 24, text;
   --editorFreeHighlight-editing-cursor:url(images/cursor-editorFreeHighlight.svg) 1 18, pointer;
@@ -3619,7 +3711,7 @@
     flex-direction:column;
     justify-content:center;
     align-items:center;
-    cursor:default;
+    cursor: none;
     pointer-events:auto;
     box-sizing:content-box;
     padding:var(--editor-toolbar-padding);
@@ -3716,7 +3808,7 @@
       > :not(.divider){
         border:none;
         background-color:transparent;
-        cursor:pointer;
+        cursor: none;
 
         &:hover{
           border-radius:2px;
@@ -4524,7 +4616,7 @@
 
     &.selectedEditor{
       .internal{
-        cursor:pointer;
+        cursor: none;
       }
     }
 
@@ -4588,7 +4680,7 @@
               width:100%;
               height:auto;
               border:none;
-              cursor:pointer;
+              cursor: none;
               display:flex;
               justify-content:center;
               align-items:center;
@@ -4642,7 +4734,7 @@
         width:auto;
         height:auto;
         border:none;
-        cursor:pointer;
+        cursor: none;
         display:flex;
         justify-content:center;
         align-items:center;
@@ -5066,7 +5158,7 @@ button.hasPopupMenu{
 
   &#layersView .treeItem > a{
     *{
-      cursor:pointer;
+      cursor: none;
     }
 
     > label{
@@ -5096,7 +5188,7 @@ button.hasPopupMenu{
          -moz-user-select:none;
               user-select:none;
       white-space:normal;
-      cursor:default;
+      cursor: none;
 
       &:hover{
         background-color:var(--treeitem-bg-color);
@@ -5889,7 +5981,7 @@ button.hasPopupMenu{
           }
 
           &:hover{
-            cursor:pointer;
+            cursor: none;
             box-shadow:var(--image-hover-shadow);
 
             &::after{
@@ -6054,7 +6146,7 @@ button.hasPopupMenu{
              -moz-user-select:none;
                   user-select:none;
           white-space:normal;
-          cursor:pointer;
+          cursor: none;
 
           &:hover{
             background-color:var(--attachment-bg-color);
@@ -6201,6 +6293,8 @@ button.hasPopupMenu{
 }
 
 .pdfViewer{
+  background:transparent;
+
   --scale-factor:1;
   --page-bg-color:unset;
 
@@ -6372,7 +6466,6 @@ button.hasPopupMenu{
   --doorhanger-height:8px;
 
   --main-color:light-dark(rgb(12 12 13), rgb(249 249 250));
-  --body-bg-color:light-dark(rgb(212 212 215), rgb(42 42 46));
   --progressBar-color:light-dark(rgb(10 132 255), rgb(0 96 223));
   --progressBar-bg-color:light-dark(rgb(221 221 222), rgb(40 40 43));
   --progressBar-blend-color:light-dark(rgb(116 177 239), rgb(20 68 133));
@@ -6561,7 +6654,7 @@ body{
 
 #viewerContainer.pdfPresentationMode:fullscreen{
   top:0;
-  background-color:rgb(0 0 0);
+  background: transparent;
   width:100%;
   height:100%;
   overflow:hidden;
@@ -6582,7 +6675,7 @@ body{
 
 .pdfPresentationMode.pdfPresentationModeControls > *,
 .pdfPresentationMode.pdfPresentationModeControls .textLayer span{
-  cursor:default;
+  cursor: none;
 }
 
 #outerContainer{
@@ -6611,6 +6704,7 @@ body{
 }
 
 #viewerContainer{
+  background: transparent;
   overflow:auto;
   position:absolute;
   inset:var(--toolbar-height) 0 0;
@@ -6766,7 +6860,7 @@ body{
   -webkit-user-select:none;
      -moz-user-select:none;
           user-select:none;
-  cursor:default;
+  cursor: none;
   box-sizing:border-box;
 }
 
@@ -7171,7 +7265,7 @@ dialog :link{
     aspect-ratio:unset;
     text-align:start;
     white-space:normal;
-    cursor:default;
+    cursor: none;
 
     &:is(a){
       text-decoration:none;
@@ -7236,7 +7330,7 @@ dialog :link{
     width:max-content;
     position:absolute;
     z-index:30000;
-    cursor:default;
+    cursor: none;
 
     :is(#editorStampAddImage, #editorSignatureAddSignature)::before{
       -webkit-mask-image:var(--editorParams-stampAddImage-icon);
@@ -7312,7 +7406,7 @@ dialog :link{
   width:220px;
   position:absolute;
   z-index:30000;
-  cursor:default;
+  cursor: none;
   min-height:26px;
   max-height:calc(var(--viewer-container-height) - 40px);
 
@@ -7431,7 +7525,7 @@ dialog :link{
   height:auto;
   position:absolute;
   z-index:30000;
-  cursor:default;
+  cursor: none;
   padding:0;
   min-width:300px;
   background-color:var(--toolbar-bg-color);
@@ -7612,7 +7706,7 @@ dialog :link{
   -webkit-user-select:none;
      -moz-user-select:none;
           user-select:none;
-  cursor:default;
+  cursor: none;
   box-sizing:border-box;
 
   display:inline flex;
@@ -7656,7 +7750,7 @@ dialog :link{
   -webkit-user-select:none;
      -moz-user-select:none;
           user-select:none;
-  cursor:default;
+  cursor: none;
   box-sizing:border-box;
   outline:none;
 

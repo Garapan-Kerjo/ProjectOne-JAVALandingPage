@@ -1,7 +1,17 @@
-import * as pdfjsLib from "../Extension/pdfjs-6.1.200-dist/build/pdf.mjs";
-pdfjsLib.GlobalWorkerOptions.workerSrc = "../Extension/pdfjs-6.1.200-dist/build/pdf.worker.mjs";
-
 const cursor = document.querySelector(".cursor");
+const pdfViewer = document.getElementById("pdfViewer");
+
+window.addEventListener("message", (event) => {
+
+    if (event.data.type === "pdf-mouseenter") {
+        cursor.style.opacity = "0";
+    }
+
+    if (event.data.type === "pdf-mouseleave") {
+        cursor.style.opacity = "1";
+    }
+
+});
 
 let mouseX = 0;
 let mouseY = 0;
@@ -120,7 +130,6 @@ const pageTitle = document.getElementById('pageTitle');
 const breadcrumb = document.getElementById('breadcrumb');
 const breadcrumbCurrent = document.getElementById('breadcrumbCurrent');
 const contentCardTitle = document.getElementById('contentCardTitle');
-const pdfContainer = document.getElementById("pdfContainer");
 const paginationBar = document.getElementById('paginationBar');
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
@@ -249,6 +258,7 @@ function buildPagination(data) {
 }
 
 function showKonten(index){
+  document.getElementById("contentCardBody").scrollTop = 0;
   const item = currentData.find(k => k.id === index);
   if(!item) return;
 
@@ -259,7 +269,7 @@ function showKonten(index){
   // breadcrumbCurrent.textContent = item.label; // Ini sudah diatur di baris berikutnya
   breadcrumb.innerHTML = `Periodisasi / <span id="breadcrumbCurrent">${item.label}</span>`;
   contentCardTitle.textContent = item.label;
-  renderPDF(item.pdf);
+  loadPDF(item.pdf);
 
   paginationBar.style.display = 'flex';
   prevBtn.disabled = index === 1;
@@ -412,46 +422,11 @@ function openCategory(data, submenu, nav) {
 }
 
 /* ================== PDF RENDER ================== */
-async function renderPDF(url){
+function loadPDF(url) {
 
-    console.log("URL PDF:", url);
+    const pdfUrl = new URL(url, window.location.href).href;
 
-    pdfContainer.innerHTML = "";
+    pdfViewer.src =
+        `../Extension/pdfjs-6.1.200-dist/web/viewer.html?file=${encodeURIComponent(pdfUrl)}`;
 
-    const loadingTask = pdfjsLib.getDocument({
-        url: url
-    });
-
-    const pdf = await loadingTask.promise;
-
-    for(let pageNumber=1;
-        pageNumber<=pdf.numPages;
-        pageNumber++){
-
-        const page =
-        await pdf.getPage(pageNumber);
-
-        const viewport =
-        page.getViewport({scale:2.5});
-
-        const canvas =
-        document.createElement("canvas");
-
-        const context =
-        canvas.getContext("2d");
-
-        canvas.width = viewport.width;
-        canvas.height = viewport.height;
-
-        await page.render({
-            canvasContext:context,
-            viewport
-        }).promise;
-
-        const wrapper =
-        document.createElement("div");
-        wrapper.className="pdf-page";
-        wrapper.appendChild(canvas);
-        pdfContainer.appendChild(wrapper);
-    }
 }

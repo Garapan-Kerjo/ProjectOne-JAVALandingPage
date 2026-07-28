@@ -465,37 +465,23 @@ a {
 .content-card-tools{ display:flex; gap:6px; }
 
 .content-card-body{
-  max-height:100vh;
+  height:100vh;
   overflow-y:auto;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-#pdfContainer{
+.pdf-viewer-wrapper{
     width:100%;
-    height: 100vh;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:20px;
+    height:100vh;
+    overflow:hidden;
 }
 
-.pdf-page{
+.pdf-viewer{
     width:100%;
-    display:flex;
-    justify-content:center;
-}
-
-.pdf-page canvas{
-    width:100%;
-    max-width:900px;
-    height:auto;
-
-    border-radius:12px;
-
-    box-shadow:
-    0 10px 25px rgba(0,0,0,.08);
+    height:100%;
+    border:none;
 }
 
 .pagination-bar{
