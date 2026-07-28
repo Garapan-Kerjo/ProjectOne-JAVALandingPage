@@ -768,6 +768,7 @@ body.dark-mode .popup-close:hover {
   width: var(--panel-collapsed-w);
   flex-shrink: 0;
   border-right: 1px solid var(--border-color);
+  box-shadow: var(--nav-shadow);
   background: var(--bg);
   overflow: hidden;
   transition: width 0.5s var(--ease), background-color 0.3s var(--ease);
@@ -1420,6 +1421,17 @@ header .image img{
 .panel{
     width:100%;
     height:60px;
+    border-right:none;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 18px 0 35px rgba(16, 24, 40, 0.12);
+}
+
+.panel.dark-mode {
+  box-shadow: 18px 0 35px rgba(0, 0, 0, 0.35);
+}
+
+.panel:last-child {
+  border-bottom: none;
 }
 
 .panel.active{
