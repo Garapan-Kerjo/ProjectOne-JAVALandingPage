@@ -23,60 +23,71 @@ function animate() {
 
 animate();
 
-/* ================== DATA ================== */
-const loremPool = [
-  "Isi konten pertamanya apa lorem ipsum dolor sit amet consectetur, adipiscing elit. Laudantium, ducimus eligendi accusamus veritatis corporis rem vitae, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  "Lorem ipsum dolor sit amet consectetur, adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat corporis rem vitae.",
-  "Ducimus eligendi accusamus veritatis corporis rem vitae lorem ipsum dolor sit amet consectetur, adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.",
-  "Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua lorem ipsum dolor sit amet. Excepteur sint occaecat cupidatat non proident, sunt in culpa.",
-  "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae.",
-  "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam.",
-  "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur lorem ipsum dolor sit amet consectetur adipiscing elit.",
-  "Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur."
-];
-
-function buildParagraphs(seed, count){
-  const out = [];
-  for(let i = 0; i < count; i++){
-    out.push(loremPool[(seed + i) % loremPool.length]);
-  }
-  return out;
-}
-
 const dramaData = [
-  { id: 1, label: "Sejarah dalam Naskah Drama Jawa Timur Melalui Metode Periodisasi", paragraphs: buildParagraphs(0, 8) },
-  { id: 2, label: "Sejarah Dramaturgi dalam Universitas Airlangga dengan Menerapkan Metode Periodisasi", paragraphs: buildParagraphs(1, 8) },
-  { id: 3, label: "Sejarah Dramaturgi UNAIR Melalui Metode Periodisasi", paragraphs: buildParagraphs(2, 8) }
+  {
+    id: 1,
+    label: "Sejarah dalam Naskah Drama Jawa Timur Melalui Metode Periodisasi",
+    pdf: "../Assets/Artikel Web/PeriodisasiDrama/drama1.pdf"
+  },
+  {
+    id: 2,
+    label: "Sejarah Dramaturgi dalam Universitas Airlangga",
+    pdf: "../Assets/Artikel Web/PeriodisasiDrama/drama2.pdf"
+  },
+  {
+    id: 3,
+    label: "Sejarah Dramaturgi UNAIR",
+    pdf: "../Assets/Artikel Web/PeriodisasiDrama/drama3.pdf"
+  }
 ];
 
 const komunitasData = [
-  { id: 1, label: "Pemetaan Historis Komunitas Sastra Jawa Timur Melalui Pendekatan Periodisasi", paragraphs: buildParagraphs(0, 8) }
+  { id: 1, 
+    label: "Pemetaan Historis Komunitas Sastra Jawa Timur Melalui Pendekatan Periodisasi", 
+    pdf: "../Assets/Artikel Web/PeriodisasiKomunitas/komunitas1.pdf" 
+  }
 ];
 
 const prosaData = [
-  { id: 1, label: "Digitalisasi Sejarah Prosa Jawa Timur", paragraphs: buildParagraphs(0, 8) },
-  { id: 2, label: "Inventarisasi dan Digitalisasi Karya-karya Pramoedya Ananta Toer", paragraphs: buildParagraphs(1, 8) },
-  { id: 3, label: "Inventarisasi dan Digitalisasi Sastra Cina Peranakan", paragraphs: buildParagraphs(2, 8) },
-  { id: 4, label: "Representasi Kota dalam Prosa Jawa Timur Melalui Kajian Sejarah Sastra Berdasarkan Periodisasi", paragraphs: buildParagraphs(2, 8) }
+  { id: 1, 
+    label: "Digitalisasi Sejarah Prosa Jawa Timur", 
+    pdf: "../Assets/Artikel Web/PeriodisasiProsa/prosa1.pdf"
+  },
+  { id: 2, 
+    label: "Inventarisasi dan Digitalisasi Karya-karya Pramoedya Ananta Toer", 
+    pdf: "../Assets/Artikel Web/PeriodisasiProsa/prosa2.pdf" 
+  },
+  { id: 3, 
+    label: "Inventarisasi dan Digitalisasi Sastra Cina Peranakan", 
+    pdf: "../Assets/Artikel Web/PeriodisasiProsa/prosa3.pdf"
+  },
+  { id: 4, 
+    label: "Representasi Kota dalam Prosa Jawa Timur Melalui Kajian Sejarah Sastra Berdasarkan Periodisasi", 
+    pdf: "../Assets/Artikel Web/PeriodisasiProsa/prosa4.pdf"
+  }
 ];
 
 const puisiData = [
-  { id: 1, label: "Fragmen Kota dan Sejarah dalam Tubuh Sastra: Periodisasi Puisi di Jawa Timur (Tahun 2000-Sekarang)", paragraphs: buildParagraphs(0, 8) },
-  { id: 2, label: "Perkembangan Lanskap Kota dan Sejarah Jawa dalam Puisi (1970-Modern): Telaah Kronologis dan Karakteristik Estetika Zaman", paragraphs: buildParagraphs(1, 8) }
+  { id: 1, 
+    label: "Fragmen Kota dan Sejarah dalam Tubuh Sastra: Periodisasi Puisi di Jawa Timur (Tahun 2000-Sekarang)", 
+    pdf: "../Assets/Artikel Web/PeriodisasiPuisi/puisi1.pdf" 
+  },
+  { id: 2, 
+    label: "Perkembangan Lanskap Kota dan Sejarah Jawa dalam Puisi (1970-Modern): Telaah Kronologis dan Karakteristik Estetika Zaman", 
+    pdf: "../Assets/Artikel Web/PeriodisasiPuisi/puisi2.pdf" 
+  }
 ];
 
 const specialPages = {
   resepsi: {
     title: "Halaman Resepsi",
     breadcrumb: "Resepsi",
-    cardTitle: "Resepsi",
-    paragraphs: buildParagraphs(2, 4)
+    cardTitle: "Resepsi"
   },
   mainpage: {
     title: "Halaman Utama",
     breadcrumb: "Main Page",
-    cardTitle: "Main Page",
-    paragraphs: buildParagraphs(5, 4)
+    cardTitle: "Main Page"
   }
 };
 
@@ -106,7 +117,7 @@ const pageTitle = document.getElementById('pageTitle');
 const breadcrumb = document.getElementById('breadcrumb');
 const breadcrumbCurrent = document.getElementById('breadcrumbCurrent');
 const contentCardTitle = document.getElementById('contentCardTitle');
-const contentText = document.getElementById('contentText');
+const pdfViewer = document.getElementById("pdfViewer");
 const paginationBar = document.getElementById('paginationBar');
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
@@ -179,11 +190,6 @@ function initializePage() {
 
 initializePage();
 
-/* ================== RENDER ================== */
-function renderKontenParagraphs(item){
-  contentText.innerHTML = item.paragraphs.map(p => `<p>${p}</p>`).join('');
-}
-
 /* ================== BUILD SUBMENU ================== */
 function buildSubmenu(data, submenu){
 
@@ -250,7 +256,7 @@ function showKonten(index){
   // breadcrumbCurrent.textContent = item.label; // Ini sudah diatur di baris berikutnya
   breadcrumb.innerHTML = `Periodisasi / <span id="breadcrumbCurrent">${item.label}</span>`;
   contentCardTitle.textContent = item.label;
-  renderKontenParagraphs(item);
+  pdfViewer.src = item.pdf;
 
   paginationBar.style.display = 'flex';
   prevBtn.disabled = index === 1;
