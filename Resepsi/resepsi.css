@@ -618,7 +618,6 @@ a {
   }
   .content-card-body {
     padding: 16px;
-    max-height: 60vh;
   }
   .image-placeholder {
     max-width: 100%;
@@ -652,10 +651,10 @@ a {
     height: 6px;
   }
   .sidebar {
-    width: 200px; /* sidebar lebih sempit di mobile */
+    width: 170px; /* sidebar lebih sempit di mobile */
   }
   .app-shell.sidebar-collapsed .sidebar {
-    width: 200px;
+    width: 170px;
   }
   .nav-item {
     padding: 8px 12px;

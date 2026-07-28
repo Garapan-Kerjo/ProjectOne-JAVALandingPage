@@ -204,8 +204,7 @@ const membersData = [
   { name: "Nama Anggota 1", nim: "NIM Anggota 1" },
   { name: "Nama Anggota 2", nim: "NIM Anggota 2" },
   { name: "Nama Anggota 3", nim: "NIM Anggota 3" },
-  { name: "Nama Anggota 4", nim: "NIM Anggota 4" },
-  { name: "Nama Anggota 5", nim: "NIM Anggota 5" },
+  { name: "Nama Anggota 4", nim: "NIM Anggota 4" }
 ];
 
 const memberList = document.getElementById("memberList");

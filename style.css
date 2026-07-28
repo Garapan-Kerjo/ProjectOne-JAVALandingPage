@@ -261,7 +261,7 @@ header {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   align-items: center;
-  gap: 2rem;
+  gap: 5rem;
 }
 
 header .content h4 {
@@ -325,7 +325,7 @@ section .header {
   background-color: var(--surface);
   padding: 1rem;
   border: 1px solid var(--border);
-  border-radius: 15px;
+  border-radius: 10px;
   transition: all 0.3 ease;
 }
 
@@ -776,10 +776,10 @@ body.dark-mode .popup-close:hover {
 }
 .panel.active .panel-number {
   position:absolute;
-  top: 18px;
+  top: 10px;
   left: 20px;
   transform: translate(0, 0);
-  font-size: 2.5rem;
+  font-size: 1.6rem;
 }
 
 .panel-content {
@@ -803,8 +803,8 @@ body.dark-mode .popup-close:hover {
 
 .panel-title {
   position: absolute;
-  top: -10px;
-  left: 32px;
+  top: 24px;
+  left: 0;
   margin: 0 0 10px;
   font-style: italic;
   font-weight: 600;
@@ -827,8 +827,8 @@ body.dark-mode .popup-close:hover {
   /* keep link visually tight to bottom */
   padding: 0.15rem 0 0 0;
   align-self: flex-start;
-  font-size: 0.95rem;
-  font-weight: 600;
+  font-size: 0.85rem;
+  font-weight: 400;
   color: var(--text-main);
   transition: color 0.3s ease;
 }
@@ -880,7 +880,7 @@ body.dark-mode .panel-text {
 .accordion-card {
   background: var(--bg);
   border: 1px solid var(--border-color);
-  border-radius: 15px;
+  border-radius: 10px;
   overflow: hidden;
   transition: border-color 0.3s ease;
 }
@@ -920,15 +920,15 @@ body.dark-mode .panel-text {
   font-size: 1.05rem;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 100%;
+  text-overflow:ellipsis;
+  max-width: 90%;
 }
 
 /* label kategori (mis. "Drama") di samping nomor, hanya muncul saat panel aktif */
 .panel-category {
   position: absolute;
-  top: 26px;
-  left: 52px;
+  top: 56px;
+  left: 20px;
   font-size: 0.92rem;
   font-weight: 600;
   font-style: normal;
@@ -1039,7 +1039,7 @@ body.dark-mode .panel-text {
 }
 
 .lecturer-name {
-  margin: 0;
+  margin-bottom: 5px;
   font-size: 0.98rem;
   color: var(--text);
 }
