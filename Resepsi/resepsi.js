@@ -1,3 +1,6 @@
+import * as pdfjsLib from "../Extension/pdfjs-6.1.200-dist/build/pdf.mjs";
+pdfjsLib.GlobalWorkerOptions.workerSrc = "../Extension/pdfjs-6.1.200-dist/build/pdf.worker.mjs";
+
 const cursor = document.querySelector(".cursor");
 
 let mouseX = 0;
@@ -24,33 +27,25 @@ function animate() {
 animate();
 
 /* ================== DATA ================== */
-const loremPool = [
-  "Isi konten pertamanya apa lorem ipsum dolor sit amet consectetur, adipiscing elit. Laudantium, ducimus eligendi accusamus veritatis corporis rem vitae, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  "Lorem ipsum dolor sit amet consectetur, adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat corporis rem vitae.",
-  "Ducimus eligendi accusamus veritatis corporis rem vitae lorem ipsum dolor sit amet consectetur, adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.",
-  "Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua lorem ipsum dolor sit amet. Excepteur sint occaecat cupidatat non proident, sunt in culpa.",
-  "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae.",
-  "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam.",
-  "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur lorem ipsum dolor sit amet consectetur adipiscing elit.",
-  "Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur."
-];
-
-function buildParagraphs(seed, count){
-  const out = [];
-  for(let i = 0; i < count; i++){
-    out.push(loremPool[(seed + i) % loremPool.length]);
-  }
-  return out;
-}
-
 const puisiData = [
-  { id: 1, label: "Puitika Ruang dalam Khazanah Puisi Jawa Timur dengan Memanfaatkan Metode Resepsi", paragraphs: buildParagraphs(0, 8) },
-  { id: 2, label: "Digitalisasi Puitika Kota/Sejarah dalam Khazanah Puisi Jawa Timur dengan Memanfaatkan Metode Resepsi Pada Karya Aming Aminoedhin", paragraphs: buildParagraphs(1, 8) }
+  { id: 1, 
+    label: "Puitika Ruang dalam Khazanah Puisi Jawa Timur dengan Memanfaatkan Metode Resepsi", 
+    pdf: "../Assets/Artikel Web/ResepsiPuisi/puisi1.pdf" 
+  },
+  { id: 2, 
+    label: "Digitalisasi Puitika Kota/Sejarah dalam Khazanah Puisi Jawa Timur dengan Memanfaatkan Metode Resepsi Pada Karya Aming Aminoedhin", 
+    pdf: "../Assets/Artikel Web/ResepsiPuisi/puisi2.pdf"
+  }
 ];
 
 const prosaData = [
-  { id: 1, label: "Potret Sosial Budaya dalam Prosa Jawa Timur: Metode Resepsi Sastra", paragraphs: buildParagraphs(0, 8) },
-  { id: 2, label: "Potret Dinamika Sejarah/Kota dalam Khazanah Prosa Jawa Timur", paragraphs: buildParagraphs(0, 8) }
+  { id: 1, 
+    label: "Potret Sosial Budaya dalam Prosa Jawa Timur: Metode Resepsi Sastra", 
+    pdf: "../Assets/Artikel Web/ResepsiProsa/prosa1.pdf" 
+  },
+  { id: 2, label: "Potret Dinamika Sejarah/Kota dalam Khazanah Prosa Jawa Timur", 
+    pdf: "../Assets/Artikel Web/ResepsiProsa/prosa2.pdf" 
+  }
 ];
 
 const specialPages = {
@@ -58,13 +53,11 @@ const specialPages = {
     title: "Halaman Resepsi",
     breadcrumb: "Resepsi",
     cardTitle: "Resepsi",
-    paragraphs: buildParagraphs(2, 4)
   },
   mainpage: {
     title: "Halaman Utama",
     breadcrumb: "Main Page",
     cardTitle: "Main Page",
-    paragraphs: buildParagraphs(5, 4)
   }
 };
 
@@ -90,7 +83,7 @@ const pageTitle = document.getElementById('pageTitle');
 const breadcrumb = document.getElementById('breadcrumb');
 const breadcrumbCurrent = document.getElementById('breadcrumbCurrent');
 const contentCardTitle = document.getElementById('contentCardTitle');
-const contentText = document.getElementById('contentText');
+const pdfContainer = document.getElementById("pdfContainer");
 const paginationBar = document.getElementById('paginationBar');
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
@@ -159,11 +152,6 @@ function initializePage() {
 
 initializePage();
 
-/* ================== RENDER ================== */
-function renderKontenParagraphs(item){
-  contentText.innerHTML = item.paragraphs.map(p => `<p>${p}</p>`).join('');
-}
-
 /* ================== BUILD SUBMENU ================== */
 function buildSubmenu(data, submenu){
 
@@ -230,7 +218,7 @@ function showKonten(index){
   // breadcrumbCurrent.textContent = item.label; // Ini sudah diatur di baris berikutnya
   breadcrumb.innerHTML = `Resepsi / <span id="breadcrumbCurrent">${item.label}</span>`;
   contentCardTitle.textContent = item.label;
-  renderKontenParagraphs(item);
+  renderPDF(item.pdf);
 
   paginationBar.style.display = 'flex';
   prevBtn.disabled = index === 1;
@@ -356,4 +344,49 @@ function openCategory(data, submenu, nav) {
 
     showKonten(1);
 
+}
+
+/* ================== PDF RENDER ================== */
+async function renderPDF(url){
+
+    console.log("URL PDF:", url);
+
+    pdfContainer.innerHTML = "";
+
+    const loadingTask = pdfjsLib.getDocument({
+        url: url
+    });
+
+    const pdf = await loadingTask.promise;
+
+    for(let pageNumber=1;
+        pageNumber<=pdf.numPages;
+        pageNumber++){
+
+        const page =
+        await pdf.getPage(pageNumber);
+
+        const viewport =
+        page.getViewport({scale:2.5});
+
+        const canvas =
+        document.createElement("canvas");
+
+        const context =
+        canvas.getContext("2d");
+
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+
+        await page.render({
+            canvasContext:context,
+            viewport
+        }).promise;
+
+        const wrapper =
+        document.createElement("div");
+        wrapper.className="pdf-page";
+        wrapper.appendChild(canvas);
+        pdfContainer.appendChild(wrapper);
+    }
 }

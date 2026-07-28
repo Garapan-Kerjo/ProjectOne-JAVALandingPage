@@ -82,7 +82,7 @@ body.dark-mode{
     transition: var(--transition-medium)
 }
 
-*{box-sizing:border-box; cursor:none;}
+*{box-sizing:border-box;cursor:none;}
 
 body{
   margin:0;
@@ -443,6 +443,7 @@ a {
   border-radius:var(--radius-lg);
   box-shadow:var(--shadow-card);
   overflow:hidden;
+  margin-bottom: 2rem;
 }
 
 .content-card-header{
@@ -464,35 +465,38 @@ a {
 .content-card-tools{ display:flex; gap:6px; }
 
 .content-card-body{
-  padding:28px 32px 12px;
-  max-height:50vh;
+  max-height:100vh;
   overflow-y:auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.image-placeholder{
-  width:100%;
-  max-width:420px;
-  height:200px;
-  border:1px dashed var(--border-color);
-  border-radius:var(--radius-md);
-  background:var(--bg-page);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  margin:0 auto 28px;
-  font-size:.9rem;
-  color:var(--text-muted);
+#pdfContainer{
+    width:100%;
+    height: 100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:20px;
 }
 
-.content-text{
-  text-align: justify;
-  font-style:italic;
-  font-size:.95rem;
-  line-height:1.85;
-  color:var(--text-main);
-  width: 100%;
+.pdf-page{
+    width:100%;
+    display:flex;
+    justify-content:center;
 }
-.content-text p{ margin:0 0 18px; }
+
+.pdf-page canvas{
+    width:100%;
+    max-width:900px;
+    height:auto;
+
+    border-radius:12px;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,.08);
+}
 
 .pagination-bar{
   display:flex;
@@ -565,7 +569,7 @@ a {
   .content-card-body{ padding:20px; }
 }
 
-/* ===== RESPONSIVE FINE-TUNE UNTUK RESEPSI ===== */
+/* ===== RESPONSIVE FINE-TUNE UNTUK PERIODISASI ===== */
 @media (max-width: 480px) {
   .topnav {
     padding: 0 12px;
@@ -586,7 +590,7 @@ a {
     height: 18px;
   }
   .search-bar {
-    display: none;
+    display: none; /* sembunyikan search di layar sangat kecil, bisa diaktifkan via tombol */
   }
   .topnav-right {
     gap: 8px;
@@ -662,7 +666,7 @@ a {
     height: 6px;
   }
   .sidebar {
-    width: 200px;
+    width: 200px; /* sidebar lebih sempit di mobile */
   }
   .app-shell.sidebar-collapsed .sidebar {
     width: 200px;

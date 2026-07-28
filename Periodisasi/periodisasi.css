@@ -443,6 +443,7 @@ a {
   border-radius:var(--radius-lg);
   box-shadow:var(--shadow-card);
   overflow:hidden;
+  margin-bottom: 2rem;
 }
 
 .content-card-header{
@@ -464,22 +465,37 @@ a {
 .content-card-tools{ display:flex; gap:6px; }
 
 .content-card-body{
-  padding:28px 32px 12px;
-  max-height:50vh;
+  max-height:100vh;
   overflow-y:auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.pdf-container{
+#pdfContainer{
     width:100%;
-    height:80vh;
-    border-radius:14px;
-    overflow:hidden;
+    height: 100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:20px;
 }
 
-.pdf-viewer{
+.pdf-page{
     width:100%;
-    height:100%;
-    border:none;
+    display:flex;
+    justify-content:center;
+}
+
+.pdf-page canvas{
+    width:100%;
+    max-width:900px;
+    height:auto;
+
+    border-radius:12px;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,.08);
 }
 
 .pagination-bar{

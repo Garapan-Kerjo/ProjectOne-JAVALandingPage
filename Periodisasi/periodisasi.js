@@ -1,3 +1,6 @@
+import * as pdfjsLib from "../Extension/pdfjs-6.1.200-dist/build/pdf.mjs";
+pdfjsLib.GlobalWorkerOptions.workerSrc = "../Extension/pdfjs-6.1.200-dist/build/pdf.worker.mjs";
+
 const cursor = document.querySelector(".cursor");
 
 let mouseX = 0;
@@ -117,7 +120,7 @@ const pageTitle = document.getElementById('pageTitle');
 const breadcrumb = document.getElementById('breadcrumb');
 const breadcrumbCurrent = document.getElementById('breadcrumbCurrent');
 const contentCardTitle = document.getElementById('contentCardTitle');
-const pdfViewer = document.getElementById("pdfViewer");
+const pdfContainer = document.getElementById("pdfContainer");
 const paginationBar = document.getElementById('paginationBar');
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
@@ -256,7 +259,7 @@ function showKonten(index){
   // breadcrumbCurrent.textContent = item.label; // Ini sudah diatur di baris berikutnya
   breadcrumb.innerHTML = `Periodisasi / <span id="breadcrumbCurrent">${item.label}</span>`;
   contentCardTitle.textContent = item.label;
-  pdfViewer.src = item.pdf;
+  renderPDF(item.pdf);
 
   paginationBar.style.display = 'flex';
   prevBtn.disabled = index === 1;
@@ -406,4 +409,49 @@ function openCategory(data, submenu, nav) {
 
     showKonten(1);
 
+}
+
+/* ================== PDF RENDER ================== */
+async function renderPDF(url){
+
+    console.log("URL PDF:", url);
+
+    pdfContainer.innerHTML = "";
+
+    const loadingTask = pdfjsLib.getDocument({
+        url: url
+    });
+
+    const pdf = await loadingTask.promise;
+
+    for(let pageNumber=1;
+        pageNumber<=pdf.numPages;
+        pageNumber++){
+
+        const page =
+        await pdf.getPage(pageNumber);
+
+        const viewport =
+        page.getViewport({scale:2.5});
+
+        const canvas =
+        document.createElement("canvas");
+
+        const context =
+        canvas.getContext("2d");
+
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+
+        await page.render({
+            canvasContext:context,
+            viewport
+        }).promise;
+
+        const wrapper =
+        document.createElement("div");
+        wrapper.className="pdf-page";
+        wrapper.appendChild(canvas);
+        pdfContainer.appendChild(wrapper);
+    }
 }
