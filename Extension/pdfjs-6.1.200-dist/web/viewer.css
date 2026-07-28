@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 
+@import url("https://fonts.googleapis.com/css2?family=Actor&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
 :root{
   --navbar-h:60px;
   --sidebar-w:240px;
@@ -105,26 +107,9 @@ body.dark-mode{
     transform: rotate(-35deg);
 }
 
-#toolbarContainer{
-
-    display:none !important;
-
-}
-
-#sidebarContainer{
-
-    display:none !important;
-
-}
-
-#findbar{
-
-    display:none !important;
-
-}
-
 * {
-  cursor: none;
+  cursor: none !important;
+  font-family:'Poppins', sans-serif;
 }
 
 body {
@@ -7936,4 +7921,103 @@ dialog :link{
   #scaleSelectContainer{
     display:none;
   }
+}
+
+#toolbarContainer{
+    background: var(--surface) !important;
+    box-shadow: 0 8px 18px rgba(16,24,40,.08);
+    padding:8px 12px;
+}
+
+.toolbarButton{
+    width:38px;
+    height:38px;
+    border-radius:10px;
+    transition:.25s;
+    opacity:1 !important;
+}
+
+.toolbarButton:hover{
+    background:var(--border) !important;
+}
+
+.toolbarButton:active{
+    background:var(--border) !important;
+}
+
+.toolbarButton::before{
+    filter:
+        brightness(0)
+        saturate(100%)
+        opacity(.85);
+}
+
+.horizontalToolbarSeparator{
+    width:1px;
+    background:#DDD0BB !important;
+}
+
+#pageNumber{
+    background:var(--bg-page) !important;
+    border:1px solid #DDD0BB !important;
+    border-radius:10px;
+    color:var(--text) !important;
+    height:32px;
+}
+
+#scaleSelect{
+    background:#FFFDF8 !important;
+    color:#2F2A25 !important;
+    height:32px;
+}
+
+#findbar{
+    background:#FFFDF8 !important;
+    border-top:1px solid #DDD0BB;
+    box-shadow:none;
+    padding:12px;
+}
+
+#findInput{
+    background:white;
+    border:1px solid #DDD0BB;
+    border-radius:10px;
+    color:#2F2A25;
+}
+
+#sidebarContainer{
+    background:#FFFDF8 !important;
+    color:#2F2A25 !important;
+    border-right:1px solid #DDD0BB;
+}
+
+.thumbnail.selected{
+    border:2px solid #C89B3C !important;
+    border-radius:10px;
+}
+
+#viewerContainer::-webkit-scrollbar{
+    width:10px;
+}
+
+#viewerContainer::-webkit-scrollbar-track{
+    background:var(--bg-page);
+}
+
+#viewerContainer::-webkit-scrollbar-thumb{
+    background:var(--primary);
+    border-radius:30px;
+}
+
+#viewerContainer::-webkit-scrollbar-thumb:hover{
+    background:#5A3E2B;
+}
+
+#viewerContainer{
+    background:var(--bg-page) !important;
+}
+
+.page{
+    box-shadow: 0 12px 28px rgba(0,0,0,.12);
+    border-radius:8px;
 }

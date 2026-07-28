@@ -365,3 +365,63 @@ function loadPDF(url) {
         `../Extension/pdfjs-6.1.200-dist/web/viewer.html?file=${encodeURIComponent(pdfUrl)}`;
 
 }
+
+/* ================== SEARCH ARTICLES ================== */
+
+const searchInput = document.querySelector(".search-bar input");
+const searchBtn = document.querySelector(".search-btn");
+
+const allData = [
+    { category: "drama", data: dramaData },
+    { category: "komunitas", data: komunitasData },
+    { category: "prosa", data: prosaData },
+    { category: "puisi", data: puisiData }
+];
+
+function searchArticle(keyword){
+
+    keyword = keyword.trim().toLowerCase();
+
+    if(!keyword) return;
+
+    for(const group of allData){
+
+        const found = group.data.find(item =>
+            item.label.toLowerCase().includes(keyword)
+        );
+
+        if(found){
+
+            currentData = group.data;
+
+            buildSubmenu(group.data, categoryMap[group.category].submenu);
+
+            buildPagination(group.data);
+
+            showKonten(found.id);
+
+            return;
+
+        }
+
+    }
+
+    alert("Artikel tidak ditemukan");
+
+}
+
+searchBtn.addEventListener("click", () => {
+
+    searchArticle(searchInput.value);
+
+});
+
+searchInput.addEventListener("keydown", e => {
+
+    if(e.key === "Enter"){
+
+        searchArticle(searchInput.value);
+
+    }
+
+});
