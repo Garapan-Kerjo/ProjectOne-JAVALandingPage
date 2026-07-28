@@ -98,6 +98,24 @@ body {
   color: var(--text);
   transition: background-color 0.3s ease, color 0.3s ease;
   overflow-x: hidden;
+  margin:0;
+  min-height:100vh;
+  background: linear-gradient(rgba(248,245,239,.92), rgba(248,245,239,.92)), url("Assets/doodlesBackground.png");
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+}
+
+body.dark-mode{
+    background:
+        linear-gradient(
+            rgba(23,19,17,.92),
+            rgba(23,19,17,.92)
+        ),
+        url("Assets/doodlesBackground.png");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
 }
 
 nav {
@@ -322,11 +340,14 @@ section .header {
 }
 
 .features .card {
-  background-color: var(--surface);
   padding: 1rem;
-  border: 1px solid var(--border);
   border-radius: 10px;
   transition: all 0.3 ease;
+  background: var(--nav-background);
+  border: 1px solid var(--nav-border);
+  backdrop-filter: blur(18px);
+  --webkit-backdrop-filter: blur(18px);
+  box-shadow: var(--nav-shadow);
 }
 
 .features .card:hover {
@@ -878,11 +899,14 @@ body.dark-mode .panel-text {
 }
 
 .accordion-card {
-  background: var(--bg);
-  border: 1px solid var(--border-color);
   border-radius: 10px;
   overflow: hidden;
   transition: border-color 0.3s ease;
+  background: var(--nav-background);
+  border: 1px solid var(--nav-border);
+  backdrop-filter: blur(18px);
+  --webkit-backdrop-filter: blur(18px);
+  box-shadow: var(--nav-shadow);
 }
 
 .accordion-card:hover {
@@ -1620,6 +1644,10 @@ header .image img{
 
 .member-nim{
     font-size:.68rem;
+}
+
+.lecturer-name {
+  font-size: 0.86rem;
 }
 
 }
