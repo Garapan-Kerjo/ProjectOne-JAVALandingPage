@@ -98,8 +98,6 @@ body{
     width: 50px;
     height: 50px;
     background: url("../Assets/culture_icon.png") center center/contain no-repeat;
-    left: 0;
-    top: 0;
     pointer-events: none;
     z-index: 999999;
     transform: translate(-50%, -50%);
@@ -332,11 +330,14 @@ a {
   white-space:nowrap;
   transition:background var(--transition-fast), color var(--transition-fast);
 }
+
 .nav-item:hover{ background:var(--bg-page); }
 .nav-item.active{ background:var(--background); color:var(--accent); }
 
 .nav-icon{ width:20px; height:20px; flex-shrink:0; display:flex; align-items:center; justify-content:center; }
-.nav-icon svg{ width:20px; height:20px; }
+.nav-icon svg { width:20px; height:20px; fill: var(--text-secondary); color: var(--text-secondary); }
+
+.nav-item.active .nav-icon svg { width:20px; height:20px; fill:var(--accent); color: var(--accent);  }
 
 .nav-label{ flex:1; overflow:hidden; text-overflow:ellipsis; }
 
