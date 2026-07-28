@@ -618,6 +618,7 @@ a {
   }
   .content-card-body {
     padding: 16px;
+    overflow: hidden;
   }
   .image-placeholder {
     max-width: 100%;
