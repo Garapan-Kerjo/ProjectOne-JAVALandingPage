@@ -109,8 +109,8 @@ body {
 body.dark-mode{
     background:
         linear-gradient(
-            rgba(23,19,17,.92),
-            rgba(23,19,17,.92)
+            rgba(23,19,17,.96),
+            rgba(23,19,17,.96)
         ),
         url("Assets/doodlesBackground.png");
     background-size:cover;
