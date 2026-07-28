@@ -47,5 +47,3 @@ function animate(){
 }
 
 animate();
-
-console.log("Cursor Loaded");

@@ -102,7 +102,7 @@ body.dark-mode{
     background: url("../../../Assets/culture_icon.png") center center/contain no-repeat;
     pointer-events: none;
     z-index: 9999999999999;
-    transform: translate(-50%, -50%) rotate(-35deg);
+    transform: rotate(-35deg);
 }
 
 #toolbarContainer{
