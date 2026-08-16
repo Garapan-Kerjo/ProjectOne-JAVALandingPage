@@ -1,4 +1,4 @@
-# LANDINGPAGEJAWA_SP — Lorong Nusantara (Litera Jatim)
+# LANDINGPAGEJAWA_SP — Lorong Susastra (Digitalisasi Sejarah Sastra Jawa Timur)
 
 Website statis (vanilla HTML/CSS/JS, tanpa framework dan tanpa backend) untuk digitalisasi
 sejarah sastra Jawa Timur melalui dua pendekatan: **Periodisasi** dan **Resepsi**. Proyek ini

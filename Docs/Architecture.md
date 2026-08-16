@@ -1,6 +1,6 @@
 # Architecture.md — Arsitektur Website
 
-Gambaran arsitektur **LANDINGPAGEJAWA_SP (Lorong Nusantara — Litera Jatim)**.
+Gambaran arsitektur **LANDINGPAGEJAWA_SP (Lorong Susastra — Digitalisasi Sejarah Sastra Jawa Timur)**.
 
 ---
 

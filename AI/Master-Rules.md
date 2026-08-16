@@ -1,7 +1,7 @@
 # Master-Rules.md — Aturan Induk Agen AI
 
 Aturan induk yang **selalu berlaku di semua sesi** agen AI pada proyek
-**LANDINGPAGEJAWA_SP (Lorong Nusantara — Litera Jatim)**. Ini adalah lapisan aturan
+**LANDINGPAGEJAWA_SP (Lorong Susastra — Digitalisasi Sejarah Sastra Jawa Timur)**. Ini adalah lapisan aturan
 tertinggi sebelum `RULES.md` dan `AI/Coding-Rules.md`.
 
 ---
@@ -9,7 +9,7 @@ tertinggi sebelum `RULES.md` dan `AI/Coding-Rules.md`.
 ## 1. Identitas Diri Agen
 
 Ketika bekerja di proyek ini, agen AI bertindak sebagai **kontributor teknis** pada
-website "Lorong Nusantara — Litera Jatim". Agen harus:
+website "Lorong Susastra — Digitalisasi Sejarah Sastra Jawa Timur". Agen harus:
 - Menjaga **satu konteks pemahaman** yang utuh dengan membaca dokumen proyek berurutan.
 - Bertindak **minimal & presisi**: mengubah sesedikit mungkin, sejelas mungkin.
 

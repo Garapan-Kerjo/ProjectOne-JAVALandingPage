@@ -88,7 +88,21 @@ const puisiData = [
   { id: 2, 
     label: "Perkembangan Lanskap Kota dan Sejarah Jawa dalam Puisi (1970-Modern): Telaah Kronologis dan Karakteristik Estetika Zaman", 
     pdf: "../Assets/Artikel Web/PeriodisasiPuisi/puisi2.pdf" 
+  },
+  { id: 3, 
+    label: "Perkembangan Kepengarangan Pramoedya Ananta Toer dalam Karya-Karya Prosa Berdasarkan Metode Periodisasi serta Upaya Digitalisasinya", 
+    pdf: "../Assets/Artikel Web/PeriodisasiPuisi/puisi3.pdf" 
   }
+];
+
+const arsipData = [
+  { id: 1, label: "Repository Universitas Airlangga", url: "#" },
+  { id: 2, label: "Internet Archive — Karya Sastra Jawa Timur", url: "#" },
+  { id: 3, label: "Badan Pengembangan dan Pembinaan Bahasa", url: "#" }
+];
+
+const referensiData = [
+  { id: 1, label: "Daftar Pustaka" }
 ];
 
 const specialPages = {
@@ -101,6 +115,15 @@ const specialPages = {
     title: "Halaman Utama",
     breadcrumb: "Main Page",
     cardTitle: "Main Page"
+  },
+  referensi: {
+    title: "Referensi",
+    breadcrumb: "Referensi",
+    cardTitle: "Daftar Pustaka",
+    paragraphs: [
+      "Daftar pustaka artikel-artikel akan ditambahkan di sini.",
+      "Referensi ditulis mengikuti kaidah penulisan ilmiah."
+    ]
   }
 };
 
@@ -122,6 +145,10 @@ const dramaSubmenu = document.getElementById("dramaSubmenu");
 const komunitasSubmenu = document.getElementById("komunitasSubmenu");
 const prosaSubmenu = document.getElementById("prosaSubmenu");
 const puisiSubmenu = document.getElementById("puisiSubmenu");
+const navArsip = document.getElementById('navArsip');
+const navReferensi = document.getElementById('navReferensi');
+const arsipSubmenu = document.getElementById("arsipSubmenu");
+const referensiSubmenu = document.getElementById("referensiSubmenu");
 const navMainPage = document.getElementById('navMainPage');
 let currentData = dramaData;
 
@@ -176,6 +203,8 @@ buildSubmenu(dramaData, dramaSubmenu);
 buildSubmenu(komunitasData, komunitasSubmenu);
 buildSubmenu(prosaData, prosaSubmenu);
 buildSubmenu(puisiData, puisiSubmenu);
+buildLinkSubmenu(arsipData, arsipSubmenu);
+buildSpecialSubmenu(referensiData, referensiSubmenu, 'referensi');
 
 function initializePage() {
   // Tutup semua submenu terlebih dahulu
@@ -232,6 +261,77 @@ function buildSubmenu(data, submenu){
 
 }
 
+function buildLinkSubmenu(data, submenu){
+
+    submenu.innerHTML = "";
+
+    data.forEach(item => {
+
+        const link = document.createElement("a");
+
+        link.className = "sub-nav-item sub-nav-link";
+
+        link.href = item.url;
+
+        link.target = "_blank";
+
+        link.rel = "noopener";
+
+        link.innerHTML = `
+            <span class="sub-nav-icon">${item.id}</span>
+            <span class="sub-nav-label">${item.label}</span>
+        `;
+
+        submenu.appendChild(link);
+
+    });
+
+}
+
+function buildSpecialSubmenu(data, submenu, pageKey){
+
+    submenu.innerHTML = "";
+
+    data.forEach(item => {
+
+        const subItem = document.createElement("div");
+
+        subItem.className = "sub-nav-item";
+
+        subItem.dataset.index = item.id;
+
+        subItem.innerHTML = `
+            <span class="sub-nav-icon">${item.id}</span>
+            <span class="sub-nav-label">${item.label}</span>
+        `;
+
+        subItem.addEventListener("click", () => {
+            showSpecialPage(pageKey);
+        });
+
+        submenu.appendChild(subItem);
+
+    });
+
+}
+
+function openSubmenuOnly(submenu, nav) {
+
+    document.querySelectorAll(".nav-submenu").forEach(el => {
+        el.classList.remove("open");
+    });
+
+    document.querySelectorAll(".nav-parent").forEach(el => {
+        el.classList.remove("open");
+        el.classList.remove("active");
+    });
+
+    submenu.classList.add("open");
+    nav.classList.add("open");
+    nav.classList.add("active");
+
+}
+
 function buildPagination(data) {
 
     pageDots.innerHTML = "";
@@ -258,6 +358,8 @@ function buildPagination(data) {
 
 function showKonten(index){
   document.getElementById("contentCardBody").scrollTop = 0;
+  const contentText = document.getElementById("contentText");
+  if (contentText) contentText.hidden = true;
   const item = currentData.find(k => k.id === index);
   if(!item) return;
 
@@ -282,17 +384,19 @@ function showSpecialPage(key){
   if(!data) return;
 
   activeSection = key;
+  activeKontenIndex = 0;
 
   pageTitle.textContent = data.title;
   breadcrumb.textContent = data.breadcrumb;
   contentCardTitle.textContent = data.cardTitle;
 
+  paginationBar.style.display = 'none';
+
   const contentText = document.getElementById("contentText");
   if (contentText) {
     contentText.innerHTML = (data.paragraphs || []).map(p => `<p>${p}</p>`).join('');
+    contentText.hidden = !(data.paragraphs && data.paragraphs.length);
   }
-
-  paginationBar.style.display = 'none';
 
   updateActiveNav();
 }
@@ -321,6 +425,10 @@ function updateActiveNav(){
             navPuisi.classList.add("active");
             break;
 
+    }
+
+    if (activeSection === 'referensi') {
+        navReferensi.classList.add("active");
     }
 
     document.querySelectorAll(".sub-nav-item").forEach(item=>{
@@ -374,6 +482,14 @@ navPuisi.addEventListener("click",()=>{
         puisiSubmenu,
         navPuisi
     );
+});
+
+navArsip.addEventListener("click",()=>{
+    openSubmenuOnly(arsipSubmenu, navArsip);
+});
+
+navReferensi.addEventListener("click",()=>{
+    openSubmenuOnly(referensiSubmenu, navReferensi);
 });
 
 brandLink.addEventListener('click', (e) => {

@@ -1,6 +1,6 @@
 # Checklist.md — Checklist Sebelum/Sesudah Bekerja
 
-Checklist agen AI untuk proyek **LANDINGPAGEJAWA_SP (Lorong Nusantara — Litera Jatim)**.
+Checklist agen AI untuk proyek **LANDINGPAGEJAWA_SP (Lorong Susastra — Digitalisasi Sejarah Sastra Jawa Timur)**.
 
 ---
 

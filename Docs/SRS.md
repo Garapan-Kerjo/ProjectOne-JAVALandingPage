@@ -1,6 +1,6 @@
 # SRS.md — Software Requirements Specification
 
-Spesifikasi teknis fungsional untuk website **Lorong Nusantara — Litera Jatim**
+Spesifikasi teknis fungsional untuk website **Lorong Susastra — Digitalisasi Sejarah Sastra Jawa Timur**
 (repo `LANDINGPAGEJAWA_SP`). Dokumen ini menjelaskan perilaku sistem secara teknis.
 
 ---

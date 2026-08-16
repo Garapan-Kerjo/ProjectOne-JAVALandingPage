@@ -1,7 +1,7 @@
 # Rules-Prompt.md — Aturan Menyusun Prompt untuk Agen AI
 
 Panduan menyusun prompt yang efektif saat berinteraksi dengan agen AI yang bekerja di
-proyek **LANDINGPAGEJAWA_SP (Lorong Nusantara — Litera Jatim)**.
+proyek **LANDINGPAGEJAWA_SP (Lorong Susastra — Digitalisasi Sejarah Sastra Jawa Timur)**.
 
 ---
 
@@ -17,7 +17,7 @@ Gunakan template berikut saat memberikan tugas ke agen AI:
 
 ```
 KONTEKS:
-  Proyek: LANDINGPAGEJAWA_SP (Lorong Nusantara — Litera Jatim)
+  Proyek: LANDINGPAGEJAWA_SP (Lorong Susastra — Digitalisasi Sejarah Sastra Jawa Timur)
   Dokumen yang wajib dibaca dulu: AGENTS.md, CONTEXT.md, RULES.md,
   WORKFLOW.md, lalu Docs/ dan AI/ yang relevan.
 

@@ -1,7 +1,7 @@
 # Master-Prompt.md — Prompt Induk untuk Memulai Agen AI
 
 Prompt siap-pakai untuk memulai sesi agen AI pada proyek
-**LANDINGPAGEJAWA_SP (Lorong Nusantara — Litera Jatim)**. Salin isi di bawah ke agen
+**LANDINGPAGEJAWA_SP (Lorong Susastra — Digitalisasi Sejarah Sastra Jawa Timur)**. Salin isi di bawah ke agen
 AI saat memulai pekerjaan baru agar agen langsung mendapat **satu konteks yang utuh**.
 
 ---
@@ -9,7 +9,7 @@ AI saat memulai pekerjaan baru agar agen langsung mendapat **satu konteks yang u
 ## Prompt Induk
 
 ```
-KAMU BEKERJA DI PROYEK LANDINGPAGEJAWA_SP (Lorong Nusantara — Litera Jatim).
+KAMU BEKERJA DI PROYEK LANDINGPAGEJAWA_SP (Lorong Susastra — Digitalisasi Sejarah Sastra Jawa Timur).
 
 LANGKAH WAJIB SEBELUM BEKERJA:
 1. Baca berurutan: AGENTS.md → CONTEXT.md → RULES.md → WORKFLOW.md.
@@ -61,7 +61,7 @@ dahulu sampai selesai.
 ## Versi Pendek (jika konteks terbatas)
 
 ```
-Kerjakan tugas ini pada proyek LANDINGPAGEJAWA_SP (Lorong Nusantara — Litera Jatim).
+Kerjakan tugas ini pada proyek LANDINGPAGEJAWA_SP (Lorong Susastra — Digitalisasi Sejarah Sastra Jawa Timur).
 Baca minimal: AGENTS.md, CONTEXT.md, RULES.md, AI/Coding-Rules.md sebelum mengubah kode.
 Jangan ubah Extension/ dan Assets/Artikel Web/. Ikuti design tokens & pola yang ada.
 Verifikasi manual di browser (2 tema, beberapa ukuran layar). Catat di AI/Change-Log.md.

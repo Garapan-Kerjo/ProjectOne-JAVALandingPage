@@ -10,10 +10,42 @@
 
 ---
 
+## Revisi 16 Agustus 2026
+
+Perubahan tambahan yang dilakukan setelah audit di atas (semuanya telah diterapkan):
+
+### R1 — Tambah artikel Periodisasi Puisi (puisi3.pdf)
+- `Periodisasi/periodisasi.js` `puisiData` + `script.js` accordion Puisi ditambah item
+  "Perkembangan Kepengarangan Pramoedya Ananta Toer dalam Karya-Karya Prosa Berdasarkan
+  Metode Periodisasi serta Upaya Digitalisasinya".
+- Hitungan artikel diperbarui: **15 total (11 Periodisasi + 4 Resepsi)**.
+- ⚠️ **Catatan:** judul artikel menyebut "Prosa" namun dikategorikan di grup **Puisi**
+  (sesuai PDF di folder `PeriodisasiPuisi/`) — sengaja dibiarkan, menunggu keputusan konten.
+
+### R2 — Rebrand nama web & nama tubes
+- Nama web **"Lorong Nusantara" → "Lorong Susastra"**; tagline "Lorong Susastra —
+  Digitalisasi Sejarah Sastra Jawa Timur" (brand-text, title, meta, popup, hero).
+- Nama tubes **"LITERA JATIM" → "DIGITALISASI SEJARAH SASTRA JAWA TIMUR"** di hero,
+  `CONTEXT.md`, `Glossary.md`.
+- Seluruh dokumentasi (±20 file) disinkronkan.
+
+### R3 — Submenu baru di sidebar sub-halaman (Periodisasi & Resepsi)
+- **"Arsip Digital Karya Sastra Jawa Timur"**: `arsipData` (3 item placeholder, link
+  eksternal dibuka di tab baru) — `buildLinkSubmenu()`.
+- **"Referensi"**: `referensiData` (1 item) membuka halaman statis daftar pustaka
+  (placeholder) via `showSpecialPage('referensi')` → `#contentText`.
+- CSS baru: `.nav-label--wrap`, `.sub-nav-link`, `.content-text` (kedua CSS sub-halaman).
+
+### R4 — Dokumentasi pengujian
+- `Docs/Testing.md` §2.3: klaim "Search rusak" diganti status **fixed**; §2.2/§2.3 ditambah
+  langkah verifikasi submenu Arsip & Referensi.
+
+---
+
 ## Ringkasan Eksekutif
 
 Proyek berjalan baik secara fungsional. Struktur direktori sesuai dengan dokumentasi
-(`CONTEXT.md`, `Architecture.md`), 14 PDF artikel valid dan referensinya konsisten, serta
+(`CONTEXT.md`, `Architecture.md`), 15 PDF artikel valid dan referensinya konsisten, serta
 kualitas penulisan dokumen tinggi. Namun ditemukan: 1 bug fatal tersembunyi di pencarian
 `Resepsi/resepsi.js`, 2 titik error saat membuka *special page*, beberapa *dead code*,
 ketidakkonsistenan kecil pada HTML/CSS, dan beberapa klaim dokumentasi yang tidak akurat.
@@ -26,7 +58,7 @@ Seluruhnya telah ditindaklanjuti.
 | Item | Hasil |
 |------|-------|
 | Struktur folder | ✅ Sesuai `CONTEXT.md` §5 (root, `Periodisasi/`, `Resepsi/`, `Assets/`, `Extension/`) |
-| `Assets/Artikel Web/` — 14 PDF | ✅ Valid; hash & referensi konsisten dengan data di JS |
+| `Assets/Artikel Web/` — 15 PDF | ✅ Valid; hash & referensi konsisten dengan data di JS |
 | `Extension/pdfjs-6.1.200-dist` | ✅ Tidak dimodifikasi (di luar kendali proyek) |
 | Aset gambar yang direferensikan | ✅ Semua ada dan terpakai |
 
@@ -140,7 +172,7 @@ menetapkan `data-theme` sebelum CSS dimuat, sehingga warna tidak "berkedip" saat
 ## E. Bug dan Kemiripan Data (Cross-check)
 
 ### E1 — Konten artikel di `periodisasi.js` vs PDF
-✅ Semua 9 label periode (Drama 3, Komunitas 1, Prosa 4, Puisi 2) sesuai nama file PDF dan
+✅ Semua 10 label periode (Drama 3, Komunitas 1, Prosa 4, Puisi 3) sesuai nama file PDF dan
 kategori di `index.html` (setelah sinkronisasi B5).
 
 ### E2 — Konten artikel di `resepsi.js` vs PDF

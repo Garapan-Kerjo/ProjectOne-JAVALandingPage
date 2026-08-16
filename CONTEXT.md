@@ -10,8 +10,8 @@ pemahaman prompt yang utuh** tentang apa, mengapa, dan bagaimana proyek ini diba
 | Atribut | Nilai |
 |---------|-------|
 | Nama repositori | `landingpageJAWA_SP` |
-| Nama brand | **Lorong Nusantara** |
-| Judul browser (index) | **Litera Jatim** |
+| Nama brand | **Lorong Susastra** |
+| Judul browser (index) | **Digitalisasi Sejarah Sastra Jawa Timur** |
 | Jenis aplikasi | Website statis (HTML + CSS + JavaScript vanilla) |
 | Tanpa build tool | Tidak ada bundler, framework JS, atau package manager |
 | Bahasa antarmuka | Bahasa Indonesia (dengan beberapa teks Inggris) |
@@ -49,8 +49,8 @@ pendekatan kajian sastra utama:
 | Halaman | Path | Fungsi |
 |---------|------|--------|
 | Beranda | `index.html` | Hero, fitur (Periodisasi & Resepsi), accordion konten, profil tim (cover UNAIR), popup sambutan |
-| Periodisasi | `Periodisasi/periodisasi.html` | Sidebar kategori (Drama, Komunitas, Prosa, Puisi), tampil artikel PDF, pagination, pencarian |
-| Resepsi | `Resepsi/resepsi.html` | Sidebar kategori (Prosa, Puisi), tampil artikel PDF, pagination, pencarian |
+| Periodisasi | `Periodisasi/periodisasi.html` | Sidebar kategori (Drama, Komunitas, Prosa, Puisi), tampil artikel PDF, pagination, pencarian; submenu Arsip (link eksternal) & Referensi (halaman statis) |
+| Resepsi | `Resepsi/resepsi.html` | Sidebar kategori (Prosa, Puisi), tampil artikel PDF, pagination, pencarian; submenu Arsip (link eksternal) & Referensi (halaman statis) |
 
 ### Fitur lintas halaman
 - **Dark/light theme** — toggle disimpan di `localStorage` dengan key `theme`,
@@ -64,7 +64,7 @@ pendekatan kajian sastra utama:
 Data artikel didefinisikan **inline di JavaScript** (bukan database).
 
 ### `script.js` (index)
-- `periodisasiData`: Drama (3 item), Komunitas (1), Prosa (4), Puisi (2) → total 10
+- `periodisasiData`: Drama (3 item), Komunitas (1), Prosa (4), Puisi (3) → total 11
 - `resepsiData`: Prosa (2), Puisi (2) → total 4
 - `membersData`: 4 anggota (placeholder)
 
@@ -72,11 +72,15 @@ Data artikel didefinisikan **inline di JavaScript** (bukan database).
 - `dramaData` (3) — file `Assets/Artikel Web/PeriodisasiDrama/drama*.pdf`
 - `komunitasData` (1) — `PeriodisasiKomunitas/komunitas1.pdf`
 - `prosaData` (4) — `PeriodisasiProsa/prosa*.pdf`
-- `puisiData` (2) — `PeriodisasiPuisi/puisi*.pdf`
+- `puisiData` (3) — `PeriodisasiPuisi/puisi*.pdf`
+- `arsipData` (3, placeholder) — link eksternal arsip digital
+- `referensiData` (1) — halaman statis daftar pustaka
 
 ### `Resepsi/resepsi.js`
 - `puisiData` (2) — `Assets/Artikel Web/ResepsiPuisi/puisi*.pdf`
 - `prosaData` (2) — `ResepsiProsa/prosa*.pdf`
+- `arsipData` (3, placeholder) — link eksternal arsip digital
+- `referensiData` (1) — halaman statis daftar pustaka
 
 > Detail lengkap ada di `Docs/ERD.md` dan `Docs/Content-Structure.md`.
 
@@ -118,6 +122,8 @@ Resepsi/resepsi.html?category=puisi&id=2
    - Aturan `.cursor` memakai satu `transform` gabungan (`translate` + `rotate`).
    - Tag `<image>` tidak dipakai; avatar memakai `<img ... alt="" />`.
    - Tidak ada blok `.pricing`, `.panel.dark-mode`, atau kode unggah foto anggota.
+   - Submenu **Arsip** & **Referensi** (`arsipData`/`referensiData`) bukan data artikel —
+     tidak masuk `categoryMap`, pagination, maupun pencarian.
 4. **Jangan mengubah** `Extension/` dan `Assets/Artikel Web/*.pdf`.
 
 ## 9. Riwayat Singkat (Git)

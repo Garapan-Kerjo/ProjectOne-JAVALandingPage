@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Lorong Nusantara | Resepsi — pendekatan yang mengkaji penerimaan dan pemaknaan karya sastra Jawa Timur oleh pembaca.">
+<meta name="description" content="Lorong Susastra | Resepsi — pendekatan yang mengkaji penerimaan dan pemaknaan karya sastra Jawa Timur oleh pembaca.">
 <script>
   (function () {
     try {
@@ -12,7 +12,7 @@
     } catch (e) {}
   })();
 </script>
-<title>Lorong Nusantara | Resepsi</title>
+<title>Lorong Susastra | Resepsi</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" />
 <link rel="stylesheet" href="resepsi.css">
 <link rel="icon" type="image/x-icon" href="../Assets/logo-web.png" />
@@ -25,7 +25,7 @@
   <header class="topnav">
     <div class="topnav-left">
       <a href="#" class="brand" id="brandLink">
-        <span class="brand-text">Lorong <strong>Nusantara</strong></span>
+        <span class="brand-text">Lorong <strong>Susastra</strong></span>
       </a>
 
       <button class="hamburger-btn" id="hamburgerBtn" aria-label="Buka/tutup sidebar" aria-expanded="false">
@@ -100,6 +100,45 @@
         </div>
       </div>
 
+      <div class="nav-group">
+        <button class="nav-item nav-parent" id="navArsip">
+          <span class="nav-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="5" rx="1"></rect>
+              <path d="M4 8v11a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V8"></path>
+              <path d="M10 12h4"></path>
+            </svg>
+          </span>
+          <span class="nav-label nav-label--wrap">Arsip Digital Karya Sastra Jawa Timur</span>
+          <svg class="nav-chevron" id="arsipChevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+
+        <div class="nav-submenu" id="arsipSubmenu">
+          <!-- Link arsip diisi otomatis lewat JS -->
+        </div>
+      </div>
+
+      <div class="nav-group">
+        <button class="nav-item nav-parent" id="navReferensi">
+          <span class="nav-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+            </svg>
+          </span>
+          <span class="nav-label">Referensi</span>
+          <svg class="nav-chevron" id="referensiChevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+
+        <div class="nav-submenu" id="referensiSubmenu">
+          <!-- Daftar referensi diisi otomatis lewat JS -->
+        </div>
+      </div>
+
     </nav>
 
     <div class="sidebar-footer">
@@ -154,6 +193,7 @@
                 frameborder="0">
             </iframe>
         </div>
+        <div class="content-text" id="contentText" hidden></div>
       </div>
 
       <div class="pagination-bar" id="paginationBar">

@@ -1,7 +1,7 @@
 # AI-Workflow.md — Workflow Khusus Agen AI
 
 Versi detail (langkah demi langkah) dari `WORKFLOW.md` untuk agen AI yang bekerja di
-proyek **LANDINGPAGEJAWA_SP (Lorong Nusantara — Litera Jatim)**.
+proyek **LANDINGPAGEJAWA_SP (Lorong Susastra — Digitalisasi Sejarah Sastra Jawa Timur)**.
 
 ---
 

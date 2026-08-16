@@ -1,6 +1,6 @@
 # Content-Structure.md — Struktur Konten Artikel
 
-Panduan struktur & cara mengelola konten artikel sastra di **Lorong Nusantara — Litera Jatim**.
+Panduan struktur & cara mengelola konten artikel sastra di **Lorong Susastra — Digitalisasi Sejarah Sastra Jawa Timur**.
 
 ---
 
@@ -25,11 +25,15 @@ Tampilan ringkas di halaman utama:
 | Periodisasi | Drama | 3 | `Assets/Artikel Web/PeriodisasiDrama/` |
 | Periodisasi | Komunitas | 1 | `Assets/Artikel Web/PeriodisasiKomunitas/` |
 | Periodisasi | Prosa | 4 | `Assets/Artikel Web/PeriodisasiProsa/` |
-| Periodisasi | Puisi | 2 | `Assets/Artikel Web/PeriodisasiPuisi/` |
+| Periodisasi | Puisi | 3 | `Assets/Artikel Web/PeriodisasiPuisi/` |
 | Resepsi | Prosa | 2 | `Assets/Artikel Web/ResepsiProsa/` |
 | Resepsi | Puisi | 2 | `Assets/Artikel Web/ResepsiPuisi/` |
 
-Total: **14 artikel**.
+Total: **15 artikel**.
+
+> Submenu "Arsip Digital Karya Sastra Jawa Timur" dan "Referensi" di sidebar sub-halaman
+> **bukan** data artikel (tidak masuk hitungan di atas): `arsipData` memuat link eksternal
+> (placeholder), `referensiData` memuat halaman statis daftar pustaka — lihat `Docs/ERD.md`.
 
 ## 3. Langkah Menambah Artikel Baru
 

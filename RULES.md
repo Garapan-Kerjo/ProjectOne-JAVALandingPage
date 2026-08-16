@@ -1,7 +1,7 @@
 # RULES.md — Aturan Main yang Mengikat
 
 Dokumen ini adalah **aturan mengikat** untuk semua perubahan yang dilakukan di proyek
-**LANDINGPAGEJAWA_SP (Lorong Nusantara — Litera Jatim)** oleh manusia maupun agen AI.
+**LANDINGPAGEJAWA_SP (Lorong Susastra — Digitalisasi Sejarah Sastra Jawa Timur)** oleh manusia maupun agen AI.
 
 > Baca bersama `CONTEXT.md` dan `AI/Coding-Rules.md` agar perubahan tetap satu konteks.
 

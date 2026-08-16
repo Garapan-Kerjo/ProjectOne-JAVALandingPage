@@ -59,13 +59,13 @@ Periodisasi (metode)
   ├── Drama      → 3 artikel   (drama1..3.pdf)
   ├── Komunitas  → 1 artikel   (komunitas1.pdf)
   ├── Prosa      → 4 artikel   (prosa1..4.pdf)
-  └── Puisi      → 2 artikel   (puisi1..2.pdf)
+  └── Puisi      → 3 artikel   (puisi1..3.pdf)
 
 Resepsi (metode)
   ├── Prosa      → 2 artikel   (prosa1..2.pdf)
   └── Puisi      → 2 artikel   (puisi1..2.pdf)
 
-Total: 14 artikel PDF
+Total: 15 artikel PDF
 ```
 
 Relasi:
@@ -89,6 +89,7 @@ Relasi:
 | Prosa | 4 | `PeriodisasiProsa/prosa4.pdf` | Representasi Kota dalam Prosa Jawa Timur Melalui Kajian Sejarah Sastra Berdasarkan Periodisasi |
 | Puisi | 1 | `PeriodisasiPuisi/puisi1.pdf` | Fragmen Kota dan Sejarah dalam Tubuh Sastra: Periodisasi Puisi di Jawa Timur (Tahun 2000-Sekarang) |
 | Puisi | 2 | `PeriodisasiPuisi/puisi2.pdf` | Perkembangan Lanskap Kota dan Sejarah Jawa dalam Puisi (1970-Modern) |
+| Puisi | 3 | `PeriodisasiPuisi/puisi3.pdf` | Perkembangan Kepengarangan Pramoedya Ananta Toer dalam Karya-Karya Prosa Berdasarkan Metode Periodisasi serta Upaya Digitalisasinya |
 
 ### 3.2 `Resepsi/resepsi.js`
 | Kategori | id | File | Judul |
@@ -99,13 +100,20 @@ Relasi:
 | Prosa | 2 | `ResepsiProsa/prosa2.pdf` | Potret Dinamika Sejarah/Kota dalam Khazanah Prosa Jawa Timur |
 
 ### 3.3 `script.js` (accordion index — ringkasan)
-- `periodisasiData`: Drama (3), Komunitas (1), Prosa (4), Puisi (2).
+- `periodisasiData`: Drama (3), Komunitas (1), Prosa (4), Puisi (3).
 - `resepsiData`: Prosa (2), Puisi (2).
   - **Catatan (telah diperbaiki saat audit):** sebelumnya grup "Prosa" di index berisi
     judul Puitika (puisi) dan grup "Puisi" berisi judul Potret (prosa) — terbalik.
     Kini grup **"Prosa" berisi 2 judul Potret** dan grup **"Puisi" berisi 2 judul
     Puitika**, sinkron dengan `Resepsi/resepsi.js` dan pemetaan
     `?category=puisi|prosa&id=n`.
+
+### 3.4 Submenu non-artikel (Arsip & Referensi)
+- `arsipData` (di `periodisasi.js` & `resepsi.js`) — array `{ id, label, url }`; item
+  dirender sebagai tautan eksternal (`target="_blank"`). Saat ini **placeholder** (`url: "#"`).
+- `referensiData` (di `periodisasi.js` & `resepsi.js`) — array `{ id, label }`; item membuka
+  **halaman statis** via `specialPages.referensi` (teks `paragraphs` di `#contentText`).
+- Keduanya **tidak** masuk `categoryMap`, pagination, maupun pencarian artikel.
 
 ## 4. Penyimpanan File (Direktori)
 
@@ -114,7 +122,7 @@ Assets/Artikel Web/
 ├── PeriodisasiDrama/     # drama1.pdf, drama2.pdf, drama3.pdf
 ├── PeriodisasiKomunitas/ # komunitas1.pdf
 ├── PeriodisasiProsa/     # prosa1.pdf .. prosa4.pdf
-├── PeriodisasiPuisi/     # puisi1.pdf, puisi2.pdf
+├── PeriodisasiPuisi/     # puisi1.pdf, puisi2.pdf, puisi3.pdf
 ├── ResepsiProsa/         # prosa1.pdf, prosa2.pdf
 └── ResepsiPuisi/         # puisi1.pdf, puisi2.pdf
 ```

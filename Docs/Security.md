@@ -1,6 +1,6 @@
 # Security.md — Pertimbangan Keamanan
 
-Pertimbangan keamanan untuk website statis **Lorong Nusantara — Litera Jatim**.
+Pertimbangan keamanan untuk website statis **Lorong Susastra — Digitalisasi Sejarah Sastra Jawa Timur**.
 
 > Proyek ini **tanpa backend** dan **tanpa data pengguna sensitif**, sehingga risiko
 > keseluruhan rendah. Dokumen ini berfokus pada praktik aman untuk website statis

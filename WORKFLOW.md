@@ -1,7 +1,7 @@
 # WORKFLOW.md — Alur Kerja Standar
 
 Alur kerja ini wajib diikuti oleh setiap agen AI maupun kontributor yang mengubah
-proyek **LANDINGPAGEJAWA_SP (Lorong Nusantara — Litera Jatim)**.
+proyek **LANDINGPAGEJAWA_SP (Lorong Susastra — Digitalisasi Sejarah Sastra Jawa Timur)**.
 
 ---
 

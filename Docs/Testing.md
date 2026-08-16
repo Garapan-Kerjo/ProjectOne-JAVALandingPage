@@ -1,6 +1,6 @@
 # Testing.md — Rencana & Checklist Pengujian
 
-Rencana pengujian untuk **LANDINGPAGEJAWA_SP (Lorong Nusantara — Litera Jatim)**.
+Rencana pengujian untuk **LANDINGPAGEJAWA_SP (Lorong Susastra — Digitalisasi Sejarah Sastra Jawa Timur)**.
 
 > Proyek tanpa test runner otomatis. Semua pengujian dilakukan **manual di browser**
 > melalui prosedur di bawah. Wajib dijalankan setelah setiap perubahan kode.
@@ -48,12 +48,15 @@ Rencana pengujian untuk **LANDINGPAGEJAWA_SP (Lorong Nusantara — Litera Jatim)
 - [ ] Deep-link: `?category=prosa&id=3` langsung membuka artikel prosa ke-3.
 - [ ] Deep-link salah (`?category=xyz`) → fallback ke kategori Drama.
 - [ ] Hamburger di mobile membuka sidebar + backdrop.
+- [ ] Submenu "Arsip Digital Karya Sastra Jawa Timur" membuka daftar link eksternal
+      (tautan terbuka di tab baru).
+- [ ] Submenu "Referensi" → klik item menampilkan halaman statis daftar pustaka di kartu
+      konten (pagination & viewer PDF tersembunyi).
 
 ### 2.3 Halaman Resepsi (`Resepsi/resepsi.html`)
 - [ ] Semua item di §2.2 (kategori: Prosa & Puisi; default `puisi`).
-- [ ] **Diketahui rusak:** fitur Search — kode `resepsi.js` mereferensikan
-      `dramaData`/`komunitasData` yang tidak ada di file tersebut; menekan tombol
-      cari akan memunculkan `ReferenceError` (lihat §6).
+- [ ] Search berfungsi normal (telah diperbaiki di audit: `allData` hanya `prosa`/`puisi`,
+      tanpa `ReferenceError`).
 
 ### 2.4 Cross-cutting
 - [ ] Dark mode berfungsi penuh di ketiga halaman (tokens tidak bocor).

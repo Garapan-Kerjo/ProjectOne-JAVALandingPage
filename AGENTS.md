@@ -1,7 +1,7 @@
 # AGENTS.md — Panduan Wajib untuk Agen AI
 
 File ini adalah pintu masuk (entry point) bagi **setiap agen AI** yang akan bekerja di
-proyek **LANDINGPAGEJAWA_SP (Lorong Nusantara — Litera Jatim)**.
+proyek **LANDINGPAGEJAWA_SP (Lorong Susastra — Digitalisasi Sejarah Sastra Jawa Timur)**.
 
 > ⚠️ **WAJIB BACA SEBELUM MENGUBAH APA PUN.** Gagal membaca dokumen konteks di bawah
 > dapat menyebabkan perubahan yang melanggar aturan proyek dan merusak konsistensi.
@@ -67,11 +67,11 @@ landingpageJAWA_SP/
 ├── style.css                   # Design system + komponen halaman utama
 ├── Periodisasi/
 │   ├── periodisasi.html        # Sub-halaman metode Periodisasi
-│   ├── periodisasi.js          # Data artikel, sidebar, pagination, viewer PDF, search
+│   ├── periodisasi.js          # Data artikel, sidebar, pagination, viewer PDF, search, submenu Arsip & Referensi
 │   └── periodisasi.css         # Gaya sub-halaman Periodisasi
 ├── Resepsi/
 │   ├── resepsi.html            # Sub-halaman metode Resepsi
-│   ├── resepsi.js              # Data artikel, sidebar, pagination, viewer PDF, search
+│   ├── resepsi.js              # Data artikel, sidebar, pagination, viewer PDF, search, submenu Arsip & Referensi
 │   └── resepsi.css             # Gaya sub-halaman Resepsi
 ├── Assets/
 │   ├── logo-web.png            # Favicon & logo
@@ -83,7 +83,7 @@ landingpageJAWA_SP/
 │       ├── PeriodisasiDrama/   #   drama1..3.pdf
 │       ├── PeriodisasiKomunitas/ # komunitas1.pdf
 │       ├── PeriodisasiProsa/   #   prosa1..4.pdf
-│       ├── PeriodisasiPuisi/   #   puisi1..2.pdf
+│       ├── PeriodisasiPuisi/   #   puisi1..3.pdf
 │       ├── ResepsiProsa/       #   prosa1..2.pdf
 │       └── ResepsiPuisi/       #   puisi1..2.pdf
 └── Extension/

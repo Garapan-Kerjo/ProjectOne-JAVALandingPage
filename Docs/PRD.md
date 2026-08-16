@@ -1,6 +1,6 @@
 # PRD.md — Product Requirements Document
 
-Dokumen kebutuhan produk untuk website **Lorong Nusantara — Litera Jatim**
+Dokumen kebutuhan produk untuk website **Lorong Susastra — Digitalisasi Sejarah Sastra Jawa Timur**
 (repo `LANDINGPAGEJAWA_SP`).
 
 ---
@@ -73,7 +73,7 @@ responsif, dan mendukung mode terang/gelap.
 
 ## 7. Kriteria Keberhasilan (Success Metrics)
 
-1. Seluruh 14 artikel (10 Periodisasi + 4 Resepsi) dapat dibuka sebagai PDF.
+1. Seluruh 15 artikel (11 Periodisasi + 4 Resepsi) dapat dibuka sebagai PDF.
 2. Seluruh tautan navigasi & accordion bekerja lintas halaman.
 3. Tema terang/gelap konsisten di semua halaman.
 4. Tidak ada konten rusak saat dibuka di layar desktop, tablet, dan mobile.

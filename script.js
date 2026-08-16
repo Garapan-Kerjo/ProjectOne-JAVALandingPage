@@ -175,6 +175,7 @@ const periodisasiData = [
     items: [
       { title: "Fragmen Kota dan Sejarah dalam Tubuh Sastra: Periodisasi Puisi di Jawa Timur (Tahun 2000-Sekarang)" },
       { title: "Perkembangan Lanskap Kota dan Sejarah Jawa dalam Puisi (1970-Modern): Telaah Kronologis dan Karakteristik Estetika Zaman" },
+      { title: "Perkembangan Kepengarangan Pramoedya Ananta Toer dalam Karya-Karya Prosa Berdasarkan Metode Periodisasi serta Upaya Digitalisasinya" },
     ],
   },
 ];

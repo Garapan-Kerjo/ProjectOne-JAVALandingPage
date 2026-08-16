@@ -1,7 +1,7 @@
 # Change-Log.md — Format Pencatatan Perubahan
 
 Format baku untuk mencatat perubahan pada proyek **LANDINGPAGEJAWA_SP
-(Lorong Nusantara — Litera Jatim)**. Setiap perubahan **fungsional** wajib dicatat.
+(Lorong Susastra — Digitalisasi Sejarah Sastra Jawa Timur)**. Setiap perubahan **fungsional** wajib dicatat.
 
 ---
 
@@ -60,6 +60,32 @@ Setiap entri memakai blok berikut (diletakkan **paling atas** file, di atas entr
 5. Jangan hapus riwayat entri lama tanpa izin pengguna.
 
 ## Riwayat Perubahan
+
+## 2026-08-16 — Rebrand, artikel baru, dan submenu Arsip/Referensi
+
+**Jenis:** feat + data + style + docs
+
+**File yang disentuh:**
+- `Assets/Artikel Web/PeriodisasiPuisi/puisi3.pdf` (file baru dari pengguna)
+- `Periodisasi/periodisasi.js` (tambah `puisiData` id 3; submenu Arsip/Referensi)
+- `script.js` (tambah judul Puisi di accordion index)
+- `Resepsi/resepsi.js` (submenu Arsip/Referensi)
+- `index.html`, `Periodisasi/periodisasi.html`, `Resepsi/resepsi.html` (rebrand, meta/title, brand, submenu HTML, `#contentText`)
+- `Periodisasi/periodisasi.css`, `Resepsi/resepsi.css` (`.nav-label--wrap`, `.sub-nav-link`, `.content-text`)
+- Dokumentasi: rebrand di ±20 file markdown + hitungan artikel 14→15 di `CONTEXT.md`, `ERD.md`, `Content-Structure.md`, `PRD.md`, `AGENTS.md`, `Testing.md`; `Docs/Audit.md`
+
+**Detail:**
+- Rebrand web dari "Lorong Nusantara — Litera Jatim" menjadi "Lorong Susastra — Digitalisasi Sejarah Sastra Jawa Timur" (UI + dokumentasi).
+- Menambahkan artikel baru `puisi3.pdf` (judul "Perkembangan Kepengarangan Pramoedya Ananta Toer ...") ke `puisiData` dan accordion index (Puisi kini 3 item; total artikel 15).
+- Menambahkan submenu sidebar "Arsip Digital Karya Sastra Jawa Timur" (link eksternal via `buildLinkSubmenu`, URL masih placeholder) dan "Referensi" (halaman statis daftar pustaka via `specialPages.referensi` + `#contentText`).
+
+**Verifikasi:**
+- `node --check` `script.js`, `Periodisasi/periodisasi.js`, `Resepsi/resepsi.js` lulus.
+- Grep memastikan tidak ada sisa "Lorong Nusantara"/"Litera Jatim" di UI & dokumen (kecuali entri glossary/change-log yang sudah diperbarui).
+
+**Catatan/risiko:**
+- URL submenu Arsip dan isi daftar pustaka masih placeholder.
+- Artikel baru berjudul "Prosa" namun ditempatkan di kategori "Puisi" — sesuai data pengguna, hanya dicatat.
 
 ## 2026-08-16 — Eksekusi Audit Menyeluruh (perbaikan kode + penyesuaian dokumentasi)
 

@@ -1,6 +1,6 @@
 # UIUX.md — Design System & Pengalaman Pengguna
 
-Panduan tampilan website **Lorong Nusantara — Litera Jatim**.
+Panduan tampilan website **Lorong Susastra — Digitalisasi Sejarah Sastra Jawa Timur**.
 
 ---
 

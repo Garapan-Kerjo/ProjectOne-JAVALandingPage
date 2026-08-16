@@ -1,6 +1,6 @@
 # Glossary.md — Istilah Sastra & Teknis
 
-Glosarium istilah yang digunakan di proyek **Lorong Nusantara — Litera Jatim**.
+Glosarium istilah yang digunakan di proyek **Lorong Susastra — Digitalisasi Sejarah Sastra Jawa Timur**.
 
 ---
 
@@ -8,8 +8,8 @@ Glosarium istilah yang digunakan di proyek **Lorong Nusantara — Litera Jatim**
 
 | Istilah | Penjelasan |
 |---------|------------|
-| **Litera Jatim** | Judul browser website; kependekan dari "Literasi/Literatur Jawa Timur" |
-| **Lorong Nusantara** | Brand/identitas website |
+| **Digitalisasi Sejarah Sastra Jawa Timur** | Nama Tugas Besar; judul browser halaman utama |
+| **Lorong Susastra** | Brand/identitas website |
 | **Sastra Jawa Timur** | Khazanah karya sastra yang lahir/berkembang di wilayah Jawa Timur |
 | **Periodisasi** | Pendekatan mengelompokkan perkembangan sastra berdasarkan rentang waktu, memperhitungkan perubahan sosial, budaya, sejarah, dan estetika tiap periode |
 | **Resepsi** | Pendekatan mengkaji bagaimana karya sastra diterima, dipahami, dimaknai, dan diinterpretasikan pembaca/masyarakat lintas ruang & waktu |

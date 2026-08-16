@@ -1,7 +1,7 @@
 # Coding-Rules.md — Konvensi Coding Wajib
 
 Konvensi teknis yang **wajib dipatuhi** saat menulis/mengubah kode di proyek
-**LANDINGPAGEJAWA_SP (Lorong Nusantara — Litera Jatim)**.
+**LANDINGPAGEJAWA_SP (Lorong Susastra — Digitalisasi Sejarah Sastra Jawa Timur)**.
 
 ---
 

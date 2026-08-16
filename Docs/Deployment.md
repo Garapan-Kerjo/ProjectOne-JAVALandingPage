@@ -1,6 +1,6 @@
 # Deployment.md — Cara Menjalankan & Men-deploy
 
-Panduan menjalankan dan men-deploy website **Lorong Nusantara — Litera Jatim**.
+Panduan menjalankan dan men-deploy website **Lorong Susastra — Digitalisasi Sejarah Sastra Jawa Timur**.
 
 ---
 

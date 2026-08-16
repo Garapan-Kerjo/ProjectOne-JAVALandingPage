@@ -382,6 +382,18 @@ a {
 }
 .sub-nav-label{ overflow:hidden; text-overflow:ellipsis; }
 
+.sub-nav-link{ text-decoration:none; }
+
+.nav-label--wrap{ white-space:normal; overflow:visible; text-overflow:clip; line-height:1.25; }
+
+.content-text{
+  padding:2rem 1.5rem;
+  color:var(--text-main);
+  font-size:1rem;
+  line-height:1.8;
+}
+.content-text p{ margin-bottom:1rem; }
+
 .app-shell.sidebar-collapsed .sidebar .sub-nav-item,
 .app-shell.sidebar-collapsed .sidebar .sub-nav-icon {
   display: flex;
