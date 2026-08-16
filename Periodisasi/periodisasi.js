@@ -134,6 +134,7 @@ const specialPages = {
 const appShell = document.getElementById('appShell');
 const hamburgerBtn = document.getElementById('hamburgerBtn');
 const sidebarBackdrop = document.getElementById('sidebarBackdrop');
+const sidebarEl = document.getElementById('sidebar');
 const brandLink = document.getElementById('brandLink');
 const themeToggle = document.getElementById('theme-toggle');
 const root = document.documentElement;
@@ -211,7 +212,7 @@ buildSpecialSubmenu(referensiData, referensiSubmenu, 'referensi');
 
 function initializePage() {
   // Tutup semua submenu terlebih dahulu
-  document.querySelectorAll(".nav-submenu").forEach(el => el.classList.remove("open"));
+  closeAllSubmenus();
   document.querySelectorAll(".nav-parent").forEach(el => el.classList.remove("open"));
 
   let targetCategory = categoryMap[selectedCategory];
@@ -225,6 +226,7 @@ function initializePage() {
   currentData = targetCategory.data;
   targetCategory.nav.classList.add("open");
   targetCategory.submenu.classList.add("open");
+  fitSubmenuToViewport(targetCategory.submenu);
 
   // Bangun pagination dan tampilkan konten
   buildPagination(currentData);
@@ -234,6 +236,28 @@ function initializePage() {
 initializePage();
 
 /* ================== BUILD SUBMENU ================== */
+function closeAllSubmenus() {
+
+    document.querySelectorAll(".nav-submenu").forEach(el => {
+        el.classList.remove("open");
+        el.style.maxHeight = "";
+    });
+
+}
+
+function fitSubmenuToViewport(submenu) {
+
+    const sidebarRect = sidebarEl.getBoundingClientRect();
+    const avail = sidebarRect.bottom - submenu.getBoundingClientRect().top - 16;
+    submenu.style.maxHeight = Math.max(80, Math.floor(avail)) + "px";
+
+}
+
+window.addEventListener("resize", () => {
+    const openSubmenu = document.querySelector(".nav-submenu.open");
+    if (openSubmenu) fitSubmenuToViewport(openSubmenu);
+});
+
 function buildSubmenu(data, submenu){
 
     submenu.innerHTML = "";
@@ -293,9 +317,7 @@ function buildSpecialSubmenu(data, submenu, pageKey){
 
 function openSubmenuOnly(submenu, nav) {
 
-    document.querySelectorAll(".nav-submenu").forEach(el => {
-        el.classList.remove("open");
-    });
+    closeAllSubmenus();
 
     document.querySelectorAll(".nav-parent").forEach(el => {
         el.classList.remove("open");
@@ -303,6 +325,7 @@ function openSubmenuOnly(submenu, nav) {
     });
 
     submenu.classList.add("open");
+    fitSubmenuToViewport(submenu);
     nav.classList.add("open");
     nav.classList.add("active");
 
@@ -503,9 +526,7 @@ sidebarBackdrop.addEventListener('click', () => {
 
 function openCategory(data, submenu, nav) {
 
-    document.querySelectorAll(".nav-submenu").forEach(el => {
-        el.classList.remove("open");
-    });
+    closeAllSubmenus();
 
     document.querySelectorAll(".nav-parent").forEach(el => {
         el.classList.remove("open");
@@ -513,6 +534,7 @@ function openCategory(data, submenu, nav) {
     });
 
     submenu.classList.add("open");
+    fitSubmenuToViewport(submenu);
     nav.classList.add("open");
 
     currentData = data;

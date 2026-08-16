@@ -61,6 +61,35 @@ Setiap entri memakai blok berikut (diletakkan **paling atas** file, di atas entr
 
 ## Riwayat Perubahan
 
+## 2026-08-16 — Dropdown sidebar Periodisasi/Resepsi dapat scroll dengan tinggi adaptif
+
+**Jenis:** fix
+
+**File yang disentuh:**
+- `Periodisasi/periodisasi.css` (`.nav-submenu.open` scrollable + tinggi adaptif)
+- `Resepsi/resepsi.css` (perubahan identik dengan `periodisasi.css`)
+- `Periodisasi/periodisasi.js` (helper `closeAllSubmenus` & `fitSubmenuToViewport`, resize listener, `sidebarEl`)
+- `Resepsi/resepsi.js` (perubahan identik dengan `periodisasi.js`)
+
+**Detail:**
+- Submenu dropdown di sidebar sebelumnya memakai `max-height:400px` + `overflow:hidden`, sehingga saat isi
+  melebihi ruang tersisa di sidebar, kontennya menembus ke bawah / terpotong tanpa bisa di-scroll.
+- `.nav-submenu.open` kini `overflow-y:auto` dengan `max-height:min(400px, calc(100vh - var(--navbar-h)))`.
+- Saat submenu dibuka, JS menghitung `max-height` inline agar pas dengan ruang tersisa di sidebar
+  (`fitSubmenuToViewport`), sehingga bila konten muat tidak muncul scrollbar, dan bila lebih tinggi muncul
+  scrollbar berstyle sama (pakai `::-webkit-scrollbar` global).
+- `closeAllSubmenus()` mereset `max-height` inline agar submenu bisa menutup/animasi kembali ke `0`.
+- `window resize` mengukur ulang submenu yang sedang terbuka.
+
+**Verifikasi:**
+- `node --check` lolos untuk kedua file JS.
+- Belum: uji manual visual di browser — buka kategori dengan banyak item (mis. Prosa/Puisi Periodisasi) pada
+  layar pendek, pastikan scrollbar muncul hanya saat perlu; cek tema terang & gelap, dan mobile ≤768px.
+
+**Catatan/risiko:**
+- Scrollbar dropdown otomatis memakai styling `::-webkit-scrollbar` global (konsisten dengan scrollbar lain).
+- `min()` CSS butuh browser modern (sama seperti `clamp()`/`:has()` yang sudah dipakai).
+
 ## 2026-08-16 — Styling halaman Referensi/Arsip auto-fit di semua layar (mobile, iPad, tablet)
 
 **Jenis:** fix + style

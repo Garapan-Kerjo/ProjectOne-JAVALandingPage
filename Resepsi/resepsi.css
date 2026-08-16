@@ -351,7 +351,11 @@ a {
   gap:2px;
   transition:max-height var(--transition-medium);
 }
-.nav-submenu.open{ max-height:400px; margin:2px 0 6px; }
+.nav-submenu.open{
+  max-height:min(400px, calc(100vh - var(--navbar-h)));
+  overflow-y:auto;
+  margin:2px 0 6px;
+}
 
 .sub-nav-item{
   display:flex;
