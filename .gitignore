@@ -12,6 +12,9 @@ Thumbs.db
 tmp/
 *.tmp
 
+# Data sumber (workbook Excel) — data ter-extract disimpan di Assets/data/
+*.xlsx
+
 # Folder build (tidak digunakan saat ini, cadangan)
 build/
 dist/

@@ -1,3 +1,5 @@
+import { daftarPustaka, buildArsipHTML } from "../Assets/data/korpus-data.mjs";
+
 const cursor = document.querySelector(".cursor");
 const pdfViewer = document.getElementById("pdfViewer");
 
@@ -59,9 +61,7 @@ const prosaData = [
 ];
 
 const arsipData = [
-  { id: 1, label: "Repository Universitas Airlangga", url: "#" },
-  { id: 2, label: "Internet Archive — Karya Sastra Jawa Timur", url: "#" },
-  { id: 3, label: "Badan Pengembangan dan Pembinaan Bahasa", url: "#" }
+  { id: 1, label: "Arsip Digital Karya Sastra Jawa Timur" }
 ];
 
 const referensiData = [
@@ -83,10 +83,13 @@ const specialPages = {
     title: "Referensi",
     breadcrumb: "Referensi",
     cardTitle: "Daftar Pustaka",
-    paragraphs: [
-      "Daftar pustaka artikel-artikel akan ditambahkan di sini.",
-      "Referensi ditulis mengikuti kaidah penulisan ilmiah.",
-    ],
+    paragraphs: daftarPustaka,
+  },
+  arsip: {
+    title: "Arsip Digital Karya Sastra Jawa Timur",
+    breadcrumb: "Arsip",
+    cardTitle: "Arsip Digital Karya Sastra Jawa Timur",
+    html: buildArsipHTML(),
   },
 };
 
@@ -158,7 +161,7 @@ const categoryMap = {
 
 buildSubmenu(prosaData, prosaSubmenu);
 buildSubmenu(puisiData, puisiSubmenu);
-buildLinkSubmenu(arsipData, arsipSubmenu);
+buildSpecialSubmenu(arsipData, arsipSubmenu, 'arsip');
 buildSpecialSubmenu(referensiData, referensiSubmenu, 'referensi');
 
 function initializePage() {
@@ -211,33 +214,6 @@ function buildSubmenu(data, submenu){
         });
 
         submenu.appendChild(subItem);
-
-    });
-
-}
-
-function buildLinkSubmenu(data, submenu){
-
-    submenu.innerHTML = "";
-
-    data.forEach(item => {
-
-        const link = document.createElement("a");
-
-        link.className = "sub-nav-item sub-nav-link";
-
-        link.href = item.url;
-
-        link.target = "_blank";
-
-        link.rel = "noopener";
-
-        link.innerHTML = `
-            <span class="sub-nav-icon">${item.id}</span>
-            <span class="sub-nav-label">${item.label}</span>
-        `;
-
-        submenu.appendChild(link);
 
     });
 
@@ -315,6 +291,8 @@ function showKonten(index){
   document.getElementById("contentCardBody").scrollTop = 0;
   const contentText = document.getElementById("contentText");
   if (contentText) contentText.hidden = true;
+  const pdfWrapper = document.querySelector('.pdf-viewer-wrapper');
+  if (pdfWrapper) pdfWrapper.style.display = '';
   const item = currentData.find(k => k.id === index);
   if(!item) return;
 
@@ -347,10 +325,13 @@ function showSpecialPage(key){
 
   paginationBar.style.display = 'none';
 
+  const pdfWrapper = document.querySelector('.pdf-viewer-wrapper');
+  if (pdfWrapper) pdfWrapper.style.display = 'none';
+
   const contentText = document.getElementById("contentText");
   if (contentText) {
-    contentText.innerHTML = (data.paragraphs || []).map(p => `<p>${p}</p>`).join('');
-    contentText.hidden = !(data.paragraphs && data.paragraphs.length);
+    contentText.innerHTML = data.html || (data.paragraphs || []).map(p => `<p>${p}</p>`).join('');
+    contentText.hidden = !contentText.innerHTML.trim();
   }
 
   updateActiveNav();
@@ -376,6 +357,10 @@ function updateActiveNav(){
 
     if (activeSection === 'referensi') {
         navReferensi.classList.add("active");
+    }
+
+    if (activeSection === 'arsip') {
+        navArsip.classList.add("active");
     }
 
     document.querySelectorAll(".sub-nav-item").forEach(item=>{

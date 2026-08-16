@@ -61,6 +61,33 @@ Setiap entri memakai blok berikut (diletakkan **paling atas** file, di atas entr
 
 ## Riwayat Perubahan
 
+## 2026-08-16 — Isi submenu Arsip & Referensi dari berkas KORPUS (data bersama)
+
+**Jenis:** feat + data
+
+**File yang disentuh:**
+- `Assets/data/korpus-data.mjs` (file baru — data bersama korpus arsip & daftar pustaka, diekstrak dari `Assets/Copy of KORPUS DATA KARYA SASTRA .xlsx`)
+- `Periodisasi/periodisasi.js`, `Resepsi/resepsi.js` (import data bersama; submenu Arsip menjadi halaman statis; `specialPages.arsip`; `specialPages.referensi` diisi daftar pustaka; `showSpecialPage` mendukung `html` dan menyembunyikan viewer PDF saat halaman statis)
+- `Periodisasi/periodisasi.css`, `Resepsi/resepsi.css` (hapus `.sub-nav-link` yang mati; tambah gaya `.content-text h3/ul/li` untuk halaman Arsip)
+
+**Detail:**
+- Submenu "Arsip Digital Karya Sastra Jawa Timur" (placeholder 3 tautan `#`) kini membuka halaman statis berisi **137 karya sastra** dari Sheet ARSIP KARYA SASTRA, dikelompokkan per genre: Novel & Prosa (80), Drama (24), Puisi (26), Sastra Klasik & Tradisi (7). **108 entri** memuat tautan eksternal (dibuka di tab baru); sisanya (~29) tampil sebagai teks polos. Tahun hanya tampil bila ada.
+- Halaman "Referensi" kini memuat **145 entri daftar pustaka** (gaya APA, bernomor) dari Sheet DAFTAR PUSTAKA.
+- Data ditaruh di **satu file bersama** `Assets/data/korpus-data.mjs` (modul ES diekspor) agar tidak terduplikasi di dua sub-halaman; `buildArsipHTML()` juga di sana.
+- Pembersihan data: buang spasi berlebih/akhiran, awali tautan telanjang dengan `https://`, hilangkan penanda `-`, rapikan angka tahun (`2020.0` → `2020`), perbaiki mojibake (`Gh�ncaran` → `Ghâncaran`).
+- `buildLinkSubmenu` (kode mati) dan `.sub-nav-link` (CSS mati) dihapus dari kedua sub-halaman.
+- Viewer PDF disembunyikan saat halaman statis (Arsip/Referensi) ditampilkan agar tidak ada PDF lama yang tersisa di atas teks.
+
+**Verifikasi:**
+- `node --check` pada `korpus-data.mjs` lulus; `periodisasi.js`/`resepsi.js` diperiksa via salinan `.mjs` (kini memakai `import`).
+- `buildArsipHTML()` diuji di Node: 4 grup benar, 108 `<a href>`, teks ter-escape (`&` → `&amp;`), `Ghâncaran` tersimpan utuh.
+- Grep memastikan tidak ada sisa `url: "#"` / placeholder "akan ditambahkan" / `buildLinkSubmenu`.
+- Belum: uji manual browser (klik Arsip & Referensi, tema gelap, lebar ≤480px).
+
+**Catatan/risiko:**
+- Pengelompokan genre diinferensikan dari isi sheet (sheet tidak memuat label kelompok).
+- `node --check` langsung pada `.js` kini gagal karena `import`; gunakan salinan `.mjs` atau skrip pemindai lainnya.
+
 ## 2026-08-16 — Rebrand, artikel baru, dan submenu Arsip/Referensi
 
 **Jenis:** feat + data + style + docs
