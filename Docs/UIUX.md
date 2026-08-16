@@ -86,9 +86,14 @@ Track: gradien `--accent → --secondary`, radius penuh. Thumb bulat 26px berges
 
 ### 3.6 Sidebar (sub-halaman)
 - Lebar 240px, collapsed 76px (icon-only) via class `sidebar-collapsed`.
-- Kategori: `nav-parent` dengan chevron yang berotasi 180° saat terbuka.
-- Submenu: `max-height` 0→400px, item bernomor (lingkaran emas) + label.
-- Mobile (≤768px): sidebar meluncur dari kiri + backdrop.
+- Mobile (≤768px): drawer slide-in dengan lebar fluid `min(82vw, 320px)` + backdrop;
+  header branding "Lorong Susastra" tampil di dalam drawer.
+- Kategori: `nav-parent` dengan chevron di kanan (`margin-left:auto`) yang berotasi 180°
+  saat terbuka; touch target menu ≥48px, submenu ≥44px.
+- Submenu: `max-height` 0→400px, item bernomor (lingkaran emas) + label, terindentasi
+  `20px` dengan garis vertikal `border-left` agar tampak bagian dari parent.
+- Safe area: sidebar memakai `env(safe-area-inset-left/bottom)`; meta viewport memakai
+  `viewport-fit=cover`.
 
 ### 3.7 Viewer PDF & Pagination
 - `iframe.pdf-viewer` memenuhi `content-card-body` (tinggi 100vh, scroll internal).
@@ -120,10 +125,11 @@ Track: gradien `--accent → --secondary`, radius penuh. Thumb bulat 26px berges
 | ≤1400px | Container 1100px, hero clamp |
 | ≤1200px | Container 1000px, cover page 190px |
 | ≤992px | Nav links disembunyikan, header 1 kolom (gambar di atas), cover 1 kolom |
-| ≤768px | Accordion vertikal, sidebar slide-in, grid 1 kolom |
-| ≤576px | Tombol full-width, search bar menyempit (input 120px), cover lebih ramping |
-| ≤480px | Search bar tetap tampil (didorong ke kanan via `margin-left:auto`), font turun |
-| ≤420px | Ukuran font turun, nav-actions anchor disembunyikan, sidebar 170px |
+| ≤768px | Accordion vertikal, sidebar slide-in (`min(82vw, 320px)`), grid 1 kolom |
+| ≤576px | Tombol full-width, search bar menyempit, cover lebih ramping |
+| ≤480px | Search bar tetap tampil (didorong ke kanan), font turun, sidebar fluid |
+| ≤420px | Ukuran font turun, nav-actions anchor disembunyikan |
+| ≤400px | Avatar UNAIR disembunyikan, theme-switch & search lebih ramping |
 | ≤380px | Tombol pagination jadi ikon saja |
 | `(hover:none)` | Cursor asli, custom cursor nonaktif |
 

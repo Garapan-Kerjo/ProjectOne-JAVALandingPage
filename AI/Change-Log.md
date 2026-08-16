@@ -61,6 +61,50 @@ Setiap entri memakai blok berikut (diletakkan **paling atas** file, di atas entr
 
 ## Riwayat Perubahan
 
+## 2026-08-16 — Perombakan UI/UX responsive sidebar & topnav (mobile/tablet)
+
+**Jenis:** style
+
+**File yang disentuh:**
+- `Periodisasi/periodisasi.css` (tokens sidebar, indentation submenu, touch target, safe-area, responsive topnav/sidebar, hapus lebar paksa 170px)
+- `Resepsi/resepsi.css` (perubahan identik dengan `periodisasi.css`)
+- `Periodisasi/periodisasi.html` (header branding di sidebar, `viewport-fit=cover`)
+- `Resepsi/resepsi.html` (header branding di sidebar, `viewport-fit=cover`)
+
+**Detail:**
+- **Sidebar lebar fluid** pada mobile: `--sidebar-w-mobile: min(82vw, 320px)` menggantikan
+  `240px` (≤768px) dan `170px` (≤480px) yang terlalu sempit; tidak ada lagi elemen keluar
+  viewport maupun horizontal scroll.
+- **Header branding** "Lorong Susastra" ditambahkan di atas `nav-list` (tampil hanya pada
+  drawer ≤768px), memakai class `.brand-text` yang sudah ada dengan font responsif
+  `clamp(1.05rem, 4vw, 1.2rem)`; dekoratif tanpa link (tanpa perubahan routing/JS).
+- **Spacing konsisten**: hapus `margin-bottom:10px` pada `.nav-item`; gap diatur `.nav-list`
+  (6px). `min-height:48px` untuk menu utama dan `min-height:44px` untuk submenu (touch target).
+- **Indentasi & hierarki submenu**: `.nav-submenu` diberi `padding-left:20px` +
+  `border-left:2px solid var(--border)` sehingga submenu tampak bagian dari parent; dinonaktifkan
+  pada mode collapsed desktop.
+- **Alignment**: chevron diberi `margin-left:auto`; `.nav-label` diberi `min-width:0`;
+  `.nav-label--wrap` `line-height:1.35` agar label multiline (Arsip, Referensi) rapi tanpa
+  menabrak chevron.
+- **Safe area**: `viewport-fit=cover` pada meta viewport; `.sidebar` memakai
+  `env(safe-area-inset-left/bottom)`; `.app-shell` memakai `100dvh` (fallback `100vh`).
+- **Topnav anti-overflow (≤768px)**: `.topnav-left` flex-grow + `min-width:0`, search bar
+  menyusut (`flex:1 1 auto`), brand font `clamp(...)`, hamburger `margin-left` lebih kecil;
+  ≤400px avatar disembunyikan dan theme-switch dikecilkan.
+
+**Verifikasi:**
+- Buka `Periodisasi/periodisasi.html` dan `Resepsi/resepsi.html` di browser; cek tema
+  terang/gelap; uji lebar 320/360/375/390/414/430/480/600/768/820/834/1024 px serta
+  landscape 844×390. Pastikan drawer terbuka, submenu terindentasi, chevron di kanan,
+  sidebar scroll internal, dan tidak ada horizontal scroll.
+
+**Catatan/risiko:**
+- Tidak ada perubahan pada JavaScript, routing, data, maupun mekanisme drawer
+  (`sidebar-collapsed` + backdrop) yang sudah ada.
+- Pada ≤400px input pencarian mengecil (tetap fungsional) dan avatar disembunyikan.
+- Perlu verifikasi visual manual pada perangkat iOS ber-notch karena penambahan
+  `viewport-fit=cover`.
+
 ## 2026-08-16 — Dropdown sidebar Periodisasi/Resepsi dapat scroll dengan tinggi adaptif
 
 **Jenis:** fix
