@@ -77,6 +77,7 @@ menambah/mengubah judul:
 | 2 | `Resepsi/resepsi.js` | `puisiData`, `prosaData` | `{ id: 1, label: "...", pdf: "..." }` |
 | 3 | `script.js` | `periodisasiData`, `resepsiData` | `{ category: "Drama", items: [{ title: "..." }] }` |
 
-> Perhatian khusus: di `script.js`, grup `resepsiData` berlabel "Prosa" berisi judul
-> puisi dan sebaliknya (lihat `Docs/ERD.md` §3.3). Jangan mengubah susunan tanpa
-> instruksi pengguna.
+> Catatan (audit): sebelumnya grup `resepsiData` di `script.js` berlabel "Prosa" justru
+> berisi judul puisi dan sebaliknya; telah **ditukar** sehingga grup "Puisi" berisi judul
+> Puitika (puisi) dan grup "Prosa" berisi judul Potret (prosa) — sinkron dengan
+> `Resepsi/resepsi.js`. Pastikan susunan ini tetap konsisten.

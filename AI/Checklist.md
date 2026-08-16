@@ -12,6 +12,7 @@ Checklist agen AI untuk proyek **LANDINGPAGEJAWA_SP (Lorong Nusantara — Litera
 - [ ] `RULES.md` sudah dibaca
 - [ ] `WORKFLOW.md` sudah dibaca
 - [ ] `Docs/Architecture.md`, `Docs/ERD.md`, `Docs/UIUX.md` sudah dibaca
+- [ ] `Docs/Audit.md` sudah dibaca bila berkaitan dengan perubahan/perbaikan kode
 - [ ] `AI/Coding-Rules.md`, `AI/Master-Rules.md` sudah dibaca
 - [ ] File target sudah dibaca sebelum mengedit
 

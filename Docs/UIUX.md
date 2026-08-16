@@ -75,8 +75,8 @@ Track: gradien `--accent → --secondary`, radius penuh. Thumb bulat 26px berges
 ### 3.4 Custom Cursor
 - Elemen 50×50px, latar `Assets/culture_icon.png`, `rotate(-35deg)`, `z-index 999999`.
 - Lurus posisi via JS (lerp), sembunyi saat mouse masuk PDF, nonaktif di `(hover:none)`.
-- **Catatan bug:** `transform` dideklarasikan dua kali → `translate(-50%,-50%)` tertimpa
-  oleh `rotate(-35deg)`.
+- **Perbaikan (audit):** `transform` kini satu deklarasi gabungan
+  `translate(-50%,-50%) rotate(-35deg)` (sebelumnya `translate` tertimpa `rotate`).
 
 ### 3.5 Accordion (index)
 - Grid 2 kolom (`.accordion-grid`), kartu per kategori (`.accordion-card`).
@@ -121,10 +121,14 @@ Track: gradien `--accent → --secondary`, radius penuh. Thumb bulat 26px berges
 | ≤1200px | Container 1000px, cover page 190px |
 | ≤992px | Nav links disembunyikan, header 1 kolom (gambar di atas), cover 1 kolom |
 | ≤768px | Accordion vertikal, sidebar slide-in, grid 1 kolom |
-| ≤576px | Tombol full-width, search tersembunyi di sub-halaman, cover lebih ramping |
+| ≤576px | Tombol full-width, search bar menyempit (input 120px), cover lebih ramping |
+| ≤480px | Search bar tetap tampil (didorong ke kanan via `margin-left:auto`), font turun |
 | ≤420px | Ukuran font turun, nav-actions anchor disembunyikan, sidebar 170px |
 | ≤380px | Tombol pagination jadi ikon saja |
 | `(hover:none)` | Cursor asli, custom cursor nonaktif |
+
+> **Anti-FOUC:** ketiga halaman menetapkan `data-theme` via snippet inline di `<head>`
+> sebelum CSS dimuat, sehingga reload tidak menampilkan flash warna yang salah.
 
 ## 6. Aksesibilitas
 

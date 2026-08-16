@@ -43,6 +43,7 @@ Jika konteks agen terbatas, **minimal baca** `AGENTS.md`, `CONTEXT.md`, `RULES.m
 - `Security.md` — pertimbangan keamanan
 - `Testing.md` — rencana & checklist pengujian
 - `Content-Structure.md` — struktur konten artikel & cara menambah artikel
+- `Audit.md` — laporan audit menyeluruh beserta status perbaikan
 - `Glossary.md` — istilah sastra & teknis
 - `Deployment.md` — cara men-deploy / menjalankan website
 

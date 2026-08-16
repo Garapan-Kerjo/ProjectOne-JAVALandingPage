@@ -3,6 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Lorong Nusantara | Resepsi — pendekatan yang mengkaji penerimaan dan pemaknaan karya sastra Jawa Timur oleh pembaca.">
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem("theme");
+      document.documentElement.setAttribute("data-theme", t || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"));
+    } catch (e) {}
+  })();
+</script>
 <title>Lorong Nusantara | Resepsi</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" />
 <link rel="stylesheet" href="resepsi.css">
@@ -19,7 +28,7 @@
         <span class="brand-text">Lorong <strong>Nusantara</strong></span>
       </a>
 
-      <button class="hamburger-btn" id="hamburgerBtn" aria-label="Buka/tutup sidebar" aria-expanded="false ">
+      <button class="hamburger-btn" id="hamburgerBtn" aria-label="Buka/tutup sidebar" aria-expanded="false">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
           <line x1="3" y1="6" x2="21" y2="6"></line>
           <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -28,7 +37,7 @@
       </button>
 
       <div class="search-bar">
-        <input type="text" placeholder="Telusuri...">
+        <input type="text" placeholder="Telusuri..." aria-label="Cari artikel">
         <button class="search-btn" aria-label="Cari">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
             <circle cx="11" cy="11" r="7"></circle>
@@ -94,7 +103,7 @@
     </nav>
 
     <div class="sidebar-footer">
-      <a href="..\Periodisasi\periodisasi.html" class="nav-item" id="navResepsi">
+      <a href="../Periodisasi/periodisasi.html" class="nav-item" id="navResepsi">
         <span class="nav-icon">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="#000000" id="Arrow-Line-Right-Bold--Streamline-Phosphor" height="16" width="16">
             <path d="M12.5600125 7.3599875c0.35475625 0.353525 0.35475625 0.9280125 0 1.2815375l-5.4276875 5.42769375c-0.49326875 0.4932625 -1.33553125 0.267575 -1.51608125 -0.40623125 -0.0837875 -0.31271875 0.0056125 -0.6463875 0.2345375 -0.8753125l3.8830625 -3.8830625H1.0646125c-0.69636875 -0.000575 -1.130975 -0.7547875 -0.7822875 -1.35756875 0.16155625 -0.27929375 0.4596375 -0.4513875 0.7822875 -0.45165625h8.66923125l-3.88155 -3.8830625c-0.49326875 -0.49326875 -0.26758125 -1.33553125 0.40623125 -1.51608125 0.31271875 -0.0837875 0.64638125 0.00561875 0.87530625 0.2345375Zm2.375375 -6.89845c-0.499625 -0.00001875 -0.90461875 0.40499375 -0.90461875 0.90461875v13.2676875c0.00058125 0.696375 0.7547875 1.13098125 1.357575 0.78229375 0.2792875 -0.16155625 0.4513875 -0.4596375 0.45165625 -0.78229375V1.36615625c0 -0.49959375 -0.405025 -0.90459375 -0.90461875 -0.90461875Z" stroke-width="0.0625"></path>
@@ -121,7 +130,7 @@
   <main class="main-content" id="mainContent">
 
     <div class="page-header">
-      <h1 class="page-title" id="pageTitle">RESEPSI ABCDEFGHIJK</h1>
+      <h1 class="page-title" id="pageTitle">RESEPSI</h1>
       <p class="breadcrumb" id="breadcrumb">Resepsi / <span id="breadcrumbCurrent">Konten 1</span></p>
     </div>
 
@@ -141,6 +150,7 @@
             <iframe
                 id="pdfViewer"
                 class="pdf-viewer"
+                title="Viewer PDF artikel"
                 frameborder="0">
             </iframe>
         </div>

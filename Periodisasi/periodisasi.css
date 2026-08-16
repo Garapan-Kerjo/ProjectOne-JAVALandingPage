@@ -100,8 +100,7 @@ body{
     background: url("../Assets/culture_icon.png") center center/contain no-repeat;
     pointer-events: none;
     z-index: 999999;
-    transform: translate(-50%, -50%);
-    transform: rotate(-35deg);
+    transform: translate(-50%, -50%) rotate(-35deg);
 }
 
 a { 
@@ -577,7 +576,7 @@ a {
     height: 18px;
   }
   .search-bar {
-    display: none; /* sembunyikan search di layar sangat kecil, bisa diaktifkan via tombol */
+    margin-left: auto;
   }
   .topnav-right {
     gap: 8px;

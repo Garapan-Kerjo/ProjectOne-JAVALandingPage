@@ -85,7 +85,6 @@ const navProsa = document.getElementById('navProsa');
 const navPuisi = document.getElementById('navPuisi');
 const prosaSubmenu = document.getElementById("prosaSubmenu");
 const puisiSubmenu = document.getElementById("puisiSubmenu");
-const navPeriodisasi = document.getElementById('navPeriodisasi');
 const navMainPage = document.getElementById('navMainPage');
 let currentData = puisiData;
 
@@ -246,7 +245,11 @@ function showSpecialPage(key){
   pageTitle.textContent = data.title;
   breadcrumb.textContent = data.breadcrumb;
   contentCardTitle.textContent = data.cardTitle;
-  contentText.innerHTML = data.paragraphs.map(p => `<p>${p}</p>`).join('');
+
+  const contentText = document.getElementById("contentText");
+  if (contentText) {
+    contentText.innerHTML = (data.paragraphs || []).map(p => `<p>${p}</p>`).join('');
+  }
 
   paginationBar.style.display = 'none';
 
@@ -372,8 +375,6 @@ const searchInput = document.querySelector(".search-bar input");
 const searchBtn = document.querySelector(".search-btn");
 
 const allData = [
-    { category: "drama", data: dramaData },
-    { category: "komunitas", data: komunitasData },
     { category: "prosa", data: prosaData },
     { category: "puisi", data: puisiData }
 ];

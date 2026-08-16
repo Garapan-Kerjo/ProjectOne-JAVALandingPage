@@ -1,0 +1,17 @@
+# Log & cache
+*.log
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Temp
+tmp/
+*.tmp
+
+# Folder build (tidak digunakan saat ini, cadangan)
+build/
+dist/

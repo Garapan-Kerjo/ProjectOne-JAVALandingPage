@@ -111,20 +111,19 @@ Resepsi/resepsi.html?category=puisi&id=2
    file JS dengan array data.
 2. **Relatif path sangat penting.** Sub-halaman di folder `Periodisasi/` dan `Resepsi/`
    memakai `../` untuk mengakses `Assets/` dan `Extension/`.
-3. **Peringatan yang belum diperbaiki** (jangan dianggap sebagai standar):
-   - `resepsi.js` mereferensikan `dramaData`/`komunitasData` di fungsi `searchArticle`
-     padahal variabel itu tidak ada di file tersebut (bug saat pencarian).
-   - `showSpecialPage()` mereferensikan elemen `contentText` yang tidak ada di HTML
-     (akan error jika dipanggil).
-   - `index.html` memakai `lang="en"` meski konten berbahasa Indonesia.
-   - `resepsi.html` memuat judul placeholder "RESEPSI ABCDEFGHIJK".
-   - Aturan `cursor` di CSS mendeklarasikan `transform` dua kali (yang kedua menimpa).
-   - Tag `<image>` (tidak valid) dipakai untuk avatar anggota.
-   - Kode unggah foto anggota mereferensikan `fileInput-i`/`avatar-i` yang tidak ada.
+3. **Perilaku yang telah diperbaiki (lihat `Docs/Audit.md`)** — jangan dikenalkan kembali:
+   - Pencarian di `resepsi.js` memakai `allData` berisi `prosaData` dan `puisiData` saja.
+   - `showSpecialPage()` memakai null-guard pada `contentText` sebelum mengisi paragraf.
+   - `index.html` memakai `lang="id"`; `resepsi.html` memakai judul "RESEPSI".
+   - Aturan `.cursor` memakai satu `transform` gabungan (`translate` + `rotate`).
+   - Tag `<image>` tidak dipakai; avatar memakai `<img ... alt="" />`.
+   - Tidak ada blok `.pricing`, `.panel.dark-mode`, atau kode unggah foto anggota.
 4. **Jangan mengubah** `Extension/` dan `Assets/Artikel Web/*.pdf`.
 
 ## 9. Riwayat Singkat (Git)
 
-Repo berada di branch `main`, sinkron dengan `origin/main`. Commit terakhir bernama
-"Change commit point 1-3". Riwayat menunjukkan iterasi bertahap: perbaikan kecil,
-perombakan viewer PDF, pembaruan artikel, dan penyempurnaan responsif.
+Repo berada di branch `main`. Riwayat menunjukkan iterasi bertahap: perbaikan kecil,
+perombakan viewer PDF, pembaruan artikel, dan penyempurnaan responsif. Komit terakhir
+"Fundamental has created" menambahkan seluruh dokumentasi (file `AGENTS.md`, `CONTEXT.md`,
+`RULES.md`, `WORKFLOW.md`, `Docs/`, `AI/`). Eksekusi audit (perbaikan kode, penyesuaian
+dokumentasi, `Docs/Audit.md`, `README.md`, `.gitignore`) menyusul sebagai komit baru.

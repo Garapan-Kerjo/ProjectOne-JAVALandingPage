@@ -99,8 +99,8 @@ Struktur:
 - Input di topbar; tekan tombol/Enter → `searchArticle(keyword)`.
 - Mencari judul (case-insensitive) di semua kategori; jika ketemu → buka konten;
   jika tidak → `alert("Artikel tidak ditemukan")`.
-- **Bug bawaan:** di `resepsi.js`, `allData` menyertakan `dramaData`/`komunitasData`
-  yang tidak terdefinisi → pencarian akan error (lihat `Testing.md` §6).
+- **Perbaikan (audit):** `allData` di `resepsi.js` hanya memuat `prosaData` & `puisiData`
+  (sebelumnya ikut mereferensikan `dramaData`/`komunitasData` yang tidak ada → error).
 
 ### FR-8 Popup Sambutan
 - Muncul 1 detik setelah DOM ready (klass `show` pada `#welcome-popup`).
@@ -109,18 +109,22 @@ Struktur:
 ### FR-9 Daftar Anggota (cover page)
 - `membersData` (4 item placeholder) dirender ke `#memberList` sebagai `.member`
   (avatar + nama + NIM).
-- **Bug bawaan:** loop kedua mereferensikan `fileInput-i`/`avatar-i` yang tidak ada.
+- **Perbaikan (audit):** blok upload foto anggota (`fileInput-i`/`avatar-i`) yang
+  melempar `TypeError` telah dihapus dari `script.js`.
 
 ## 5. Spesifikasi Non-Fungsional
 
 - **NFR-1 Kompatibilitas:** Chrome, Firefox, Edge, Safari modern. ES Modules butuh
   server HTTP atau live server (tidak disarankan via `file://` untuk sub-halaman
   karena kebijakan module CORS).
-- **NFR-2 Responsif:** breakpoint `1400/1200/992/768/576/420px` + `(hover:none)`.
+- **NFR-2 Responsif:** breakpoint `1400/1200/992/768/576/420px` + `(hover:none)`; search bar
+  tetap ditampilkan pada layar kecil (aturan `display:none` pada ≤480px telah dihapus).
 - **NFR-3 Konsistensi tema:** token CSS didefinisikan ulang per stylesheet
   (`style.css`, `periodisasi.css`, `resepsi.css`), nilai harus identik.
 - **NFR-4 URL statis:** struktur path relatif tidak boleh berubah kecuali semua
-  referensi diperbarui.
+  referensi diperbarui. Jangan memakai backslash (`\`) pada atribut href.
+- **NFR-5 Anti-FOUC:** ketiga halaman memuat snippet inline di `<head>` yang menetapkan
+  `data-theme` sebelum CSS dimuat, untuk mencegah kedipan tema saat reload.
 
 ## 6. Atribut Kualitas
 

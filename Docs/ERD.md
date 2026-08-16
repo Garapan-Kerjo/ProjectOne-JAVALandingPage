@@ -100,10 +100,12 @@ Relasi:
 
 ### 3.3 `script.js` (accordion index — ringkasan)
 - `periodisasiData`: Drama (3), Komunitas (1), Prosa (4), Puisi (2).
-- `resepsiData`: Prosa (2), Puisi (2) — **perhatikan**:
-  - Di index, kategori resepsi bernama "Prosa" berisi 2 judul puisi & "Puisi" berisi 2
-    judul prosa (susunan ini berbeda dari `resepsi.js`; label kategori di index terlihat
-    terbalik dengan isinya — jangan "diperbaiki" tanpa instruksi pengguna).
+- `resepsiData`: Prosa (2), Puisi (2).
+  - **Catatan (telah diperbaiki saat audit):** sebelumnya grup "Prosa" di index berisi
+    judul Puitika (puisi) dan grup "Puisi" berisi judul Potret (prosa) — terbalik.
+    Kini grup **"Prosa" berisi 2 judul Potret** dan grup **"Puisi" berisi 2 judul
+    Puitika**, sinkron dengan `Resepsi/resepsi.js` dan pemetaan
+    `?category=puisi|prosa&id=n`.
 
 ## 4. Penyimpanan File (Direktori)
 

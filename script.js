@@ -87,7 +87,7 @@ function setupGroupedAccordion(containerId, groupedData) {
   const container = document.getElementById(containerId);
   if (!container) return;
 
-  let linkHref = "Artikel/detail.html";
+  let linkHref = "";
   if (containerId.includes("Periodisasi")) {
     linkHref = "Periodisasi/periodisasi.html";
   } else if (containerId.includes("Resepsi")) {
@@ -150,9 +150,9 @@ const periodisasiData = [
   {
     category: "Drama",
     items: [
-      { title: "Penyusunan Sejarah Dramaturgi UNAIR" },
-      { title: "Ruang Sejarah/Kota dalam Naskah Drama Jawa Timur" },
-      { title: "Sejarah Dramaturgi dalam Universitas Airlangga dengan Menerapkan Metode Periodisasi" },
+      { title: "Sejarah dalam Naskah Drama Jawa Timur Melalui Metode Periodisasi" },
+      { title: "Sejarah Dramaturgi dalam Universitas Airlangga" },
+      { title: "Sejarah Dramaturgi UNAIR" },
     ],
   },
   {
@@ -167,13 +167,13 @@ const periodisasiData = [
       { title: "Digitalisasi Sejarah Prosa Jawa Timur" },
       { title: "Inventarisasi dan Digitalisasi Karya-karya Pramoedya Ananta Toer" },
       { title: "Inventarisasi dan Digitalisasi Sastra Cina Peranakan" },
-      { title: "Representasi Kota dalam Prosa Jawa Timur Melalui Kajian Sejarah SastraBerdasarkan Periodisasi" },
+      { title: "Representasi Kota dalam Prosa Jawa Timur Melalui Kajian Sejarah Sastra Berdasarkan Periodisasi" },
     ],
   },
   {
     category: "Puisi",
     items: [
-      { title: "Digitalisasi Puitika Sejarah/Kota dalam Khazanah Puisi Jawa TimurFragmen Kota dan Sejarah dalam Tubuh Sastra: Periodisasi Puisi di Jawa Timur (Tahun 2000-Sekarang)" },
+      { title: "Fragmen Kota dan Sejarah dalam Tubuh Sastra: Periodisasi Puisi di Jawa Timur (Tahun 2000-Sekarang)" },
       { title: "Perkembangan Lanskap Kota dan Sejarah Jawa dalam Puisi (1970-Modern): Telaah Kronologis dan Karakteristik Estetika Zaman" },
     ],
   },
@@ -181,14 +181,14 @@ const periodisasiData = [
 
 const resepsiData = [
   {
-    category: "Prosa",
+    category: "Puisi",
     items: [
       { title: "Puitika Ruang dalam Khazanah Puisi Jawa Timur dengan Memanfaatkan Metode Resepsi" },
       { title: "Digitalisasi Puitika Kota/Sejarah dalam Khazanah Puisi Jawa Timur dengan Memanfaatkan Metode Resepsi Pada Karya Aming Aminoedhin" },
     ],
   },
   {
-    category: "Puisi",
+    category: "Prosa",
     items: [
       { title: "Potret Sosial Budaya dalam Prosa Jawa Timur: Metode Resepsi Sastra" },
       { title: "Potret Dinamika Sejarah/Kota dalam Khazanah Prosa Jawa Timur" },
@@ -215,7 +215,7 @@ if (memberList) {
     row.className = "member";
 
     row.innerHTML = `
-      <image class="avatar" src="Assets/logo-web.png"></image>
+      <img class="avatar" src="Assets/logo-web.png" alt="" />
       <div class="member-text">
         <p class="member-name">${data.name}</p>
         <p class="member-nim">${data.nim}</p>
@@ -223,18 +223,5 @@ if (memberList) {
     `;
 
     memberList.appendChild(row);
-  });
-
-  membersData.forEach((_, i) => {
-    const input = document.getElementById(`fileInput-${i}`);
-    const avatar = document.getElementById(`avatar-${i}`);
-
-    input.addEventListener("change", (e) => {
-      const file = e.target.files[0];
-      if (file) {
-        const imageURL = URL.createObjectURL(file);
-        avatar.style.backgroundImage = `url('${imageURL}')`;
-      }
-    });
   });
 }

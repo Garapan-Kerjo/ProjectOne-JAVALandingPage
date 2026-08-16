@@ -90,19 +90,24 @@ Rencana pengujian untuk **LANDINGPAGEJAWA_SP (Lorong Nusantara — Litera Jatim)
 - Tidak ada perubahan pada `Extension/`.
 - Perubahan fungsional dicatat di `AI/Change-Log.md`.
 
-## 6. Daftar Bug yang Diketahui (Belum Diperbaiki)
+## 6. Riwayat Bug yang Telah Diperbaiki
 
-| # | Lokasi | Gejala | Catatan |
-|---|--------|--------|---------|
-| 1 | `Resepsi/resepsi.js` `searchArticle` | `ReferenceError: dramaData is not defined` saat mencari | `allData` menyalin blok dari `periodisasi.js` |
-| 2 | `Periodisasi/periodisasi.js` & `Resepsi/resepsi.js` `showSpecialPage` | Akses `contentText.innerHTML` yang tidak ada → error | Dipanggil saat klik brand |
-| 3 | `index.html` | `lang="en"` padahal konten berbahasa Indonesia | Perbaiki bila diminta |
-| 4 | `Resepsi/resepsi.html` | Judul placeholder "RESEPSI ABCDEFGHIJK" | Data halaman |
-| 5 | `style.css` `.cursor` | `transform` dideklarasikan dua kali; `translate(-50%,-50%)` tertimpa `rotate(-35deg)` | Cursor agak bergeser dari titik klik |
-| 6 | `script.js` cover page | Loop kedua mereferensikan `fileInput-i`/`avatar-i` yang tidak ada di DOM | Tidak crash karena elemen tak ditemukan (`.addEventListener` pada null → error bila `memberList` ada) |
-| 7 | `resepsi.js` | `categoryMap` hanya berisi `puisi` & `prosa`; bila kategori di URL adalah slug lain → fallback default | Perilaku sesuai desain |
-| 8 | CSS duplikat | `style.css` mendefinisikan `:root` 3× dan `body.dark-mode` beberapa kali; `periodisasi.css`/`resepsi.css` identik 100% | Pengulangan disengaja per file; jaga sinkron |
-| 9 | `resepsi.html` | `aria-expanded="false "` (spasi) pada hamburger | Kosmetik |
+Semua bug di bawah ditemukan saat audit (lihat `Docs/Audit.md`) dan telah **diperbaiki**.
+Jangan mengenalkan kembali perilaku berikut.
 
-> Jangan memperbaiki bug di atas **tanpa diminta pengguna**. Jika diminta, catat di
-> `AI/Change-Log.md`.
+| # | Lokasi | Gejala | Perbaikan |
+|---|--------|--------|-----------|
+| 1 | `Resepsi/resepsi.js` `searchArticle` | `ReferenceError: dramaData is not defined` saat mencari | `allData` hanya memuat `prosaData` & `puisiData` |
+| 2 | `Periodisasi/periodisasi.js` & `Resepsi/resepsi.js` `showSpecialPage` | Akses `contentText.innerHTML` yang tidak ada → error | Null-guard + fallback `(paragraphs || [])` |
+| 3 | `index.html` | `lang="en"` padahal konten berbahasa Indonesia | `lang="id"` |
+| 4 | `Resepsi/resepsi.html` | Judul placeholder "RESEPSI ABCDEFGHIJK" | "RESEPSI" |
+| 5 | `style.css` `.cursor` (3 stylesheet) | `transform` dideklarasikan dua kali; `translate` tertimpa `rotate` | Satu `transform: translate(-50%,-50%) rotate(-35deg)` |
+| 6 | `script.js` cover page | Loop upload avatar mereferensikan `fileInput-i`/`avatar-i` yang tidak ada di DOM → `TypeError` mematikan seluruh script | Blok dihapus |
+| 7 | `script.js` `resepsiData` | Grup "Prosa" berisi judul puisi & sebaliknya | Grup ditukar agar sesuai kategori |
+| 8 | `script.js` judul artikel | `"SastraBerdasarkan"` tanpa spasi; judul Puisi item 1 terpotong; judul Drama tidak sinkron | Diberi spasi, digabung, disinkronkan ke `periodisasi.js` |
+| 9 | CSS duplikat | `periodisasi.css`/`resepsi.css` "identik 100%" | Faktanya berbeda satu spasi (`overflow:hidden` vs `overflow: hidden`); kini dikonfirmasi identik |
+| 10 | `resepsi.html` | `aria-expanded="false "` (spasi) pada hamburger | `"false"` |
+| 11 | CSS *dead code* | `.pricing` (light/dark/responsif) & `.panel.dark-mode` tidak dipakai | Dihapus dari `style.css` |
+| 12 | `periodisasi.css`/`resepsi.css` | `.search-bar` `display:none` di ≤480px mematikan pencarian | Ditampilkan (`margin-left:auto`) |
+
+> Semua perbaikan fungsional tercatat di `AI/Change-Log.md`.

@@ -61,4 +61,29 @@ Setiap entri memakai blok berikut (diletakkan **paling atas** file, di atas entr
 
 ## Riwayat Perubahan
 
-_Entri-entri di bawah ini diisi setiap kali terjadi perubahan. Dimulai kosong._
+## 2026-08-16 — Eksekusi Audit Menyeluruh (perbaikan kode + penyesuaian dokumentasi)
+
+**Jenis:** fix + docs + chore
+
+**File yang disentuh:**
+- `script.js` (hapus blok upload avatar; `linkHref` default dihapus; `<image>`→`<img>`; sinkron judul Drama/Prosa/Puisi; tukar grup `resepsiData`)
+- `Periodisasi/periodisasi.js` (hapus `navResepsi` mati; null-guard `contentText` di `showSpecialPage`)
+- `Resepsi/resepsi.js` (hapus `navPeriodisasi` mati; `allData` hanya `prosa`/`puisi`; null-guard `contentText`)
+- `index.html`, `Periodisasi/periodisasi.html`, `Resepsi/resepsi.html` (lang id, meta description, backslash→slash, aria/title/placeholder, snippet anti-FOUC)
+- `style.css`, `Periodisasi/periodisasi.css`, `Resepsi/resepsi.css` (gabung `transform` cursor; hapus `.pricing`/`.panel.dark-mode`; tampilkan search ≤480px)
+- `README.md`, `.gitignore` (file baru)
+- `Docs/Audit.md` (file baru, laporan audit)
+- `CONTEXT.md`, `Docs/Testing.md`, `Docs/ERD.md`, `Docs/SRS.md`, `Docs/UIUX.md`, `Docs/Content-Structure.md`, `AGENTS.md`, `AI/Checklist.md` (penyesuaian dokumentasi)
+
+**Detail:**
+- Memperbaiki semua temuan audit: bug pencarian Resepsi (`ReferenceError`), error `showSpecialPage`, crash upload avatar, data kategori Resepsi tertukar, judul artikel tidak sinkron/terpotong, path backslash, atribut HTML, `transform` CSS ganda, *dead code* CSS, search tersembunyi ≤480px, dan penambahan meta/aria/anti-FOUC.
+- Menciptakan laporan audit `Docs/Audit.md` serta `README.md` dan `.gitignore`.
+
+**Verifikasi:**
+- `node --check` untuk `script.js`, `Periodisasi/periodisasi.js`, `Resepsi/resepsi.js` lulus.
+- Grep memastikan sisa referensi `dramaData|komunitasData` (di `resepsi.js`), `contentText`, `\.pricing`, `panel\.dark-mode`, `Artikel/detail.html` hilang dari berkas yang diperbaiki.
+- Uji manual menyusul: klik brand, pencarian, tema+FOUC, resolusi ≤480px.
+
+**Catatan/risiko:**
+- `LICENSE` belum dibuat — menunggu keputusan jenis lisensi pemilik proyek (dicatat di `Docs/Audit.md` §G).
+- `periodisasi.css`/`resepsi.css` sengaja dibiarkan terpisah (beda hanya whitespace).

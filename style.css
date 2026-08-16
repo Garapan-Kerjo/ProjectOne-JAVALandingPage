@@ -79,8 +79,7 @@ html {
     top: 0;
     pointer-events: none;
     z-index: 999999;
-    transform: translate(-50%, -50%);
-    transform: rotate(-35deg);
+    transform: translate(-50%, -50%) rotate(-35deg);
 }
 
 img {
@@ -400,78 +399,6 @@ section .header {
   font-style: italic;
 }
 
-.pricing {
-  margin-top: 4rem;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-}
-
-.pricing .card {
-  padding: 3rem 2rem;
-  background-color: var(--surface);
-  display: flex;
-  flex-direction: column;
-  border: 2px solid transparent;
-  border-radius: 15px;
-  transition: all 0.3s ease;
-}
-
-.pricing .card:hover {
-  background-color: var(--surface);
-  border-color: var(--secondary);
-}
-
-.pricing .card .content {
-  flex: 1;
-  margin-bottom: 2rem;
-}
-
-.pricing .card h4 {
-  margin-bottom: 1rem;
-  color: var(--text);
-  font-size: 1.2rem;
-  font-weight: 500;
-}
-
-.pricing .card h3 {
-  color: var(--text);
-  padding-bottom: 1rem;
-  margin-bottom: 2rem;
-  font-size: 2rem;
-  font-weight: 600;
-  border-bottom: 2px dashed var(--border);
-}
-
-.pricing .card p {
-  color: var(--text);
-  margin-bottom: 0.75rem;
-}
-
-.pricing .card p i {
-  color: var(--text-secondary);
-  font-size: 1.2rem;
-  margin-right: 0.3rem;
-}
-
-.pricing .card .tnc {
-  color: var(--text-secondary);
-  margin-top: 1rem;
-  font-size: 0.9rem;
-  font-style: italic;
-}
-
-.pricing .card button {
-  color: var(--text);
-  background-color: transparent;
-  border: 2px solid var(--text);
-}
-
-.pricing .card button:hover {
-  background-color: var(--secondary);
-  border-color: var(--secondary);
-}
-
 footer {
   width: 100%;
   max-width: 1200px;
@@ -643,40 +570,6 @@ body.dark-mode .features .card a:hover {
 
 body.dark-mode .sub-header {
   color: var(--text-secondary);
-}
-
-body.dark-mode .pricing .card {
-  background-color: var(--surface);
-  border-color: transparent;
-}
-
-body.dark-mode .pricing .card:hover {
-  background-color: var(--surface);
-  border-color: var(--secondary);
-}
-
-body.dark-mode .pricing .card h4,
-body.dark-mode .pricing .card h3,
-body.dark-mode .pricing .card p {
-  color: var(--text);
-}
-
-body.dark-mode .pricing .card h3 {
-  border-bottom-color: var(--border);
-}
-
-body.dark-mode .pricing .card p i {
-  color: var(--text-secondary);
-}
-
-body.dark-mode .pricing .card button {
-  color: var(--text);
-  border-color: var(--border);
-}
-
-body.dark-mode .pricing .card button:hover {
-  color: var(--surface);
-  border-color: var(--secondary);
 }
 
 body.dark-mode footer .cover-page {
@@ -1215,10 +1108,6 @@ header .image img{
     gap:1.5rem;
 }
 
-.pricing{
-    gap:1.5rem;
-}
-
 .cover-page{
     grid-template-columns:190px 1fr;
 }
@@ -1290,10 +1179,6 @@ header .content p{
 
 .features{
     grid-template-columns:repeat(2,1fr);
-}
-
-.pricing{
-    grid-template-columns:1fr;
 }
 
 .accordion{
@@ -1383,14 +1268,6 @@ header .image img{
     font-size:1.15rem;
 }
 
-.pricing{
-    margin-top:2rem;
-}
-
-.pricing .card{
-    padding:2rem;
-}
-
 .popup-content{
     padding:2rem 1.5rem;
 }
@@ -1424,10 +1301,6 @@ header .image img{
     border-right:none;
     border-bottom: 1px solid var(--border-color);
     box-shadow: 18px 0 35px rgba(16, 24, 40, 0.12);
-}
-
-.panel.dark-mode {
-  box-shadow: 18px 0 35px rgba(0, 0, 0, 0.35);
 }
 
 .panel:last-child {
@@ -1523,14 +1396,6 @@ header .image img{
 
 .features .card h4{
     font-size:1.05rem;
-}
-
-.pricing .card{
-    padding:1.8rem 1.5rem;
-}
-
-.pricing .card h3{
-    font-size:1.7rem;
 }
 
 .panel-text {
