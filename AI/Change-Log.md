@@ -61,6 +61,30 @@ Setiap entri memakai blok berikut (diletakkan **paling atas** file, di atas entr
 
 ## Riwayat Perubahan
 
+## 2026-08-16 — Styling halaman Referensi/Arsip auto-fit di semua layar (mobile, iPad, tablet)
+
+**Jenis:** fix + style
+
+**File yang disentuh:**
+- `Periodisasi/periodisasi.css` (mode teks `.content-card-body`, padding mobile, breakpoint tablet)
+- `Resepsi/resepsi.css` (perubahan identik dengan `periodisasi.css`)
+
+**Detail:**
+- Halaman statis Referensi/Arsip (`#contentText`) sebelumnya terpotong/tidak bisa scroll karena `.content-card-body` memakai flex-center + `height:100vh` (mode PDF) dan `overflow:hidden` di ≤480px.
+- Tambah aturan `.content-card-body:has(.content-text:not([hidden]))` agar saat konten teks tampil, kartu berpindah ke alur natural (`display:block`, `height:auto`, `overflow:visible`, `padding:0`); teks dibatasi `max-width:900px` dan ditengahkan.
+- `overflow-wrap:break-word`/`word-break:break-word` pada `p/li/a` agar URL panjang tidak menimbulkan scroll horizontal di layar kecil.
+- Padding konten teks diperkecil di ≤480px (`1.25rem 1rem`).
+- Breakpoint tablet/iPad baru `@media (max-width:1024px)` (padding `.main-content`, ukuran `.page-title`, `.content-card-heading`) agar iPad landscape/tablet menyesuaikan.
+
+**Verifikasi:**
+- Pengecekan kurung kurawal CSS: 152 `{` = 152 `}` di kedua file; kedua file identik kecuali whitespace yang sudah ada sebelumnya (`overflow:hidden` vs `overflow: hidden`).
+- Server lokal `python -m http.server 8000` — kedua halaman merespons 200.
+- Belum: uji manual visual di browser (Referensi → Daftar Pustaka & Arsip, lebar 1280/1024/768/576/480/420/380px, tema terang & gelap).
+
+**Catatan/risiko:**
+- Memakai selektor `:has()` (didukung Chrome 105+, Edge 105+, Safari 15.4+, Firefox 121+).
+- Perilaku sidebar mobile tidak diubah (sesuai permintaan: hanya konten auto-fit).
+
 ## 2026-08-16 — Isi submenu Arsip & Referensi dari berkas KORPUS (data bersama)
 
 **Jenis:** feat + data
