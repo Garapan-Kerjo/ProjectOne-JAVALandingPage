@@ -316,6 +316,11 @@ export const daftarPuisiMahasiswi = [
   { komunitas: "Selasar Lazuardi", year: "2026", url: "https://www.instagram.com/selasarlazuardi?igsh=Nng0dDViY2ZkMTFp" },
 ];
 
+export const daftarPuisiMahasiswa = [
+  { komunitas: "Komunitas A", year: "2023", url: "#" },
+  { komunitas: "Komunitas B", year: "2024", url: "#" },
+];
+
 function escapeHTML(value) {
   return String(value)
     .replace(/&/g, "&amp;")

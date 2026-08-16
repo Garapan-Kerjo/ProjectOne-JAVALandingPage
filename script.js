@@ -1,4 +1,4 @@
-import { korpusArsip, daftarPustaka, daftarPuisiMahasiswi } from "./Assets/data/korpus-data.mjs";
+import { korpusArsip, daftarPustaka, daftarPuisiMahasiswi, daftarPuisiMahasiswa } from "./Assets/data/korpus-data.mjs";
 
 const cursor = document.querySelector(".cursor");
 
@@ -280,12 +280,6 @@ const arsipPanels = korpusArsip.map((group) => ({
   contentHTML: "<ul class=\"list-content\">" + group.items.map(buildArsipItemHTML).join("") + "</ul>"
 }));
 
-arsipPanels.push({
-  title: "Daftar Puisi Mahasiswi",
-  count: daftarPuisiMahasiswi.length,
-  contentHTML: "<ul class=\"list-content\">" + daftarPuisiMahasiswi.map(buildPuisiItemHTML).join("") + "</ul>"
-});
-
 setupListAccordion("accordionArsip", arsipPanels, 0);
 
 const referensiPanel = {
@@ -295,6 +289,21 @@ const referensiPanel = {
 };
 
 setupListAccordion("accordionReferensi", [referensiPanel], 0);
+
+const puisiPanels = [
+  {
+    title: "Daftar Puisi Mahasiswi",
+    count: daftarPuisiMahasiswi.length,
+    contentHTML: "<ul class=\"list-content\">" + daftarPuisiMahasiswi.map(buildPuisiItemHTML).join("") + "</ul>"
+  },
+  {
+    title: "Daftar Puisi Mahasiswa",
+    count: daftarPuisiMahasiswa.length,
+    contentHTML: "<ul class=\"list-content\">" + daftarPuisiMahasiswa.map(buildPuisiItemHTML).join("") + "</ul>"
+  }
+];
+
+setupListAccordion("accordionPuisi", puisiPanels, 0);
 
 // Cover Page Logic
 const membersData = [

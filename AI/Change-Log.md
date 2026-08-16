@@ -9,6 +9,15 @@ Format baku untuk mencatat perubahan pada proyek **LANDINGPAGEJAWA_SP
 
 Setiap entri memakai blok berikut (diletakkan **paling atas** file, di atas entri lama):
 
+## 2026-08-17 — Penambahan section Daftar Puisi
+- **Tujuan:** Memisahkan data puisi dari section Arsip, serta membuat section/accordion baru di bawah Referensi khusus untuk Daftar Puisi (termasuk Puisi Mahasiswi & Puisi Mahasiswa).
+- **File diubah:** 
+  - `index.html` (menambahkan `<section id="puisi">` beserta elemen `div#accordionPuisi` tepat di bawah section Referensi).
+  - `Assets/data/korpus-data.mjs` (menambahkan export data `daftarPuisiMahasiswa` yang berisi 2 data placeholder).
+  - `script.js` (mengimpor data baru, mengeluarkan card Puisi Mahasiswi dari `arsipPanels`, dan merender card gabungan untuk `accordionPuisi`).
+- **Verifikasi:**
+  - Manual: Buka halaman utama (`index.html`), scroll ke bagian bawah setelah Referensi, lalu pastikan section "DAFTAR PUISI" muncul dengan dua dropdown: "Daftar Puisi Mahasiswi" dan "Daftar Puisi Mahasiswa".
+
 ## 2026-08-17 — Perbaikan posisi elemen pada accordion Arsip & Referensi
 - **Tujuan:** Memastikan nomor dan panah pada dropdown list (accordion) Arsip & Referensi di `index.html` tidak bergeser atau pindah ke kiri saat diklik (dalam keadaan aktif).
 - **File diubah:** 
