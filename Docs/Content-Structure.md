@@ -31,9 +31,13 @@ Tampilan ringkas di halaman utama:
 
 Total: **15 artikel**.
 
-> Submenu "Arsip Digital Karya Sastra Jawa Timur" dan "Referensi" di sidebar sub-halaman
-> **bukan** data artikel (tidak masuk hitungan di atas): `arsipData` memuat link eksternal
-> (placeholder), `referensiData` memuat halaman statis daftar pustaka — lihat `Docs/ERD.md`.
+> **Arsip Digital & Referensi** kini berada di `index.html` (bukan sub-halaman):
+> - Section `#arsip` memakai `korpusArsip` dari `Assets/data/korpus-data.mjs` (4 grup:
+>   Novel & Prosa, Drama, Puisi, Sastra Klasik & Tradisi) + kartu **Daftar Puisi Mahasiswi**
+>   (`daftarPuisiMahasiswi` — 2 komunitas, tautan Instagram), dirender sebagai kartu accordion.
+> - Section `#referensi` memakai `daftarPustaka` (145 entri bernomor runtut 1–145, angka
+>   tertanam di teks — tidak ada nomor otomatis dari elemen list) dari berkas yang sama.
+> - Ketiganya **bukan data artikel** (tidak masuk hitungan di atas dan tidak terhubung ke PDF).
 
 ## 3. Langkah Menambah Artikel Baru
 

@@ -20,22 +20,26 @@ sub-halaman). Tidak ada framework, build tool, atau backend.
 
 ## 3. Arsitektur Halaman
 
-### 3.1 `index.html` (landing page, `<script>` biasa, non-module)
+### 3.1 `index.html` (landing page, ES Module via `script.js`)
 Struktur:
 - `<div class="cursor">` — custom cursor.
-- `<nav>` — logo, `ul.nav-links` (Beranda/Menu/Periodisasi/Resepsi), `div.nav-actions`
-  (theme switch, tombol "Tentang Kami").
+- `<nav>` — logo, `ul.nav-links` (Beranda/Menu/Periodisasi/Resepsi),
+  `div.nav-actions` (theme switch, tombol "Tentang Kami").
 - `<header class="container" id="mainContent">` — hero (blur, judul, paragraf, CTA,
   gambar `Assets/wayang_icon.png`).
 - `<section id="namaTubes">` — judul + sub judul + `div.features` (kartu Periodisasi &
   Resepsi, masing-masing menautkan ke sub-halaman).
 - `<section id="periodisasi">` dan `<section id="resepsi">` — `div.accordion-grid`
   (diisi JS: `#accordionPeriodisasi`, `#accordionResepsi`).
+- `<section id="arsip">` — `div.accordion-grid.accordion-grid--full#accordionArsip`
+  (kartu accordion per genre, isi dari `korpusArsip`).
+- `<section id="referensi">` — `div.accordion-grid.accordion-grid--full#accordionReferensi`
+  (satu kartu berisi `<ol>` `daftarPustaka`).
 - `<footer id="kontak">` — `section.cover-page` (logo UNAIR, info program studi, dosen,
   `#memberList`).
 - `div.copyright` — teks hak cipta.
 - `div.popup-container#welcome-popup` — popup sambutan.
-- `<script src="script.js">`.
+- `<script type="module" src="script.js">`.
 
 ### 3.2 `Periodisasi/periodisasi.html` & `Resepsi/resepsi.html` (ES Module)
 Struktur:
@@ -47,18 +51,20 @@ Struktur:
   - `aside.sidebar#sidebar` — `nav.nav-list` berisi `div.nav-group` per kategori
     (`button.nav-item.nav-parent` + `div.nav-submenu`), dan `div.sidebar-footer`
     (tautan metode lain + Beranda).
-  - `div.sidebar-backdrop#sidebarBackdrop`.
-  - `main.main-content#mainContent` — `div.page-header` (`#pageTitle`, `#breadcrumb`),
-    `section.content-card` (`#contentCardTitle`, `div.content-card-body#contentCardBody`
-    berisi `iframe#pdfViewer`, `div.pagination-bar#paginationBar` dengan
-    `#prevBtn`, `#pageDots`, `#nextBtn`).
+- `div.sidebar-backdrop#sidebarBackdrop`.
+- `main.main-content#mainContent` — `div.page-header` (`#pageTitle`, `#breadcrumb`),
+  `section.content-card` (`#contentCardTitle`, `div.content-card-body#contentCardBody`
+  berisi `iframe#pdfViewer`, `div.pagination-bar#paginationBar` dengan
+  `#prevBtn`, `#pageDots`, `#nextBtn`).
+- Submenu **Arsip & Referensi sudah tidak ada** di sidebar (dipindah ke index).
 - `<script type="module" src="periodisasi.js">` / `resepsi.js`.
 
 ## 4. Spesifikasi Fungsional
 
 ### FR-1 Navigasi
 - Nav index menautkan: `#` (Beranda), `#namaTubes` (Menu), `#periodisasi`,
-  `#resepsi`, `#kontak` (Tentang Kami).
+  `#resepsi`, `#kontak` (Tentang Kami). Arsip & Referensi **tidak** ada di navbar top —
+  hanya bisa dijangkau dengan scroll ke section-nya.
 - Sub-halaman: brand & hamburger mengelola `sidebar-collapsed`; footer menautkan
   halaman metode lain (`../Resepsi/resepsi.html`, `../Periodisasi/periodisasi.html`)
   dan Beranda (`../index.html`).
@@ -101,24 +107,49 @@ Struktur:
   jika tidak → `alert("Artikel tidak ditemukan")`.
 - **Perbaikan (audit):** `allData` di `resepsi.js` hanya memuat `prosaData` & `puisiData`
   (sebelumnya ikut mereferensikan `dramaData`/`komunitasData` yang tidak ada → error).
+- Search bar **disembunyikan pada layar ≤768px** (responsive); tetap tersedia di desktop.
 
 ### FR-8 Popup Sambutan
 - Muncul 1 detik setelah DOM ready (klass `show` pada `#welcome-popup`).
 - Ditutup via tombol `×` atau "Jelajahi Sekarang".
 
 ### FR-9 Daftar Anggota (cover page)
-- `membersData` (4 item placeholder) dirender ke `#memberList` sebagai `.member`
-  (avatar + nama + NIM).
+- `membersData` (1 entri label "Bahasa & Sastra Indonesia 2024") dirender ke `#memberList`
+  sebagai satu `.member` dengan ikon `Assets/wayang_icon.png` (tanpa NIM/foto anggota).
 - **Perbaikan (audit):** blok upload foto anggota (`fileInput-i`/`avatar-i`) yang
   melempar `TypeError` telah dihapus dari `script.js`.
 
+### FR-10 Section Arsip Digital (index, `#arsip`)
+- Sumber data: `korpusArsip` + `daftarPuisiMahasiswi` (diimpor dari
+  `Assets/data/korpus-data.mjs`).
+- `setupListAccordion("accordionArsip", arsipPanels, 0)` merender 5 kartu accordion
+  (`accordion-grid--full`): 4 genre + "Daftar Puisi Mahasiswi"; panel pertama aktif
+  secara default.
+- Header panel (`div.panel-header`) berupa baris fleksibel: judul genre di **kiri**,
+  angka kuantitas di **kanan** (faded, `opacity:0.45`), ikon panah dropdown
+  `ri-arrow-down-s-line`. Saat panel aktif, header **diam di atas** — angka & panah tetap
+  **sticky di kanan** (tidak bergeser ke kiri); panah berotasi 180° di tempatnya, hanya
+  konten yang muncul. Angka tidak berubah opacity saat aktif.
+- Item daftar memakai `buildArsipItemHTML()`: `author — title, year`; bila `url` tersedia
+  → tautan `target="_blank" rel="noopener"`, selainnya teks polos (dari `escapeHTML`).
+  Item puisi mahasiswi memakai `buildPuisiItemHTML()`: `komunitas (year)` + link Instagram.
+- Konten panel dapat di-scroll (ketinggian `clamp(260px, 42vh, 460px)`).
+
+### FR-11 Section Referensi (index, `#referensi`)
+- Sumber data: `daftarPustaka` (string[], 145 entri bernomor **runtut 1–145** yang
+  tertanam di teks, dari `Assets/data/korpus-data.mjs`).
+- Dirender sebagai `<ul class="list-content referensi-list">` (bukan `<ol>`) — **tanpa
+  nomor otomatis** agar tidak ganda dengan nomor di teks; baris lanjutan memakai
+  hanging-indent (`padding-left:2.2rem; text-indent:-2.2rem`).
+
 ## 5. Spesifikasi Non-Fungsional
 
-- **NFR-1 Kompatibilitas:** Chrome, Firefox, Edge, Safari modern. ES Modules butuh
-  server HTTP atau live server (tidak disarankan via `file://` untuk sub-halaman
-  karena kebijakan module CORS).
+- **NFR-1 Kompatibilitas:** Chrome, Firefox, Edge, Safari modern. **Ketiga halaman**
+  (index, Periodisasi, Resepsi) memakai ES Modules — butuh server HTTP atau live
+  server (tidak disarankan via `file://` karena kebijakan module CORS).
 - **NFR-2 Responsif:** breakpoint `1400/1200/992/768/576/420px` + `(hover:none)`; search bar
-  tetap ditampilkan pada layar kecil (aturan `display:none` pada ≤480px telah dihapus).
+  **disembunyikan di layar ≤768px** (topnav tetap rapi: brand + hamburger + theme-switch +
+  avatar); topnav **auto-hide** saat scroll ke bawah dan muncul lagi saat scroll ke atas.
 - **NFR-3 Konsistensi tema:** token CSS didefinisikan ulang per stylesheet
   (`style.css`, `periodisasi.css`, `resepsi.css`), nilai harus identik.
 - **NFR-4 URL statis:** struktur path relatif tidak boleh berubah kecuali semua

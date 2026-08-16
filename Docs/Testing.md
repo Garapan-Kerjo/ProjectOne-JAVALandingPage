@@ -27,31 +27,36 @@ Rencana pengujian untuk **LANDINGPAGEJAWA_SP (Lorong Susastra — Digitalisasi S
 - [ ] Toggle tema mengubah seluruh halaman (icon berubah sun↔moon).
 - [ ] Tema tersimpan setelah refresh (`localStorage.theme`).
 - [ ] Nav anchor bekerja: Beranda(`#`), Menu(`#namaTubes`), Periodisasi(`#periodisasi`),
-      Resepsi(`#resepsi`), Tentang Kami(`#kontak`).
+      Resepsi(`#resepsi`), Tentang Kami(`#kontak`). (Arsip/Referensi tidak di navbar top.)
 - [ ] Accordion Periodisasi: 4 kartu (Drama, Komunitas, Prosa, Puisi); klik panel
       membuka konten; hanya satu panel aktif.
 - [ ] Accordion Resepsi: 2 kartu (Prosa, Puisi).
+- [ ] Section Arsip: 5 kartu accordion full-width (Novel & Prosa, Drama, Puisi, Sastra
+      Klasik & Tradisi, Daftar Puisi Mahasiswi); panel pertama aktif; header menampilkan
+      jenis di kiri, angka kuantitas di kanan (faded), panah dropdown; isi dapat di-scroll;
+      item ber-`url` membuka tab baru, item tanpa `url` tampil sebagai teks polos.
+- [ ] Kartu "Daftar Puisi Mahasiswi": 2 komunitas (Nastyaksara 2021, Selasar Lazuardi 2026)
+      menautkan ke Instagram (tab baru).
+- [ ] Section Referensi: satu kartu berisi daftar pustaka 145 entri; **tanpa nomor
+      ganda** — hanya nomor 1–145 di teks, berurutan runtut; baris lanjutan rata kiri.
 - [ ] Tautan "Telusuri Lebih Lanjut" membuka sub-halaman dengan parameter URL benar.
-- [ ] Footer cover page menampilkan logo, prodi, 3 dosen, dan 4 anggota.
+- [ ] Footer cover page menampilkan logo, prodi, 3 dosen, dan label tunggal
+      "Bahasa & Sastra Indonesia 2024" dengan ikon wayang (tanpa foto/NIM anggota).
 - [ ] Custom cursor mengikuti mouse; normal saat hover PDF tidak relevan di halaman ini.
 
 ### 2.2 Halaman Periodisasi (`Periodisasi/periodisasi.html`)
-- [ ] Sidebar menampilkan 4 kategori + tautan Resepsi & Beranda.
+- [ ] Sidebar menampilkan 4 kategori + tautan Resepsi & Beranda (tanpa submenu Arsip/Referensi).
 - [ ] Klik kategori membuka submenu & memuat konten pertama kategori.
 - [ ] Klik sub-item memuat PDF yang benar (judul & breadcrumb sinkron).
 - [ ] Pagination: tombol prev/next menonaktifkan di posisi awal/akhir; dot menandai
       posisi aktif.
-- [ ] Search: ketik sebagian judul → Enter → artikel terbuka; ketik teks tak ada →
-      alert "Artikel tidak ditemukan".
+- [ ] Search (desktop): ketik sebagian judul → Enter → artikel terbuka; ketik teks tak ada →
+      alert "Artikel tidak ditemukan" (search bar disembunyikan pada ≤768px).
 - [ ] PDF tampil dalam iframe viewer; scroll & zoom viewer berfungsi.
 - [ ] Cursor menghilang saat kursor di dalam area PDF dan muncul kembali saat keluar.
 - [ ] Deep-link: `?category=prosa&id=3` langsung membuka artikel prosa ke-3.
 - [ ] Deep-link salah (`?category=xyz`) → fallback ke kategori Drama.
 - [ ] Hamburger di mobile membuka sidebar + backdrop.
-- [ ] Submenu "Arsip Digital Karya Sastra Jawa Timur" membuka daftar link eksternal
-      (tautan terbuka di tab baru).
-- [ ] Submenu "Referensi" → klik item menampilkan halaman statis daftar pustaka di kartu
-      konten (pagination & viewer PDF tersembunyi).
 
 ### 2.3 Halaman Resepsi (`Resepsi/resepsi.html`)
 - [ ] Semua item di §2.2 (kategori: Prosa & Puisi; default `puisi`).
@@ -61,6 +66,8 @@ Rencana pengujian untuk **LANDINGPAGEJAWA_SP (Lorong Susastra — Digitalisasi S
 ### 2.4 Cross-cutting
 - [ ] Dark mode berfungsi penuh di ketiga halaman (tokens tidak bocor).
 - [ ] Responsive: tidak ada scroll horizontal pada 768, 576, 420px.
+- [ ] Topnav auto-hide: scroll ke bawah (>120px) → topnav & sidebar naik; scroll ke atas →
+      muncul kembali. Di mobile, search bar tidak tampil dan topnav tetap rapi.
 - [ ] Keyboard: panel accordion dapat dioperasikan dengan Enter/Space.
 - [ ] Semua aset (gambar) tampil — tidak ada ikon rusak.
 
@@ -72,9 +79,11 @@ Rencana pengujian untuk **LANDINGPAGEJAWA_SP (Lorong Susastra — Digitalisasi S
 | Custom cursor | ✔ | ✔ | ✔ |
 | Popup sambutan | ✔ | — | — |
 | Accordion grouped | ✔ | — | — |
+| Arsip Digital (list accordion) | ✔ | — | — |
+| Referensi (daftar pustaka) | ✔ | — | — |
 | Sidebar & submenu | — | ✔ | ✔ |
 | Pagination | — | ✔ | ✔ |
-| Search | — | ✔ | ⚠ rusak |
+| Search | — | ✔ | ✔ |
 | PDF viewer | — | ✔ | ✔ |
 | Deep-link URL | — | ✔ | ✔ |
 | Cover page anggota | ✔ | — | — |
@@ -111,6 +120,7 @@ Jangan mengenalkan kembali perilaku berikut.
 | 9 | CSS duplikat | `periodisasi.css`/`resepsi.css` "identik 100%" | Faktanya berbeda satu spasi (`overflow:hidden` vs `overflow: hidden`); kini dikonfirmasi identik |
 | 10 | `resepsi.html` | `aria-expanded="false "` (spasi) pada hamburger | `"false"` |
 | 11 | CSS *dead code* | `.pricing` (light/dark/responsif) & `.panel.dark-mode` tidak dipakai | Dihapus dari `style.css` |
-| 12 | `periodisasi.css`/`resepsi.css` | `.search-bar` `display:none` di ≤480px mematikan pencarian | Ditampilkan (`margin-left:auto`) |
+| 12 | `periodisasi.css`/`resepsi.css` | `.search-bar` `display:none` di ≤480px mematikan pencarian | Ditampilkan (revisi 2026-08-16: search kini **sengaja disembunyikan** di ≤768px, tetap ada di desktop) |
+| 13 | Sub-halaman `Periodisasi`/`Resepsi` | Arsip & Referensi lama dirender di sidebar (submenu non-artikel) | Dipindah ke `index.html` (section `#arsip` & `#referensi`, data dari `korpus-data.mjs`); submenu & kode terkait dihapus |
 
 > Semua perbaikan fungsional tercatat di `AI/Change-Log.md`.

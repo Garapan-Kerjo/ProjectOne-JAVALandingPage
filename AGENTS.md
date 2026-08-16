@@ -63,22 +63,24 @@ Jika konteks agen terbatas, **minimal baca** `AGENTS.md`, `CONTEXT.md`, `RULES.m
 ```
 landingpageJAWA_SP/
 ├── index.html                  # Halaman utama (landing page)
-├── script.js                   # Logika utama: tema, cursor, popup, accordion, anggota
+├── script.js                   # Logika utama: tema, cursor, popup, accordion, anggota, section Arsip & Referensi (ES module)
 ├── style.css                   # Design system + komponen halaman utama
 ├── Periodisasi/
 │   ├── periodisasi.html        # Sub-halaman metode Periodisasi
-│   ├── periodisasi.js          # Data artikel, sidebar, pagination, viewer PDF, search, submenu Arsip & Referensi
+│   ├── periodisasi.js          # Data artikel, sidebar, pagination, viewer PDF, search
 │   └── periodisasi.css         # Gaya sub-halaman Periodisasi
 ├── Resepsi/
 │   ├── resepsi.html            # Sub-halaman metode Resepsi
-│   ├── resepsi.js              # Data artikel, sidebar, pagination, viewer PDF, search, submenu Arsip & Referensi
+│   ├── resepsi.js              # Data artikel, sidebar, pagination, viewer PDF, search
 │   └── resepsi.css             # Gaya sub-halaman Resepsi
 ├── Assets/
-│   ├── logo-web.png            # Favicon & logo
-│   ├── wayang_icon.png         # Ilustrasi hero
+│   ├── logo-web.png            # Logo situs (popup sambutan)
+│   ├── wayang_icon.png         # Ilustrasi hero + favicon + avatar anggota
 │   ├── culture_icon.png        # Gambar custom cursor
 │   ├── doodlesBackground.png   # Pola latar body
 │   ├── Lambang-Universitas-Airlangga-bg-putih.png
+│   ├── data/
+│   │   └── korpus-data.mjs     # Data bersama Arsip Digital (korpusArsip) & daftar pustaka (daftarPustaka), dipakai script.js
 │   └── Artikel Web/            # PDF artikel (konten sastra)
 │       ├── PeriodisasiDrama/   #   drama1..3.pdf
 │       ├── PeriodisasiKomunitas/ # komunitas1.pdf

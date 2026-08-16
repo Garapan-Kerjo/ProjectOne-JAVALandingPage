@@ -1,5 +1,3 @@
-import { daftarPustaka, buildArsipHTML } from "../Assets/data/korpus-data.mjs";
-
 const cursor = document.querySelector(".cursor");
 const pdfViewer = document.getElementById("pdfViewer");
 
@@ -60,36 +58,11 @@ const prosaData = [
   }
 ];
 
-const arsipData = [
-  { id: 1, label: "Arsip Digital Karya Sastra Jawa Timur" }
-];
-
-const referensiData = [
-  { id: 1, label: "Daftar Pustaka" }
-];
-
 const specialPages = {
-  resepsi: {
-    title: "Halaman Resepsi",
-    breadcrumb: "Resepsi",
-    cardTitle: "Resepsi",
-  },
   mainpage: {
     title: "Halaman Utama",
     breadcrumb: "Main Page",
     cardTitle: "Main Page",
-  },
-  referensi: {
-    title: "Referensi",
-    breadcrumb: "Referensi",
-    cardTitle: "Daftar Pustaka",
-    paragraphs: daftarPustaka,
-  },
-  arsip: {
-    title: "Arsip Digital Karya Sastra Jawa Timur",
-    breadcrumb: "Arsip",
-    cardTitle: "Arsip Digital Karya Sastra Jawa Timur",
-    html: buildArsipHTML(),
   },
 };
 
@@ -108,10 +81,6 @@ const navProsa = document.getElementById('navProsa');
 const navPuisi = document.getElementById('navPuisi');
 const prosaSubmenu = document.getElementById("prosaSubmenu");
 const puisiSubmenu = document.getElementById("puisiSubmenu");
-const navArsip = document.getElementById('navArsip');
-const navReferensi = document.getElementById('navReferensi');
-const arsipSubmenu = document.getElementById("arsipSubmenu");
-const referensiSubmenu = document.getElementById("referensiSubmenu");
 const navMainPage = document.getElementById('navMainPage');
 let currentData = puisiData;
 
@@ -162,8 +131,6 @@ const categoryMap = {
 
 buildSubmenu(prosaData, prosaSubmenu);
 buildSubmenu(puisiData, puisiSubmenu);
-buildSpecialSubmenu(arsipData, arsipSubmenu, 'arsip');
-buildSpecialSubmenu(referensiData, referensiSubmenu, 'referensi');
 
 function initializePage() {
   // Tutup semua submenu terlebih dahulu
@@ -240,49 +207,6 @@ function buildSubmenu(data, submenu){
         submenu.appendChild(subItem);
 
     });
-
-}
-
-function buildSpecialSubmenu(data, submenu, pageKey){
-
-    submenu.innerHTML = "";
-
-    data.forEach(item => {
-
-        const subItem = document.createElement("div");
-
-        subItem.className = "sub-nav-item";
-
-        subItem.dataset.index = item.id;
-
-        subItem.innerHTML = `
-            <span class="sub-nav-icon">${item.id}</span>
-            <span class="sub-nav-label">${item.label}</span>
-        `;
-
-        subItem.addEventListener("click", () => {
-            showSpecialPage(pageKey);
-        });
-
-        submenu.appendChild(subItem);
-
-    });
-
-}
-
-function openSubmenuOnly(submenu, nav) {
-
-    closeAllSubmenus();
-
-    document.querySelectorAll(".nav-parent").forEach(el => {
-        el.classList.remove("open");
-        el.classList.remove("active");
-    });
-
-    submenu.classList.add("open");
-    fitSubmenuToViewport(submenu);
-    nav.classList.add("open");
-    nav.classList.add("active");
 
 }
 
@@ -378,14 +302,6 @@ function updateActiveNav(){
 
     }
 
-    if (activeSection === 'referensi') {
-        navReferensi.classList.add("active");
-    }
-
-    if (activeSection === 'arsip') {
-        navArsip.classList.add("active");
-    }
-
     document.querySelectorAll(".sub-nav-item").forEach(item=>{
 
         item.classList.toggle(
@@ -423,14 +339,6 @@ navPuisi.addEventListener("click",()=>{
     );
 });
 
-navArsip.addEventListener("click",()=>{
-    openSubmenuOnly(arsipSubmenu, navArsip);
-});
-
-navReferensi.addEventListener("click",()=>{
-    openSubmenuOnly(referensiSubmenu, navReferensi);
-});
-
 brandLink.addEventListener('click', (e) => {
   e.preventDefault();
   showSpecialPage('mainpage');
@@ -454,6 +362,18 @@ hamburgerBtn.addEventListener('click', () => {
 sidebarBackdrop.addEventListener('click', () => {
   appShell.classList.remove('sidebar-collapsed');
 });
+
+let lastScrollY = window.scrollY;
+
+window.addEventListener("scroll", () => {
+  const currentScrollY = window.scrollY;
+  if (currentScrollY > 120 && currentScrollY > lastScrollY) {
+    appShell.classList.add("nav-hidden");
+  } else if (currentScrollY < lastScrollY) {
+    appShell.classList.remove("nav-hidden");
+  }
+  lastScrollY = currentScrollY;
+}, { passive: true });
 
 function openCategory(data, submenu, nav) {
 

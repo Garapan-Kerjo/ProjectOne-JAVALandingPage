@@ -593,8 +593,7 @@ body.dark-mode .course-title,
 body.dark-mode .course-sub,
 body.dark-mode .section-label,
 body.dark-mode .lecturer-name,
-body.dark-mode .member-name,
-body.dark-mode .member-nim {
+body.dark-mode .member-name {
   color: var(--text);
 }
 
@@ -602,8 +601,7 @@ body.dark-mode .section-label {
   color: var(--accent);
 }
 
-body.dark-mode .member-name,
-body.dark-mode .member-nim {
+body.dark-mode .member-name {
   color: var(--text-secondary);
 }
 
@@ -860,6 +858,187 @@ body.dark-mode .panel-text {
   opacity: 1;
 }
 
+/* ============ List Accordion Cards (Arsip & Referensi di index) ============ */
+.accordion-grid--full {
+  grid-template-columns: 1fr;
+}
+
+.accordion-card--list .accordion {
+  height: auto;
+  max-width: none;
+  width: 100%;
+  border: none;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+}
+
+.accordion-card--list .panel {
+  flex: none;
+  width: 100%;
+  height: 54px;
+  border-right: none;
+  box-shadow: none;
+  background: transparent;
+  overflow: hidden;
+  transition: background-color var(--transition-fast), height var(--transition-medium);
+}
+
+.accordion-card--list .panel + .panel {
+  border-top: 1px solid var(--nav-border);
+}
+
+.accordion-card--list .panel:hover {
+  background: var(--bg-hover);
+}
+
+.accordion-card--list .panel.active {
+  flex: none;
+  width: 100%;
+  height: clamp(260px, 42vh, 460px);
+  background: transparent;
+}
+
+.accordion-card--list .panel.active:hover {
+  background: transparent;
+}
+
+.accordion-card--list .panel-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 20px;
+  pointer-events: none;
+}
+
+.accordion-card--list .panel-title {
+  position: static;
+  top: auto;
+  left: auto;
+  transform: none;
+  margin: 0;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+.accordion-card--list .panel-number {
+  position: static;
+  top: auto;
+  left: auto;
+  transform: none;
+  margin-left: auto;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-sub);
+  opacity: 0.45;
+}
+
+.accordion-card--list .panel-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+  font-size: 1.35rem;
+  line-height: 1;
+  color: var(--text-sub);
+  opacity: 0.75;
+  transition: transform var(--transition-medium);
+}
+
+.accordion-card--list .panel.active .panel-arrow {
+  transform: rotate(180deg);
+}
+
+.accordion-card--list .panel-category {
+  display: none;
+}
+
+.accordion-card--list .panel-content {
+  top: 56px;
+  left: 20px;
+  right: 20px;
+  bottom: 16px;
+  display: block;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.list-content {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-main);
+}
+
+.list-content li {
+  padding-left: 1.1rem;
+  position: relative;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.list-content li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--secondary);
+}
+
+.list-content li a {
+  color: var(--accent-blue);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.list-content li a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.accordion-card--list .referensi-list {
+  padding-left: 0;
+}
+
+.accordion-card--list .referensi-list li {
+  padding-left: 2.2rem;
+  text-indent: -2.2rem;
+}
+
+.accordion-card--list .referensi-list li::before {
+  content: none;
+}
+
+body.dark-mode .accordion-card--list .panel:hover {
+  background: var(--background);
+}
+
+body.dark-mode .accordion-card--list .panel.active,
+body.dark-mode .accordion-card--list .panel.active:hover {
+  background: transparent;
+}
+
 /* Cover Page Styles */
 :root {
   --text-main: var(--text);
@@ -979,8 +1158,7 @@ body.dark-mode .panel-text {
   border: 1px solid var(--border);
 }
 
-.member-name,
-.member-nim {
+.member-name {
   color: var(--text);
 }
 
@@ -991,7 +1169,7 @@ body.dark-mode .panel-text {
   min-width: 0;
 }
 
-/* avatar bulat + input file di-hide total, dikunci !important */
+/* avatar bulat */
 .avatar {
   position: relative;
   width: 44px;
@@ -1005,18 +1183,6 @@ body.dark-mode .panel-text {
   display: block;
 }
 
-.avatar input[type="file"] {
-  display: none !important;
-  width: 0 !important;
-  height: 0 !important;
-  opacity: 0 !important;
-  position: absolute !important;
-}
-
-.avatar:hover {
-  opacity: 0.85;
-}
-
 .member-text {
   text-align: left;
   min-width: 0;
@@ -1028,14 +1194,6 @@ body.dark-mode .panel-text {
   font-style: italic;
   font-size: 0.95rem;
   color: var(--text-main);
-  white-space: nowrap;
-}
-
-.member-nim {
-  margin: 2px 0 0;
-  font-family: Arial, sans-serif;
-  font-size: 0.72rem;
-  color: var(--text-sub);
   white-space: nowrap;
 }
 
@@ -1418,10 +1576,6 @@ header .image img{
     font-size:.9rem;
 }
 
-.member-nim{
-    font-size:.72rem;
-}
-
 footer::after{
     width:80px;
 }
@@ -1517,10 +1671,6 @@ header .image img{
 
 .member-name{
     font-size:.85rem;
-}
-
-.member-nim{
-    font-size:.68rem;
 }
 
 .lecturer-name {

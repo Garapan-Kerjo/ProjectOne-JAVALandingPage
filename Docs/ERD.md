@@ -37,10 +37,12 @@ Didefinisikan di `script.js` → `membersData`:
 
 ```js
 {
-  name: "Nama Anggota 1", // String
-  nim: "NIM Anggota 1"    // String
+  name: "Bahasa & Sastra Indonesia 2024" // String, label tunggal tanpa NIM
 }
 ```
+
+Dirender sebagai satu baris `.member` dengan ikon `Assets/wayang_icon.png`
+(pengganti foto anggota).
 
 ### 1.4 `Group` (Grup Accordion Index)
 Didefinisikan di `script.js`:
@@ -108,12 +110,20 @@ Relasi:
     Puitika**, sinkron dengan `Resepsi/resepsi.js` dan pemetaan
     `?category=puisi|prosa&id=n`.
 
-### 3.4 Submenu non-artikel (Arsip & Referensi)
-- `arsipData` (di `periodisasi.js` & `resepsi.js`) — array `{ id, label, url }`; item
-  dirender sebagai tautan eksternal (`target="_blank"`). Saat ini **placeholder** (`url: "#"`).
-- `referensiData` (di `periodisasi.js` & `resepsi.js`) — array `{ id, label }`; item membuka
-  **halaman statis** via `specialPages.referensi` (teks `paragraphs` di `#contentText`).
-- Keduanya **tidak** masuk `categoryMap`, pagination, maupun pencarian artikel.
+### 3.4 Section non-artikel (Arsip & Referensi di index)
+- Sumber data: `Assets/data/korpus-data.mjs` — `korpusArsip` (4 grup), `daftarPuisiMahasiswi`
+  (2 komunitas), & `daftarPustaka` (145 entri), diimpor oleh `script.js` (ES module).
+- `korpusArsip`: `[{ group: string, items: [{ author, title, year, url }] }]` — dirender
+  menjadi kartu accordion per genre di `#accordionArsip`; item dengan `url` menjadi tautan
+  eksternal (`target="_blank"`), sisanya teks polos.
+- `daftarPuisiMahasiswi`: `[{ komunitas, year, url }]` — kartu kelima di `#accordionArsip`
+  (judul "Daftar Puisi Mahasiswi"), tautan ke Instagram komunitas.
+- `daftarPustaka`: `string[]` bernomor runtut 1–145 (angka tertanam di teks) — dirender
+  sebagai `<ul class="referensi-list">` dalam satu kartu di `#accordionReferensi` tanpa
+  nomor otomatis.
+- Ketiganya **tidak** terhubung ke `categoryMap`, pagination, maupun pencarian artikel.
+- Sub-halaman (`periodisasi.js`/`resepsi.js`) **tidak lagi memakai** data ini
+  (`arsipData`/`referensiData`/`specialPages.arsip|referensi` telah dihapus).
 
 ## 4. Penyimpanan File (Direktori)
 

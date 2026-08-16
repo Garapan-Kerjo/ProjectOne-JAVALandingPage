@@ -1,3 +1,5 @@
+import { korpusArsip, daftarPustaka, daftarPuisiMahasiswi } from "./Assets/data/korpus-data.mjs";
+
 const cursor = document.querySelector(".cursor");
 
 let mouseX = 0;
@@ -200,26 +202,116 @@ const resepsiData = [
 setupGroupedAccordion("accordionPeriodisasi", periodisasiData);
 setupGroupedAccordion("accordionResepsi", resepsiData);
 
+// === ARSIP & REFERENSI (index) ===
+function escapeHTML(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function buildArsipItemHTML(item) {
+  const text =
+    "<strong>" + escapeHTML(item.author) + "</strong> \u2014 <em>" +
+    escapeHTML(item.title) + "</em>" +
+    (item.year ? " (" + escapeHTML(item.year) + ")" : "");
+  return item.url
+    ? "<li><a href=\"" + escapeHTML(item.url) + "\" target=\"_blank\" rel=\"noopener\">" + text + "</a></li>"
+    : "<li>" + text + "</li>";
+}
+
+function buildPuisiItemHTML(item) {
+  const text =
+    "<strong>" + escapeHTML(item.komunitas) + "</strong>" +
+    (item.year ? " (" + escapeHTML(item.year) + ")" : "");
+  return "<li><a href=\"" + escapeHTML(item.url) + "\" target=\"_blank\" rel=\"noopener\">" + text + "</a></li>";
+}
+
+function setupListAccordion(containerId, panels, defaultActiveIndex) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  panels.forEach((panelConfig, i) => {
+    const card = document.createElement("div");
+    card.className = "accordion-card accordion-card--list";
+
+    const accordion = document.createElement("div");
+    accordion.className = "accordion";
+
+    const panel = document.createElement("div");
+    panel.className = "panel" + (i === defaultActiveIndex ? " active" : "");
+    panel.setAttribute("role", "button");
+    panel.setAttribute("tabindex", "0");
+    panel.setAttribute("aria-expanded", i === defaultActiveIndex ? "true" : "false");
+
+    panel.innerHTML = `
+      <div class="panel-header">
+        <span class="panel-title">${escapeHTML(panelConfig.title)}</span>
+        <span class="panel-number">${panelConfig.count}</span>
+        <span class="panel-arrow" aria-hidden="true"><i class="ri-arrow-down-s-line"></i></span>
+      </div>
+      <div class="panel-content">
+        ${panelConfig.contentHTML}
+      </div>
+    `;
+
+    const toggle = () => {
+      const isActive = panel.classList.toggle("active");
+      panel.setAttribute("aria-expanded", String(isActive));
+    };
+    panel.addEventListener("click", toggle);
+    panel.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        toggle();
+      }
+    });
+
+    accordion.appendChild(panel);
+    card.appendChild(accordion);
+    container.appendChild(card);
+  });
+}
+
+const arsipPanels = korpusArsip.map((group) => ({
+  title: group.group,
+  count: group.items.length,
+  contentHTML: "<ul class=\"list-content\">" + group.items.map(buildArsipItemHTML).join("") + "</ul>"
+}));
+
+arsipPanels.push({
+  title: "Daftar Puisi Mahasiswi",
+  count: daftarPuisiMahasiswi.length,
+  contentHTML: "<ul class=\"list-content\">" + daftarPuisiMahasiswi.map(buildPuisiItemHTML).join("") + "</ul>"
+});
+
+setupListAccordion("accordionArsip", arsipPanels, 0);
+
+const referensiPanel = {
+  title: "Daftar Pustaka",
+  count: daftarPustaka.length,
+  contentHTML: "<ul class=\"list-content referensi-list\">" + daftarPustaka.map((p) => "<li>" + escapeHTML(p) + "</li>").join("") + "</ul>"
+};
+
+setupListAccordion("accordionReferensi", [referensiPanel], 0);
+
 // Cover Page Logic
 const membersData = [
-  { name: "Nama Anggota 1", nim: "NIM Anggota 1" },
-  { name: "Nama Anggota 2", nim: "NIM Anggota 2" },
-  { name: "Nama Anggota 3", nim: "NIM Anggota 3" },
-  { name: "Nama Anggota 4", nim: "NIM Anggota 4" }
+  { name: "Bahasa & Sastra Indonesia 2024" }
 ];
 
 const memberList = document.getElementById("memberList");
 
 if (memberList) {
-  membersData.forEach((data, i) => {
+  membersData.forEach((data) => {
     const row = document.createElement("div");
     row.className = "member";
 
     row.innerHTML = `
-      <img class="avatar" src="Assets/logo-web.png" alt="" />
+      <img class="avatar" src="Assets/wayang_icon.png" alt="" />
       <div class="member-text">
         <p class="member-name">${data.name}</p>
-        <p class="member-nim">${data.nim}</p>
       </div>
     `;
 

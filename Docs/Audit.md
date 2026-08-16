@@ -40,6 +40,70 @@ Perubahan tambahan yang dilakukan setelah audit di atas (semuanya telah diterapk
 - `Docs/Testing.md` §2.3: klaim "Search rusak" diganti status **fixed**; §2.2/§2.3 ditambah
   langkah verifikasi submenu Arsip & Referensi.
 
+### R5 — Topnav rapi & auto-hide, anggota & favicon wayang, hero tanpa "Kelompok XX"
+- **Topnav sub-halaman (Periodisasi & Resepsi):** `.topnav` diberi `overflow-x:hidden` dan
+  `transition:transform`. Class baru `.app-shell.nav-hidden` menggeser topnav ke atas
+  (`translateY(-100%)`), memindahkan `.sidebar` ke `top:0`, dan `main-content` `margin-top:0`
+  agar tidak ada celah kosong 60px saat navbar tersembunyi.
+- **Auto-hide navbar:** listener `window scroll` (passive) di `periodisasi.js`/`resepsi.js` —
+  scroll ke bawah (>120px) menambahkan `nav-hidden`, scroll ke atas menghapusnya. Halaman tetap
+  bisa di-scroll normal.
+- **Search di mobile dihilangkan:** `.search-bar` `display:none` pada ≤768px (keputusan baru;
+  menggantikan perbaikan C6 yang menampilkan search ≤480px). Pencarian tetap berfungsi di desktop.
+  Aturan search mobile yang sudah mati dihapus dari kedua CSS.
+- **Anggota cover page:** `membersData` menjadi **1 entri "Bahasa & Sastra Indonesia 2024"**
+  (tanpa NIM); avatar memakai `Assets/wayang_icon.png` sebagai pengganti foto anggota.
+- **Favicon:** ketiga halaman kini memakai `wayang_icon.png` (sebelumnya `logo-web.png`).
+- **Hero index:** "Hai! Kami dari KELOMPOK XX ..." dirapikan menjadi "Hai! Kami Mempersembahkan
+  Artikel DIGITALISASI SEJARAH SASTRA JAWA TIMUR".
+- Dokumentasi disinkronkan: `CONTEXT.md`, `Docs/ERD.md`, `Docs/SRS.md`, `Docs/UIUX.md`,
+  `Docs/Testing.md`, `AGENTS.md`, `AI/Change-Log.md`.
+
+> ⚠️ **Catatan:** C6 (search ditampilkan di layar kecil) kini **digantikan** oleh keputusan baru
+> menyembunyikan search di mobile ≤768px — perubahan disengaja, bukan regresi. Verifikasi manual
+> browser menyusul (tema terang/gelap, lebar 1280/1024/768/576/480/375px).
+
+### R6 — Arsip Digital & Referensi dipindah dari sub-halaman ke index
+- **index.html** menjadi **ES module** (`<script type="module" src="script.js">`); nav bertambah
+  link **Arsip** (`#arsip`) & **Referensi** (`#referensi`).
+- **Section baru di index:** `#arsip` (4 kartu accordion full-width per genre: Novel & Prosa,
+  Drama, Puisi, Sastra Klasik & Tradisi) dan `#referensi` (satu kartu daftar pustaka `<ol>`).
+  Data berasal dari **`Assets/data/korpus-data.mjs`** (`korpusArsip` ±137 karya / `daftarPustaka`
+  ±145 entri) yang diimpor `script.js` (`buildArsipItemHTML`, `setupListAccordion`,
+  `escapeHTML`).
+- **CSS index:** `.accordion-grid--full`, `.accordion-card--list` (panel collapsed 54px;
+  aktif `clamp(260px,42vh,460px)`, konten scroll), `.list-content`, `.referensi-list`,
+  override dark-mode.
+- **Sub-halaman dibersihkan:** submenu Arsip & Referensi dihapus dari `periodisasi.html`/
+  `resepsi.html`; di kedua JS dihapus `arsipData`/`referensiData`, `buildSpecialSubmenu`,
+  `openSubmenuOnly`, cabang `updateActiveNav`, listener `navArsip`/`navReferensi`;
+  `specialPages` hanya menyisakan `mainpage`; aturan CSS `#arsipSubmenu .sub-nav-label` dihapus.
+- **Dokumentasi disinkronkan:** `CONTEXT.md`, `AGENTS.md`, `Docs/Content-Structure.md`,
+  `Docs/ERD.md`, `Docs/SRS.md`, `Docs/UIUX.md`, `Docs/Testing.md`, `AI/Change-Log.md`.
+- Verifikasi: `node --check` (script.js sebagai module + kedua JS sub-halaman) lolos;
+  keseimbangan kurung CSS (style 280/280, sub-halaman 166/166) lolos.
+
+### R7 — Perbaikan tampilan kartu Arsip & Referensi, daftar pustaka runtut, kartu Puisi Mahasiswi
+- **Perbaikan huruf tumpuk:** penyebabnya elemen header (angka, judul) sebelumnya sama-sama
+  `position:absolute` pada titik yang sama saat panel aktif, dan judul (`h3`) sempat berada
+  di dalam `.panel-content` sehingga mengambang di tengah daftar. Kini header dibungkus
+  `div.panel-header` (flex, menempel di atas): **jenis di kiri, angka kuantitas di kanan
+  (faded `opacity:0.45`), panah dropdown** `ri-arrow-down-s-line`. Saat panel terbuka,
+  header tetap di atas — angka & panah **sticky di kanan** (tidak bergeser ke kiri), panah
+  berotasi 180° di tempatnya; hanya area konten yang muncul di bawah.
+- **Referensi:** `<ol>` diganti `<ul class="referensi-list">` sehingga nomor otomatis
+  dihapus; angka 1–145 di teks `daftarPustaka` diurutkan **runtut** (sebelumnya reset 1–23
+  lalu 1–46 lalu 70–145); baris lanjutan memakai hanging-indent.
+- **Konten baru:** `daftarPuisiMahasiswi` ditambahkan ke `korpus-data.mjs` (2 komunitas
+  dari sheet Excel "Daftar Puisi Mahasiswi": Nastyaksara 2021, Selasar Lazuardi 2026, link
+  Instagram) dirender sebagai kartu kelima di `#accordionArsip`.
+- **Navbar index:** link Arsip & Referensi dihapus — navbar hanya Beranda/Menu/Periodisasi/
+  Resepsi/Tentang Kami; section `#arsip`/`#referensi` tetap ada dan dijangkau via scroll.
+- **Dokumentasi disinkronkan:** `CONTEXT.md`, `Docs/Content-Structure.md`, `Docs/ERD.md`,
+  `Docs/SRS.md`, `Docs/UIUX.md`, `Docs/Testing.md`, `AI/Change-Log.md`.
+- Verifikasi: `node --check` (script.js + korpus-data.mjs) lolos; `daftarPustaka` 145 entri
+  berurutan 1–145; brace CSS style 277/277.
+
 ---
 
 ## Ringkasan Eksekutif

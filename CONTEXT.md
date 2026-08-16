@@ -28,7 +28,8 @@ Proyek ini adalah **Tugas Besar** mata kuliah/kegiatan bertajuk
   - Dr. Ida Nurul Chasanah, S.S., M.Hum
   - Dr. Nadya Afdholy, S.Hum., M.Pd., M.Hum
   - Rima Firdaus Lahdji, S.Hum., M.Hum
-- **Konten anggota:** 4 anggota (masih placeholder: "Nama Anggota 1..4")
+- **Konten anggota:** label tunggal **"Bahasa & Sastra Indonesia 2024"** dengan ikon wayang
+  (tanpa foto/NIM anggota)
 
 ## 3. Tujuan & Misi
 
@@ -48,9 +49,9 @@ pendekatan kajian sastra utama:
 
 | Halaman | Path | Fungsi |
 |---------|------|--------|
-| Beranda | `index.html` | Hero, fitur (Periodisasi & Resepsi), accordion konten, profil tim (cover UNAIR), popup sambutan |
-| Periodisasi | `Periodisasi/periodisasi.html` | Sidebar kategori (Drama, Komunitas, Prosa, Puisi), tampil artikel PDF, pagination, pencarian; submenu Arsip (link eksternal) & Referensi (halaman statis) |
-| Resepsi | `Resepsi/resepsi.html` | Sidebar kategori (Prosa, Puisi), tampil artikel PDF, pagination, pencarian; submenu Arsip (link eksternal) & Referensi (halaman statis) |
+| Beranda | `index.html` | Hero, fitur (Periodisasi & Resepsi), accordion konten, section Arsip Digital & Referensi, profil tim (cover UNAIR), popup sambutan |
+| Periodisasi | `Periodisasi/periodisasi.html` | Sidebar kategori (Drama, Komunitas, Prosa, Puisi), tampil artikel PDF, pagination, pencarian |
+| Resepsi | `Resepsi/resepsi.html` | Sidebar kategori (Prosa, Puisi), tampil artikel PDF, pagination, pencarian |
 
 ### Fitur lintas halaman
 - **Dark/light theme** — toggle disimpan di `localStorage` dengan key `theme`,
@@ -66,21 +67,20 @@ Data artikel didefinisikan **inline di JavaScript** (bukan database).
 ### `script.js` (index)
 - `periodisasiData`: Drama (3 item), Komunitas (1), Prosa (4), Puisi (3) → total 11
 - `resepsiData`: Prosa (2), Puisi (2) → total 4
-- `membersData`: 4 anggota (placeholder)
+- `membersData`: 1 entri label "Bahasa & Sastra Indonesia 2024" (ikon wayang, tanpa NIM)
+- **Arsip & Referensi** (import dari `Assets/data/korpus-data.mjs`): `korpusArsip`
+  (4 grup genre → kartu accordion) + `daftarPuisiMahasiswi` (2 komunitas, link Instagram),
+  dan `daftarPustaka` (145 entri bernomor runtut 1–145 → kartu Referensi)
 
 ### `Periodisasi/periodisasi.js`
 - `dramaData` (3) — file `Assets/Artikel Web/PeriodisasiDrama/drama*.pdf`
 - `komunitasData` (1) — `PeriodisasiKomunitas/komunitas1.pdf`
 - `prosaData` (4) — `PeriodisasiProsa/prosa*.pdf`
 - `puisiData` (3) — `PeriodisasiPuisi/puisi*.pdf`
-- `arsipData` (3, placeholder) — link eksternal arsip digital
-- `referensiData` (1) — halaman statis daftar pustaka
 
 ### `Resepsi/resepsi.js`
 - `puisiData` (2) — `Assets/Artikel Web/ResepsiPuisi/puisi*.pdf`
 - `prosaData` (2) — `ResepsiProsa/prosa*.pdf`
-- `arsipData` (3, placeholder) — link eksternal arsip digital
-- `referensiData` (1) — halaman statis daftar pustaka
 
 > Detail lengkap ada di `Docs/ERD.md` dan `Docs/Content-Structure.md`.
 
@@ -122,8 +122,8 @@ Resepsi/resepsi.html?category=puisi&id=2
    - Aturan `.cursor` memakai satu `transform` gabungan (`translate` + `rotate`).
    - Tag `<image>` tidak dipakai; avatar memakai `<img ... alt="" />`.
    - Tidak ada blok `.pricing`, `.panel.dark-mode`, atau kode unggah foto anggota.
-   - Submenu **Arsip** & **Referensi** (`arsipData`/`referensiData`) bukan data artikel —
-     tidak masuk `categoryMap`, pagination, maupun pencarian.
+   - Arsip & Referensi tidak lagi ada di sidebar sub-halaman — datanya hanya dirender
+     di `index.html` (section `#arsip` & `#referensi`), bukan data artikel.
 4. **Jangan mengubah** `Extension/` dan `Assets/Artikel Web/*.pdf`.
 
 ## 9. Riwayat Singkat (Git)

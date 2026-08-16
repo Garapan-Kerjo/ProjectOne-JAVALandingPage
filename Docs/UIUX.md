@@ -54,7 +54,7 @@ Token CSS didefinisikan di `:root` (light) dan `[data-theme="dark"]` / `body.dar
 | Judul section | Poppins | 600 | `font-size` 2.25rem |
 | Judul panel/accordion | Poppins | 600, italic | `font-size` 1.15rem |
 | Aksen serif | `'Georgia','Times New Roman',serif` | — | Token `--font-serif`, dipakai cover page |
-| NIM anggota | Arial | — | Teks kecil 0.72rem |
+| Label anggota | Poppins | 700, italic | `member-name` 0.95rem — teks tunggal "Bahasa & Sastra Indonesia 2024" tanpa NIM |
 | Actor | `'Actor'` | — | Diimpor namun jarang dipakai |
 
 ## 3. Komponen Utama
@@ -84,7 +84,23 @@ Track: gradien `--accent → --secondary`, radius penuh. Thumb bulat 26px berges
 - Dukungan klik + keyboard (Enter/Space), `aria-expanded`.
 - Mobile (≤768px): panel jadi vertikal, tinggi 60px / 260px (aktif).
 
-### 3.6 Sidebar (sub-halaman)
+### 3.6 List Accordion Cards — Arsip & Referensi (index)
+- Grid 1 kolom penuh (`.accordion-grid--full`); kartu `.accordion-card--list` vertikal.
+- Header `.panel-header` (tinggi 54px, flex): **judul jenis di kiri** (ellipsis bila
+  panjang), **angka kuantitas di kanan** (faded `opacity:0.45`, hanya menampilkan jumlah),
+  dan **ikon panah dropdown** `ri-arrow-down-s-line`. Saat panel dibuka, header tetap
+  menempel di atas; angka & panah **sticky di kanan** (tidak bergeser ke kiri) — panah
+  berotasi 180° pada sumbunya, hanya area konten yang muncul di bawah.
+- Saat `.active`: panel mengembang ke `clamp(260px, 42vh, 460px)` dengan area konten
+  scroll; header tetap menempel di atas.
+- Item daftar memakai bullet `::before` emas, tautan berwarna `--accent-blue`.
+- Referensi: `<ul class="referensi-list">` dalam satu kartu; **tanpa nomor otomatis**
+  (nomor 1–145 sudah tertanam di teks, diurutkan runtut), baris lanjutan hanging-indent.
+- Kartu tambahan "Daftar Puisi Mahasiswi" (2 komunitas) memakai bentuk yang sama dengan
+  tautan Instagram.
+- Dark mode didukung (surface, border, teks ikut token).
+
+### 3.7 Sidebar (sub-halaman)
 - Lebar 240px, collapsed 76px (icon-only) via class `sidebar-collapsed`.
 - Mobile (≤768px): drawer slide-in dengan lebar fluid `min(82vw, 320px)` + backdrop;
   header branding "Lorong Susastra" tampil di dalam drawer.
@@ -95,16 +111,16 @@ Track: gradien `--accent → --secondary`, radius penuh. Thumb bulat 26px berges
 - Safe area: sidebar memakai `env(safe-area-inset-left/bottom)`; meta viewport memakai
   `viewport-fit=cover`.
 
-### 3.7 Viewer PDF & Pagination
+### 3.8 Viewer PDF & Pagination
 - `iframe.pdf-viewer` memenuhi `content-card-body` (tinggi 100vh, scroll internal).
 - Pagination: tombol prev/next + `page-dot` bulat (aktif: `--accent-blue` = `--secondary`,
   `scale(1.3)`).
 
-### 3.8 Popup Sambutan
+### 3.9 Popup Sambutan
 - Overlay penuh `rgba(0,0,0,0.7)`, konten max 500px, muncul `scale(0.9 → 1)`.
 - Tombol tutup `×` + CTA "Jelajahi Sekarang".
 
-### 3.9 Cover Page (footer index)
+### 3.10 Cover Page (footer index)
 - Grid 2 kolom (kiri: logo + info prodi; kanan: dosen + anggota).
 - Latar `rgba(255,253,248,0.6)` dengan `::before` radial-gradient dekoratif.
 - Di dark mode: latar gelap, border cokelat tua.
@@ -113,6 +129,11 @@ Track: gradien `--accent → --secondary`, radius penuh. Thumb bulat 26px berges
 
 - Topbar fixed tinggi `--navbar-h:60px`; sidebar fixed di bawahnya; `main-content`
   margin kiri sesuai lebar sidebar.
+- **Topnav auto-hide:** saat scroll ke bawah (`>120px`), class `nav-hidden` pada
+  `.app-shell` menggeser topnav ke atas (`translateY(-100%)`), sidebar ke `top:0`, dan
+  `main-content` `margin-top:0`; muncul kembali saat scroll ke atas.
+- **Search di mobile:** `.search-bar` disembunyikan pada ≤768px — topnav mobile hanya
+  berisi brand, hamburger, theme-switch, dan avatar.
 - Kartu konten (`content-card`) radius `--radius-lg:16px`, shadow lembut.
 - Tokens tambahan: `--font-sans`, `--font-serif`, `--radius-lg/md`, `--shadow-card`,
   `--transition-fast/medium`, `--accent-blue` (alias `--secondary`), `--accent-green`
@@ -125,11 +146,11 @@ Track: gradien `--accent → --secondary`, radius penuh. Thumb bulat 26px berges
 | ≤1400px | Container 1100px, hero clamp |
 | ≤1200px | Container 1000px, cover page 190px |
 | ≤992px | Nav links disembunyikan, header 1 kolom (gambar di atas), cover 1 kolom |
-| ≤768px | Accordion vertikal, sidebar slide-in (`min(82vw, 320px)`), grid 1 kolom |
-| ≤576px | Tombol full-width, search bar menyempit, cover lebih ramping |
-| ≤480px | Search bar tetap tampil (didorong ke kanan), font turun, sidebar fluid |
+| ≤768px | Accordion vertikal, sidebar slide-in (`min(82vw, 320px)`), grid 1 kolom, search bar disembunyikan, topnav auto-hide saat scroll |
+| ≤576px | Tombol full-width, cover lebih ramping |
+| ≤480px | Font turun, sidebar fluid |
 | ≤420px | Ukuran font turun, nav-actions anchor disembunyikan |
-| ≤400px | Avatar UNAIR disembunyikan, theme-switch & search lebih ramping |
+| ≤400px | Avatar UNAIR disembunyikan, theme-switch lebih ramping |
 | ≤380px | Tombol pagination jadi ikon saja |
 | `(hover:none)` | Cursor asli, custom cursor nonaktif |
 
