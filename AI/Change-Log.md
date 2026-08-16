@@ -9,6 +9,13 @@ Format baku untuk mencatat perubahan pada proyek **LANDINGPAGEJAWA_SP
 
 Setiap entri memakai blok berikut (diletakkan **paling atas** file, di atas entri lama):
 
+## 2026-08-17 — Perbaikan posisi elemen pada accordion Arsip & Referensi
+- **Tujuan:** Memastikan nomor dan panah pada dropdown list (accordion) Arsip & Referensi di `index.html` tidak bergeser atau pindah ke kiri saat diklik (dalam keadaan aktif).
+- **File diubah:** 
+  - `style.css` (menambah selector `.accordion-card--list .panel.active .panel-number` pada aturan `panel-number` untuk spesifisitas yang lebih tinggi).
+- **Verifikasi:**
+  - Manual: Buka halaman index, pastikan saat card di section Arsip atau Referensi diklik, posisi jumlah konten/teks nomor dan panah dropdown tetap ada di sebelah kanan, sejajar tanpa rusak oleh aturan CSS panel yang aktif.
+
 ```markdown
 ## [TANGGAL] — Ringkasan Singkat
 

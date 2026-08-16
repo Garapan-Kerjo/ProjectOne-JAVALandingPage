@@ -933,7 +933,8 @@ body.dark-mode .panel-text {
   min-width: 0;
 }
 
-.accordion-card--list .panel-number {
+.accordion-card--list .panel-number,
+.accordion-card--list .panel.active .panel-number {
   position: static;
   top: auto;
   left: auto;
