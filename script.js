@@ -14,6 +14,7 @@ document.addEventListener("mousemove", (e) => {
 });
 
 function animate() {
+    if (!cursor) return;
     currentX += (mouseX - currentX) * 0.5;
     currentY += (mouseY - currentY) * 0.5;
 
@@ -77,10 +78,33 @@ document.addEventListener("DOMContentLoaded", function () {
     welcomePopup.classList.remove("show");
   };
 
-  setTimeout(showPopup, 1000); // Show after 1 second
+  setTimeout(() => {
+    if (!sessionStorage.getItem('popupShown')) {
+      showPopup();
+      sessionStorage.setItem('popupShown', '1');
+    }
+  }, 1000);
 
   closePopupBtn.addEventListener("click", hidePopup);
   exploreBtn.addEventListener("click", hidePopup);
+
+  // Hamburger mobile nav
+  const hamburgerMobile = document.getElementById("hamburgerMobile");
+  const navLinks = document.getElementById("navLinks");
+  if (hamburgerMobile && navLinks) {
+    hamburgerMobile.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      hamburgerMobile.classList.toggle("open", isOpen);
+      hamburgerMobile.setAttribute("aria-expanded", String(isOpen));
+    });
+    navLinks.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        hamburgerMobile.classList.remove("open");
+        hamburgerMobile.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
 });
 
 // Accordion Logic

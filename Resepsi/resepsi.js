@@ -3,6 +3,8 @@ const pdfViewer = document.getElementById("pdfViewer");
 
 window.addEventListener("message", (event) => {
 
+    if (!cursor) return;
+
     if (event.data.type === "pdf-mouseenter") {
         cursor.style.opacity = "0";
     }
@@ -25,6 +27,7 @@ document.addEventListener("mousemove", (e) => {
 });
 
 function animate() {
+    if (!cursor) return;
     currentX += (mouseX - currentX) * 0.5;
     currentY += (mouseY - currentY) * 0.5;
 
@@ -355,8 +358,9 @@ nextBtn.addEventListener('click', () => {
 
 hamburgerBtn.addEventListener('click', () => {
   const isCollapsed = appShell.classList.toggle('sidebar-collapsed');
-  // Set aria-expanded: true jika sidebar terbuka (tidak collapsed), false jika tertutup (collapsed)
-  hamburgerBtn.setAttribute('aria-expanded', String(!isCollapsed));
+  const isMobile = window.innerWidth <= 768;
+  const sidebarOpen = isMobile ? isCollapsed : !isCollapsed;
+  hamburgerBtn.setAttribute('aria-expanded', String(sidebarOpen));
 });
 
 sidebarBackdrop.addEventListener('click', () => {
@@ -434,7 +438,19 @@ function searchArticle(keyword){
 
             currentData = group.data;
 
-            buildSubmenu(group.data, categoryMap[group.category].submenu);
+            const target = categoryMap[group.category];
+
+            closeAllSubmenus();
+            document.querySelectorAll(".nav-parent").forEach(el => {
+                el.classList.remove("open");
+                el.classList.remove("active");
+            });
+
+            target.nav.classList.add("open");
+            target.submenu.classList.add("open");
+            fitSubmenuToViewport(target.submenu);
+
+            buildSubmenu(group.data, target.submenu);
 
             buildPagination(group.data);
 
