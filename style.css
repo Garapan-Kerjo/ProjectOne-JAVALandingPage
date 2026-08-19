@@ -1044,7 +1044,6 @@ footer::after {
 :root {
   --text-main: var(--text);
   --text-sub: var(--text-secondary);
-  --avatar-bg: var(--primary);
   --font-serif: "Georgia", "Times New Roman", serif;
 }
 
@@ -1170,20 +1169,6 @@ footer::after {
   min-width: 0;
 }
 
-/* avatar bulat */
-.avatar {
-  position: relative;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background-color: var(--avatar-bg);
-  background-size: cover;
-  background-position: center;
-  flex-shrink: 0;
-  overflow: hidden;
-  display: block;
-}
-
 .member-text {
   text-align: left;
   min-width: 0;
@@ -1196,6 +1181,12 @@ footer::after {
   font-size: 0.95rem;
   color: var(--text-main);
   white-space: nowrap;
+}
+
+.member-note {
+  margin: 4px 0 0;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
 }
 
 /* =========================================================
@@ -1663,11 +1654,6 @@ header .image img{
 
 .member{
     padding:.7rem;
-}
-
-.avatar{
-    width:40px;
-    height:40px;
 }
 
 .member-name{

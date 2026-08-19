@@ -331,8 +331,12 @@ setupListAccordion("accordionPuisi", puisiPanels, 0);
 
 // Cover Page Logic
 const membersData = [
-  { name: "Bahasa & Sastra Indonesia 2024" }
+  { name: "Aura Fauziyyah Rahmadania" },
+  { name: "Chesta Leilani" },
+  { name: "Zalfa Izzati Efendi" }
 ];
+
+const memberNoteText = "Dan seluruh mahasiswa Mata Kuliah Sejarah Kesusastraan angkatan 2024";
 
 const memberList = document.getElementById("memberList");
 
@@ -342,7 +346,6 @@ if (memberList) {
     row.className = "member";
 
     row.innerHTML = `
-      <img class="avatar" src="Assets/wayang_icon.png" alt="" />
       <div class="member-text">
         <p class="member-name">${data.name}</p>
       </div>
@@ -350,4 +353,9 @@ if (memberList) {
 
     memberList.appendChild(row);
   });
+
+  const note = document.createElement("p");
+  note.className = "member-note";
+  note.textContent = memberNoteText;
+  memberList.appendChild(note);
 }

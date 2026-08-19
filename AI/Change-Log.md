@@ -9,6 +9,15 @@ Format baku untuk mencatat perubahan pada proyek **LANDINGPAGEJAWA_SP
 
 Setiap entri memakai blok berikut (diletakkan **paling atas** file, di atas entri lama):
 
+## 2026-08-19 — Ubah section Tim Penyusun menjadi daftar nama mahasiswa
+- **Tujuan:** Mengganti card tunggal "Bahasa & Sastra Indonesia 2024" dengan avatar wayang menjadi empat baris: tiga nama mahasiswa (Aura Fauziyyah Rahmadania, Chesta Leilani, Zalfa Izzati Efendi) dalam card teks, diikuti keterangan "dan seluruh mahasiswa Mata Kuliah Sejarah Kesusastraan angkatan 2024" sebagai teks biasa. Menghapus dependency gambar profile (avatar) pada cover page.
+- **File diubah:** 
+  - `script.js` (mengubah `membersData` menjadi 3 nama; menghapus `<img class="avatar">` dari template card; menambahkan `memberNoteText` dan `<p class="member-note">` setelah daftar nama).
+  - `style.css` (menghapus aturan `.avatar`, token `--avatar-bg`, serta override `.avatar` pada media query ≤420px; menambahkan aturan `.member-note` berwarna `var(--text-secondary)`).
+  - `AI/Change-Log.md` (entri ini).
+- **Verifikasi:**
+  - Manual: Buka halaman utama (`index.html`), scroll ke footer cover page, pastikan section "TIM PENYUSUN" menampilkan tiga nama dalam card (tanpa gambar/icon) dan satu baris teks biasa di bawahnya. Cek theme terang/gelap dan lebar layar desktop/tablet/mobile; pastikan section "Dosen Pengampu", logo Airlangga, dan section lain tidak berubah.
+
 ## 2026-08-17 — Penambahan section Daftar Puisi
 - **Tujuan:** Memisahkan data puisi dari section Arsip, serta membuat section/accordion baru di bawah Referensi khusus untuk Daftar Puisi (termasuk Puisi Mahasiswi & Puisi Mahasiswa).
 - **File diubah:** 
