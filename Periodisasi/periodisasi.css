@@ -85,7 +85,7 @@
     transition: var(--transition-medium)
 }
 
-*{box-sizing:border-box;cursor:none;}
+*{box-sizing:border-box;}
 
 body{
   margin:0;
@@ -98,12 +98,15 @@ body{
 
 .cursor {
     position: fixed;
-    width: 50px;
-    height: 50px;
-    background: url("../Assets/culture_icon.png") center center/contain no-repeat;
+    width: 60px;
+    height: 60px;
+    background: var(--accent);
+    border-radius: 50%;
+    filter: blur(20px);
+    opacity: 0.3;
     pointer-events: none;
     z-index: 999999;
-    transform: translate(-50%, -50%) rotate(-35deg);
+    transform: translate(-50%, -50%);
 }
 
 a { 

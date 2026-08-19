@@ -24,26 +24,8 @@ window.addEventListener("mouseover", () => {
 
 });
 
-let mouseX = 0;
-let mouseY = 0;
-
-let currentX = 0;
-let currentY = 0;
-
 document.addEventListener("mousemove", e => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
+    if (!cursor) return;
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top = e.clientY + "px";
 });
-
-function animate(){
-
-    currentX += (mouseX-currentX)*0.5;
-    currentY += (mouseY-currentY)*0.5;
-
-    cursor.style.left=currentX+"px";
-    cursor.style.top=currentY+"px";
-
-    requestAnimationFrame(animate);
-}
-
-animate();

@@ -15,29 +15,11 @@ window.addEventListener("message", (event) => {
 
 });
 
-let mouseX = 0;
-let mouseY = 0;
-
-let currentX = 0;
-let currentY = 0;
-
 document.addEventListener("mousemove", (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-});
-
-function animate() {
     if (!cursor) return;
-    currentX += (mouseX - currentX) * 0.5;
-    currentY += (mouseY - currentY) * 0.5;
-
-    cursor.style.left = currentX + "px";
-    cursor.style.top = currentY + "px";
-
-    requestAnimationFrame(animate);
-}
-
-animate();
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top = e.clientY + "px";
+});
 
 const dramaData = [
   {

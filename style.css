@@ -67,19 +67,21 @@ html {
   outline: none;
   box-sizing: border-box;
   border: none;
-  cursor: none;
 }
 
 .cursor {
     position: fixed;
-    width: 50px;
-    height: 50px;
-    background: url("Assets/culture_icon.png") center center/contain no-repeat;
+    width: 60px;
+    height: 60px;
+    background: var(--accent);
+    border-radius: 50%;
+    filter: blur(20px);
+    opacity: 0.3;
     left: 0;
     top: 0;
     pointer-events: none;
     z-index: 999999;
-    transform: translate(-50%, -50%) rotate(-35deg);
+    transform: translate(-50%, -50%);
 }
 
 img {
@@ -291,14 +293,15 @@ header .content h4 {
 header .content h1 {
   color: var(--text);
   margin-bottom: 1rem;
-  font-size: 3rem;
+  font-size: 2.75rem;
   font-weight: 700;
-  line-height: 4rem;
+  line-height: 1.25;
 }
 
 header .content h1 span {
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke: 1px var(--text);
+  font-size: 3rem;
 }
 
 header .content p {
@@ -341,7 +344,7 @@ section .header {
 .features .card {
   padding: 1rem;
   border-radius: 10px;
-  transition: all 0.3 ease;
+  transition: all 0.3s ease;
   background: var(--nav-background);
   border: 1px solid var(--nav-border);
   backdrop-filter: blur(18px);
@@ -378,7 +381,7 @@ section .header {
 
 .features .card a {
   color: var(--text);
-  transition: all 0.3 ease;
+  transition: all 0.3s ease;
 }
 
 .features .card a:hover {
@@ -391,6 +394,8 @@ section .header {
   padding: 0 1rem;
   text-align: center;
   color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.7;
 }
 
 .sub-header span {
@@ -1131,8 +1136,6 @@ footer::after {
   color: var(--secondary);
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
 }
 
 .lecturer-name {
@@ -1204,8 +1207,12 @@ footer::after {
 }
 
 header .content h1{
-    font-size:clamp(2.8rem,4vw,3.5rem);
+    font-size:clamp(2.55rem,calc(4vw - 0.25rem),3.25rem);
     line-height:1.25;
+}
+
+header .content h1 span{
+    font-size:clamp(2.8rem,4vw,3.5rem);
 }
 
 header .image img{
@@ -1242,6 +1249,10 @@ header{
 }
 
 header .content h1{
+    font-size:2.45rem;
+}
+
+header .content h1 span{
     font-size:2.7rem;
 }
 
@@ -1256,6 +1267,14 @@ header .image img{
 
 .features{
     gap:1.5rem;
+}
+
+.header{
+    font-size:2.15rem;
+}
+
+.sub-header{
+    font-size:.95rem;
 }
 
 .cover-page{
@@ -1318,8 +1337,12 @@ header .content h4{
 }
 
 header .content h1{
-    font-size:2.5rem;
+    font-size:2.25rem;
     line-height:1.3;
+}
+
+header .content h1 span{
+    font-size:2.5rem;
 }
 
 header .content p{
@@ -1329,6 +1352,18 @@ header .content p{
 
 .features{
     grid-template-columns:repeat(2,1fr);
+}
+
+.header{
+    font-size:2rem;
+}
+
+.sub-header{
+    font-size:.95rem;
+}
+
+.features .card p{
+    font-size:.92rem;
 }
 
 .accordion{
@@ -1342,6 +1377,11 @@ header .content p{
 
 .cover-left{
     align-items:center;
+}
+
+.logo-box{
+    width:160px;
+    min-height:160px;
 }
 
 .member{
@@ -1368,15 +1408,6 @@ nav{
     padding:1rem;
 }
 
-.nav-links{
-    gap:.5rem;
-}
-
-.link a{
-    padding:.45rem .8rem;
-    font-size:.95rem;
-}
-
 .btn{
     font-size:.95rem;
 }
@@ -1386,6 +1417,10 @@ header{
 }
 
 header .content h1{
+    font-size:1.95rem;
+}
+
+header .content h1 span{
     font-size:2.2rem;
 }
 
@@ -1481,7 +1516,7 @@ header .image img{
 }
 
 .accordion-card .panel.active {
-  flex: 0 0 200px;
+  flex: 0 0 240px;
 }
 
 .accordion-card .panel-content {
@@ -1520,6 +1555,10 @@ header .content h4{
 }
 
 header .content h1{
+    font-size:1.65rem;
+}
+
+header .content h1 span{
     font-size:1.9rem;
 }
 
@@ -1550,6 +1589,10 @@ header .image img{
 
 .panel-text {
   font-size: 0.8rem
+}
+
+.list-content{
+    font-size:.85rem;
 }
 
 .popup-content{
@@ -1588,6 +1631,10 @@ footer::after{
   font-size: 0.8rem;
 }
 
+.list-content{
+    font-size:.8rem;
+}
+
 .panel-title {
   font-size: 1rem;
   white-space:nowrap;
@@ -1616,6 +1663,10 @@ nav{
 }
 
 header .content h1{
+    font-size:1.4rem;
+}
+
+header .content h1 span{
     font-size:1.65rem;
 }
 

@@ -2,29 +2,11 @@ import { korpusArsip, daftarPustaka, daftarPuisiMahasiswi, daftarPuisiMahasiswa 
 
 const cursor = document.querySelector(".cursor");
 
-let mouseX = 0;
-let mouseY = 0;
-
-let currentX = 0;
-let currentY = 0;
-
 document.addEventListener("mousemove", (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-});
-
-function animate() {
     if (!cursor) return;
-    currentX += (mouseX - currentX) * 0.5;
-    currentY += (mouseY - currentY) * 0.5;
-
-    cursor.style.left = currentX + "px";
-    cursor.style.top = currentY + "px";
-
-    requestAnimationFrame(animate);
-}
-
-animate();
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top = e.clientY + "px";
+});
 
 document.addEventListener("DOMContentLoaded", function () {
   // Theme Toggle
@@ -336,7 +318,7 @@ const membersData = [
   { name: "Zalfa Izzati Efendi" }
 ];
 
-const memberNoteText = "Dan seluruh mahasiswa Mata Kuliah Sejarah Kesusastraan angkatan 2024";
+const memberNoteText = "*dan seluruh mahasiswa Mata Kuliah Sejarah Kesusastraan angkatan 2024";
 
 const memberList = document.getElementById("memberList");
 
@@ -356,6 +338,6 @@ if (memberList) {
 
   const note = document.createElement("p");
   note.className = "member-note";
-  note.textContent = memberNoteText;
+  note.innerHTML = '<em>' + memberNoteText + '</em>';
   memberList.appendChild(note);
 }
