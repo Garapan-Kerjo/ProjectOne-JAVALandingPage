@@ -1137,8 +1137,8 @@ footer::after {
 }
 
 .logo-box {
-  width: clamp(130px, 18vw, 190px);
-  min-height: clamp(130px, 18vw, 190px);
+  width: 190px;
+  min-height: 190px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1330,7 +1330,10 @@ header .image img{
     grid-template-columns:190px 1fr;
 }
 
-
+.logo-box{
+    width:170px;
+    min-height:170px;
+}
 
 }
 
@@ -1430,7 +1433,14 @@ header .content p{
     align-items:center;
 }
 
+.logo-box{
+    width:160px;
+    min-height:160px;
+}
 
+.member{
+    justify-content:flex-start;
+}
 
 }
 
@@ -1509,6 +1519,11 @@ header .image img{
     padding:24px;
 }
 
+.logo-box{
+    width:150px;
+    min-height:150px;
+}
+
 .member{
     padding:.8rem;
 }
@@ -1555,7 +1570,7 @@ header .image img{
 }
 
 .accordion-card .panel.active {
-  flex: 0 0 clamp(240px, 40vh, 320px);
+  flex: 0 0 240px;
 }
 
 .accordion-card .panel-content {
@@ -1739,6 +1754,11 @@ header .image img{
 
 .cover-page{
     padding:20px;
+}
+
+.logo-box{
+    width:130px;
+    min-height:130px;
 }
 
 .member{
