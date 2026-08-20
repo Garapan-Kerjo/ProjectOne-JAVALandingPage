@@ -9,6 +9,29 @@ Format baku untuk mencatat perubahan pada proyek **LANDINGPAGEJAWA_SP
 
 Setiap entri memakai blok berikut (diletakkan **paling atas** file, di atas entri lama):
 
+## 2026-08-20 — Perbaikan SEO Lanjutan (A-E)
+
+**Jenis:** style + seo
+
+**File yang disentuh:**
+- `index.html` (meta description + og/twitter description diperpanjang, tambah meta keywords, hapus sameAs Instagram di WebSite schema)
+- `Periodisasi/periodisasi.html` (hapus duplikasi Remixicon, meta description/keywords, H1 jadi "PERIODISASI SASTRA JAWA TIMUR")
+- `Resepsi/resepsi.html` (hapus duplikasi Remixicon, meta description/keywords, H1 jadi "RESEPSI SASTRA JAWA TIMUR")
+
+**Detail:**
+- Hapus `<link rel="stylesheet">` Remixicon yang duplikat di kedua sub-halaman (kini hanya preload + `<noscript>` fallback).
+- Meta description, og:description, twitter:description diperpanjang dengan keyword: periodisasi, resepsi, sastra Jawa Timur, Pramoedya Ananta Toer, arsip digital.
+- Tambah `<meta name="keywords">` di ketiga halaman.
+- Hapus `sameAs` Instagram dari WebSite schema publisher (mengurangi risiko schema invalid).
+- H1 sub-halaman diperkuat: "PERIODISASI SASTRA JAWA TIMUR" & "RESEPSI SASTRA JAWA TIMUR".
+
+**Verifikasi:**
+- Grep: keywords ada di 3 HTML; duplikat Remixicon hilang; H1 baru terpasang.
+- Buka halaman di browser untuk cek tampilan header/ikon tetap berfungsi.
+
+**Catatan/risiko:**
+- Google Search Console & submit sitemap masih menunggu aksi manual pengguna.
+
 ## 2026-08-20 — Optimasi SEO Lanjutan (8 item)
 
 **Jenis:** feat + style
