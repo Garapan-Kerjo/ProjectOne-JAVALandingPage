@@ -1190,7 +1190,6 @@ footer::after {
 .member-name {
   margin: 0;
   font-weight: 700;
-  font-style: italic;
   font-size: 0.95rem;
   color: var(--text-main);
   white-space: nowrap;

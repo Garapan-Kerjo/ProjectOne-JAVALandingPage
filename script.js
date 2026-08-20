@@ -1,4 +1,4 @@
-import { korpusArsip, daftarPustaka, daftarPuisiMahasiswi, daftarPuisiMahasiswa } from "./Assets/data/korpus-data.mjs";
+import { korpusArsip, daftarPustaka, daftarPuisiMahasiswi } from "./Assets/data/korpus-data.mjs";
 
 const cursor = document.querySelector(".cursor");
 
@@ -298,11 +298,6 @@ const puisiPanels = [
     title: "Daftar Puisi Mahasiswi",
     count: daftarPuisiMahasiswi.length,
     contentHTML: "<ul class=\"list-content\">" + daftarPuisiMahasiswi.map(buildPuisiItemHTML).join("") + "</ul>"
-  },
-  {
-    title: "Daftar Puisi Mahasiswa",
-    count: daftarPuisiMahasiswa.length,
-    contentHTML: "<ul class=\"list-content\">" + daftarPuisiMahasiswa.map(buildPuisiItemHTML).join("") + "</ul>"
   }
 ];
 
