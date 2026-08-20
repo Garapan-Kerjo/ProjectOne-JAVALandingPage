@@ -9,6 +9,34 @@ Format baku untuk mencatat perubahan pada proyek **LANDINGPAGEJAWA_SP
 
 Setiap entri memakai blok berikut (diletakkan **paling atas** file, di atas entri lama):
 
+## 2026-08-20 — Optimasi SEO Lanjutan (8 item)
+
+**Jenis:** feat + style
+
+**File yang disentuh:**
+- `index.html` (lazy loading gambar, preload Remixicon, nav internal linking, deskripsi keyword-rich, FAQ section, JSON-LD BreadcrumbList + FAQPage, social media links, heading h4→h3)
+- `style.css` (selector h4→h3 di features card + media queries, CSS FAQ, social-links)
+- `Periodisasi/periodisasi.html` (preload Remixicon CDN)
+- `Resepsi/resepsi.html` (preload Remixicon CDN)
+
+**Detail:**
+- Tambah `loading="lazy"` pada gambar footer dan popup.
+- Ganti Remixicon CSS ke `<link rel="preload" as="style">` + `<noscript>` fallback di ketiga HTML.
+- Nav bar ditambah link ke `#arsip`, `#referensi`, `#faq` untuk internal linking lebih kuat.
+- Deskripsi section Periodisasi, Resepsi, Arsip, Referensi diperkaya dengan keyword natural.
+- Section FAQ ditambahkan dengan 6 Q&A menggunakan elemen `<details>`.
+- JSON-LD `BreadcrumbList` dan `FAQPage` schema ditambahkan di `<head>`.
+- Social media link Instagram ditambahkan di copyright footer (`@lorongsusastra`).
+- Heading `<h4>` di features card diganti ke `<h3>` (h2 > h3 hierarchy) + semua selector CSS diupdate.
+- Copyright baris diubah ke "Lorong Susastra. Universitas Airlangga."
+
+**Verifikasi:**
+- Validasi HTML: semua JSON-LD valid, FAQ section terlihat, nav berfungsi.
+- CSS: selector h3 sudah benar di desktop (649, 387) dan media queries (1544, 1682).
+
+**Catatan/risiko:**
+- Versi terakhir dari Remixicon preload menggunakan pattern `onload="this.onload=null;this.rel='stylesheet'"` untuk menghindari render-blocking.
+
 ## 2026-08-19 — Ubah section Tim Penyusun menjadi daftar nama mahasiswa
 - **Tujuan:** Mengganti card tunggal "Bahasa & Sastra Indonesia 2024" dengan avatar wayang menjadi empat baris: tiga nama mahasiswa (Aura Fauziyyah Rahmadania, Chesta Leilani, Zalfa Izzati Efendi) dalam card teks, diikuti keterangan "dan seluruh mahasiswa Mata Kuliah Sejarah Kesusastraan angkatan 2024" sebagai teks biasa. Menghapus dependency gambar profile (avatar) pada cover page.
 - **File diubah:** 

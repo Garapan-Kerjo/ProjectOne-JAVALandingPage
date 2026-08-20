@@ -15,9 +15,14 @@
     </script>
     <link rel="stylesheet" href="style.css" />
     <link
-      rel="stylesheet"
+      rel="preload"
       href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
+    <noscript>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" />
+    </noscript>
     <link rel="icon" type="image/png" href="Assets/Lambang-Universitas-Airlangga-bg-putih.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -74,6 +79,88 @@
       }
     }
     </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Beranda",
+          "item": "https://lorongsusastra.vercel.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Periodisasi",
+          "item": "https://lorongsusastra.vercel.app/Periodisasi/periodisasi.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Resepsi",
+          "item": "https://lorongsusastra.vercel.app/Resepsi/resepsi.html"
+        }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Apa itu Lorong Susastra?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Lorong Susastra adalah platform digitalisasi sejarah sastra Jawa Timur yang menyajikan dokumentasi, pemetaan, serta eksplorasi perkembangan sastra melalui pendekatan Periodisasi dan Resepsi sastra. Platform ini merupakan bagian dari tugas besar mata kuliah Sejarah Kesusastraan Universitas Airlangga."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Apa itu Periodisasi sastra?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Periodisasi adalah pendekatan kajian sastra yang mengelompokkan perkembangan sastra berdasarkan rentang waktu tertentu, dengan mempertimbangkan perubahan kondisi sosial, budaya, sejarah, serta karakteristik estetik pada setiap periode."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Apa itu Resepsi sastra?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Resepsi sastra adalah pendekatan yang mengkaji bagaimana sebuah karya sastra diterima, dipahami, dimaknai, serta diinterpretasikan oleh pembaca atau masyarakat pada berbagai ruang dan waktu."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Siapa yang membuat Lorong Susastra?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Lorong Susastra dibuat oleh tim mahasiswa Program Studi Bahasa dan Sastra Indonesia, Universitas Airlangga, di bawah bimbingan dosen pengampu mata kuliah Sejarah Kesusastraan angkatan 2024."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Bagaimana cara mengakses artikel sastra?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Anda dapat mengakses artikel sastra melalui bagian Periodisasi atau Resepsi di halaman utama. Setiap kategori memiliki sidebar navigasi yang memudahkan Anda menelusuri artikel berdasarkan genre: Drama, Komunitas, Prosa, dan Puisi."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Apa saja karya sastra yang tersedia di arsip digital?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Arsip digital Lorong Susastra menyimpan karya sastra Jawa Timur yang dikelompokkan berdasarkan genre, termasuk karya Pramoedya Ananta Toer, sastra Cina Peranakan, serta karya dari berbagai komunitas sastra lokal Jawa Timur."
+          }
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <div class="cursor"></div>
@@ -125,12 +212,12 @@
     <section class="container" id="namaTubes">
       <h2 class="header">DIGITALISASI SEJARAH SASTRA JAWA TIMUR</h2>
       <p class="sub-header">
-        Lorong Susastra menyediakan informasi mengenai karya sastra, komunitas, serta dinamika perkembangan sastra dalam bentuk periodisasi dan resepsi sastra. <br />
+        Lorong Susastra menyajikan informasi mendalam mengenai karya sastra, komunitas, serta dinamika perkembangan sastra Jawa Timur melalui dua pendekatan kajian utama: Periodisasi dan Resepsi sastra. Temukan arsip digital, daftar pustaka, dan puisi komunitas sastra Jawa Timur. <br />
       </p>
       <div class="features">
         <div class="card">
           <span><i class="ri-time-line"></i></span>
-          <h4>Periodisasi</h4>
+          <h3>Periodisasi</h3>
           <p>
             Pendekatan yang mengelompokkan perkembangan sastra berdasarkan rentang waktu tertentu.
           </p>
@@ -141,7 +228,7 @@
         </div>
         <div class="card">
           <span><i class="ri-team-line"></i></span>
-          <h4>Resepsi</h4>
+          <h3>Resepsi</h3>
           <p>
             Pendekatan yang mengkaji bagaimana sebuah karya sastra diterima dan dipahami oleh pembaca.
           </p>
@@ -155,28 +242,28 @@
     <section class="container" id="periodisasi">
       <h2 class="header">PERIODISASI</h2>
       <p class="sub-header">
-        Pendekatan yang mengelompokkan perkembangan sastra berdasarkan rentang waktu tertentu dengan mempertimbangkan perubahan kondisi sosial, budaya, sejarah, serta karakteristik estetik pada setiap periode. <br />
+        Pendekatan yang mengelompokkan perkembangan sastra berdasarkan rentang waktu tertentu dengan mempertimbangkan perubahan kondisi sosial, budaya, sejarah, serta karakteristik estetik pada setiap periode. Telusuri artikel periodisasi drama, komunitas, prosa, dan puisi Jawa Timur. <br />
       </p>
       <div class="accordion-grid" id="accordionPeriodisasi"></div>
     </section>
     <section class="container" id="resepsi">
       <h2 class="header">RESEPSI</h2>
       <p class="sub-header">
-        Pendekatan yang mengkaji bagaimana sebuah karya sastra diterima, dipahami, dimaknai, serta diinterpretasikan oleh pembaca atau masyarakat pada berbagai ruang dan waktu. <br />
+        Pendekatan yang mengkaji bagaimana sebuah karya sastra diterima, dipahami, dimaknai, serta diinterpretasikan oleh pembaca atau masyarakat pada berbagai ruang dan waktu. Jelajahi kajian resepsi sastra prosa dan puisi Jawa Timur. <br />
       </p>
       <div class="accordion-grid" id="accordionResepsi"></div>
     </section>
     <section class="container" id="arsip">
       <h2 class="header">ARSIP DIGITAL</h2>
       <p class="sub-header">
-        Kumpulan digital karya sastra Jawa Timur yang dikelompokkan berdasarkan genre, dilengkapi tautan untuk mengakses karya-karya tersebut. <br />
+        Kumpulan digital karya sastra Jawa Timur yang dikelompokkan berdasarkan genre, dilengkapi tautan untuk mengakses karya-karya tersebut secara langsung. Arsip meliputi karya Pramoedya Ananta Toer, sastra Cina Peranakan, dan komunitas sastra lokal. <br />
       </p>
       <div class="accordion-grid accordion-grid--full" id="accordionArsip"></div>
     </section>
     <section class="container" id="referensi">
       <h2 class="header">REFERENSI</h2>
       <p class="sub-header">
-        Daftar pustaka dan sumber rujukan yang digunakan dalam pendokumentasian sejarah sastra Jawa Timur. <br />
+        Daftar pustaka dan sumber rujukan yang digunakan dalam pendokumentasian sejarah sastra Jawa Timur. Merujuk pada karya-karya akademik, jurnal, dan publikasi ilmiah terkait kajian sastra. <br />
       </p>
       <div class="accordion-grid accordion-grid--full" id="accordionReferensi"></div>
     </section>
@@ -189,11 +276,19 @@
       <div class="accordion-grid accordion-grid--full" id="accordionPuisi"></div>
     </section>
 
+    <section class="container" id="faq">
+      <h2 class="header">PERTANYAAN UMUM</h2>
+      <p class="sub-header">
+        Jawaban atas pertanyaan yang sering ditanyakan mengenai Lorong Susastra dan digitalisasi sejarah sastra Jawa Timur. <br />
+      </p>
+      <div class="accordion-grid accordion-grid--full" id="accordionFaq"></div>
+    </section>
+
     <footer class="container" id="kontak">
       <section class="cover-page">
         <div class="cover-left">
           <div class="logo-box">
-            <img src="Assets/Lambang-Universitas-Airlangga-bg-putih.png" alt="Lambang Universitas Airlangga">
+            <img src="Assets/Lambang-Universitas-Airlangga-bg-putih.png" alt="Lambang Universitas Airlangga" loading="lazy">
           </div>
           <div class="course-info">
             <p class="course-title">UNIVERSITAS AIRLANGGA</p>
@@ -219,13 +314,13 @@
       </section>
     </footer>
     <div class="copyright">
-      Copyright © 2026 Pasar Web Business. All Rights Reserved.
+      Copyright © 2026 Lorong Susastra. Universitas Airlangga. All Rights Reserved.
     </div>
 
     <div class="popup-container" id="welcome-popup">
       <div class="popup-content">
         <button class="popup-close" id="close-popup-btn">&times;</button>
-        <img src="Assets/Lambang-Universitas-Airlangga-bg-putih.png" alt="Logo" class="popup-logo" />
+        <img src="Assets/Lambang-Universitas-Airlangga-bg-putih.png" alt="Logo Lorong Susastra" class="popup-logo" loading="lazy" />
         <h2>Selamat Datang di <span>Lorong Susastra</span>!</h2>
         <p>
           Tugas Besar Digitalisasi Sejarah Sastra Jawa Timur

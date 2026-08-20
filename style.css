@@ -145,7 +145,7 @@ nav {
 
 .nav-logo {
   max-width: 100px;
-  margin-right: 2rem;
+  flex-shrink: 0;
 }
 
 .nav-logo .logo-name {
@@ -168,6 +168,8 @@ nav {
   display: flex;
   align-items: center;
   gap: 3rem;
+  flex: 1;
+  justify-content: center;
 }
 
 .link a {
@@ -296,7 +298,7 @@ header .content h4 {
 }
 
 .hero-subtitle {
-  margin-bottom: 1rem;
+  margin-bottom: 0;
   color: var(--text-secondary);
   font-size: 1rem;
   font-weight: 600;
@@ -317,8 +319,9 @@ header .content h1 span {
 }
 
 header .content p {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   color: var(--text-secondary);
+  line-height: 1.6;
 }
 
 .blur-icon {
@@ -384,7 +387,7 @@ section .header {
   border-radius: 5px;
 }
 
-.features .card h4 {
+.features .card h3 {
   margin-bottom: 0.35rem;
   color: var(--text);
   font-size: 1.2rem;
@@ -438,6 +441,34 @@ footer {
   font-size: 0.84rem;
   text-align: center;
   border-top: 1px solid var(--border);
+}
+
+.social-links {
+  margin-bottom: 0.5rem;
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--secondary);
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.social-links a:hover {
+  color: var(--accent);
+}
+
+#accordionFaq .panel-number {
+  display: none;
+}
+
+.faq-answer {
+  padding: 1rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.7;
 }
 
 footer {
@@ -574,7 +605,7 @@ footer::after {
   border-color: var(--secondary);
 }
 
-[data-theme="dark"] .features .card h4 {
+[data-theme="dark"] .features .card h3 {
   color: var(--text);
 }
 
@@ -953,6 +984,7 @@ footer::after {
   overflow: hidden;
   text-overflow: ellipsis;
   min-width: 0;
+  flex: 1;
 }
 
 .accordion-card--list .panel-number,
@@ -1367,7 +1399,8 @@ header .content h1 span{
 
 header .content p{
     max-width:700px;
-    margin:auto auto 2rem;
+    margin:auto auto 1rem;
+    line-height:1.6;
 }
 
 .features{
@@ -1469,7 +1502,7 @@ header .image img{
     padding:1.5rem;
 }
 
-.features .card h4{
+.features .card h3{
     font-size:1.15rem;
 }
 
@@ -1607,7 +1640,7 @@ header .image img{
     font-size:1.5rem;
 }
 
-.features .card h4{
+.features .card h3{
     font-size:1.05rem;
 }
 

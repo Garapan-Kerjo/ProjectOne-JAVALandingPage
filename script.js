@@ -293,6 +293,41 @@ const referensiPanel = {
 
 setupListAccordion("accordionReferensi", [referensiPanel], 0);
 
+const faqPanels = [
+  {
+    title: "Apa itu Lorong Susastra?",
+    count: 1,
+    contentHTML: "<p class=\"faq-answer\">Lorong Susastra adalah platform digitalisasi sejarah sastra Jawa Timur yang menyajikan dokumentasi, pemetaan, serta eksplorasi perkembangan sastra melalui pendekatan Periodisasi dan Resepsi sastra. Platform ini merupakan bagian dari tugas besar mata kuliah Sejarah Kesusastraan Universitas Airlangga.</p>"
+  },
+  {
+    title: "Apa itu Periodisasi sastra?",
+    count: 2,
+    contentHTML: "<p class=\"faq-answer\">Periodisasi adalah pendekatan kajian sastra yang mengelompokkan perkembangan sastra berdasarkan rentang waktu tertentu, dengan mempertimbangkan perubahan kondisi sosial, budaya, sejarah, serta karakteristik estetik pada setiap periode. Di Lorong Susastra, artikel periodisasi mencakup kategori drama, komunitas, prosa, dan puisi Jawa Timur.</p>"
+  },
+  {
+    title: "Apa itu Resepsi sastra?",
+    count: 3,
+    contentHTML: "<p class=\"faq-answer\">Resepsi sastra adalah pendekatan yang mengkaji bagaimana sebuah karya sastra diterima, dipahami, dimaknai, serta diinterpretasikan oleh pembaca atau masyarakat pada berbagai ruang dan waktu. Kajian resepsi di Lorong Susastra meliputi analisis prosa dan puisi Jawa Timur.</p>"
+  },
+  {
+    title: "Siapa yang membuat Lorong Susastra?",
+    count: 4,
+    contentHTML: "<p class=\"faq-answer\">Lorong Susastra dibuat oleh tim mahasiswa Program Studi Bahasa dan Sastra Indonesia, Universitas Airlangga, di bawah bimbingan dosen pengampu mata kuliah Sejarah Kesusastraan angkatan 2024.</p>"
+  },
+  {
+    title: "Bagaimana cara mengakses artikel sastra?",
+    count: 5,
+    contentHTML: "<p class=\"faq-answer\">Anda dapat mengakses artikel sastra melalui bagian Periodisasi atau Resepsi di halaman utama. Setiap kategori memiliki sidebar navigasi yang memudahkan Anda menelusuri artikel berdasarkan genre: Drama, Komunitas, Prosa, dan Puisi.</p>"
+  },
+  {
+    title: "Apa saja karya sastra yang tersedia di arsip digital?",
+    count: 6,
+    contentHTML: "<p class=\"faq-answer\">Arsip digital Lorong Susastra menyimpan karya sastra Jawa Timur yang dikelompokkan berdasarkan genre, termasuk karya Pramoedya Ananta Toer, sastra Cina Peranakan, serta karya dari berbagai komunitas sastra lokal Jawa Timur.</p>"
+  }
+];
+
+setupListAccordion("accordionFaq", faqPanels, 0);
+
 const puisiPanels = [
   {
     title: "Daftar Puisi Mahasiswi",
