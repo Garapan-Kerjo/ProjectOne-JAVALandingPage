@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://lorongsusastra.vercel.app/sitemap.xml

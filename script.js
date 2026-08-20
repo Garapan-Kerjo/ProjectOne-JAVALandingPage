@@ -61,10 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   setTimeout(() => {
-    if (!sessionStorage.getItem('popupShown')) {
-      showPopup();
-      sessionStorage.setItem('popupShown', '1');
-    }
+    showPopup();
   }, 1000);
 
   closePopupBtn.addEventListener("click", hidePopup);

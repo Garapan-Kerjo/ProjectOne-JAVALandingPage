@@ -270,7 +270,12 @@ section.container {
 
 .blur {
   position: absolute;
-  box-shadow: 0 0 1000px 50px var(--accent);
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: var(--accent);
+  filter: blur(80px);
+  opacity: 0.4;
   z-index: -100;
 }
 
@@ -311,9 +316,14 @@ header .content p {
 
 .blur-icon {
   position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: var(--accent);
+  filter: blur(80px);
+  opacity: 0.4;
   top: 150px;
   right: 250px;
-  box-shadow: 0 0 1000px 50px var(--accent);
   z-index: -100;
 }
 
