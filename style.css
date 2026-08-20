@@ -170,6 +170,7 @@ nav {
   gap: 3rem;
   flex: 1;
   justify-content: center;
+  padding-left: 1rem;
 }
 
 .link a {
@@ -319,7 +320,7 @@ header .content h1 span {
 }
 
 header .content p {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   color: var(--text-secondary);
   line-height: 1.6;
 }
