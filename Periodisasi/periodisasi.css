@@ -427,9 +427,9 @@ a {
   margin-top: 2px;
 }
 .sub-nav-label{ 
-  white-space:normal; 
-  overflow:visible; 
-  text-overflow:clip; 
+  white-space:nowrap; 
+  overflow:hidden; 
+  text-overflow:ellipsis; 
   line-height:1.35;
   flex: 1;
   min-width: 0;
