@@ -331,8 +331,8 @@ setupListAccordion("accordionFaq", faqPanels, 0);
 const puisiPanels = [
   {
     title: "Daftar Puisi Mahasiswa",
-    count: daftarPuisiMahasiswa.length,
-    contentHTML: "<ul class=\"list-content\">" + daftarPuisiMahasiswa.map(buildPuisiItemHTML).join("") + "</ul>"
+    count: daftarPuisiMahasiswi.length,
+    contentHTML: "<ul class=\"list-content\">" + daftarPuisiMahasiswi.map(buildPuisiItemHTML).join("") + "</ul>"
   }
 ];
 
